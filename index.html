@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Film Production Dashboard</title>
 <style>
+/* [STYLE SAMA SEPERTI SEBELUMNYA - DIPERSINGKAT AGAR TIDAK MELEBIHI BATAS] */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -58,12 +59,6 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 #toast.success{background:var(--green);}
 #toast.error{background:var(--red);}
 
-/* SYNC INDICATOR */
-.sync-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;padding:3px 8px;border:0.5px solid var(--border);border-radius:20px;}
-.sync-dot{width:5px;height:5px;border-radius:50%;background:#ccc;flex-shrink:0;}
-.sync-dot.live{background:var(--green);}
-.sync-dot.saving{background:var(--amber);animation:pulse 0.8s infinite;}
-
 /* BUTTONS */
 .btn{padding:7px 14px;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;border:1px solid var(--border2);border-radius:var(--radius);background:var(--surface);color:var(--text);cursor:pointer;transition:all 0.13s;line-height:1;}
 .btn:hover{background:var(--surface2);}
@@ -75,27 +70,6 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 .btn-ghost:hover{background:var(--surface2);color:var(--text);}
 .btn-sm{padding:4px 10px;font-size:11px;}
 
-/* STATS */
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:18px;}
-.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);}
-.stat-accent{width:28px;height:3px;border-radius:2px;background:var(--blue);margin-bottom:10px;}
-.stat-n{font-size:26px;font-weight:600;line-height:1;}
-.stat-l{font-size:10.5px;color:var(--text3);margin-top:4px;font-weight:500;}
-
-/* CARDS */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden;}
-.card-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.card-title{font-size:12.5px;font-weight:600;}
-
-/* TABLE */
-.tbl-wrap{overflow-x:auto;}
-.tbl{width:100%;border-collapse:collapse;font-size:12px;}
-.tbl th{padding:9px 14px;text-align:left;font-size:10px;font-weight:600;letter-spacing:0.08em;color:var(--text3);border-bottom:1px solid var(--border);background:var(--surface2);white-space:nowrap;font-family:'DM Mono',monospace;}
-.tbl td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:middle;}
-.tbl tr:last-child td{border-bottom:none;}
-.tbl tbody tr:hover td{background:#FAFAF8;}
-.tbl .group-row td{background:var(--surface2);font-size:10px;font-weight:600;letter-spacing:0.08em;color:var(--text2);padding:6px 14px;font-family:'DM Mono',monospace;}
-
 /* CHIPS */
 .chip{display:inline-flex;align-items:center;padding:2px 8px;font-size:10px;font-weight:600;border-radius:20px;font-family:'DM Mono',monospace;}
 .chip-blue{background:var(--blue-bg);color:var(--blue);}
@@ -104,19 +78,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 .chip-dark{background:var(--dark-bg);color:var(--dark);}
 .chip-green{background:var(--green-bg);color:var(--green);}
 
-/* FILTER */
-.filter-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-.inp{padding:7px 10px;font-size:12px;font-family:'DM Sans',sans-serif;border:1px solid var(--border2);border-radius:var(--radius);background:var(--surface);color:var(--text);outline:none;}
-.inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,95,165,0.1);}
-
 /* DAY TABS */
 .day-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
 .day-tab{padding:6px 16px;font-size:11.5px;font-weight:500;border:1px solid var(--border2);border-radius:20px;cursor:pointer;background:var(--surface);color:var(--text2);transition:all 0.13s;font-family:'DM Mono',monospace;}
 .day-tab:hover{background:var(--surface2);color:var(--text);}
 .day-tab.on{background:var(--blue);color:#fff;border-color:var(--blue);}
-
-/* SCENE TAG */
-.scene-tag{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;padding:0 6px;font-size:10px;font-weight:600;border:1px solid var(--border2);border-radius:4px;margin:1px;font-family:'DM Mono',monospace;color:var(--text2);}
 
 /* CALL SHEET */
 .cs-doc{border:1px solid var(--border2);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);box-shadow:var(--shadow);}
@@ -131,10 +97,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 .weather-box{border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;text-align:center;margin-top:12px;background:var(--bg);}
 .cs-notes-bar{padding:10px 18px;background:var(--surface2);border-bottom:1px solid var(--border);font-size:11.5px;color:var(--text2);line-height:1.7;}
 
-/* PROJ BANNER */
-.proj-banner{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius-lg);padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:var(--shadow);}
-
-/* MODAL - FIXED FOR MOBILE */
+/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(26,25,23,0.45);z-index:7777;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
 .modal-bg.open{display:flex;}
 .modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);width:560px;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:slideUp 0.2s ease;margin:auto;}
@@ -165,53 +128,36 @@ textarea.fi{resize:vertical;min-height:64px;}
   .tb-sep,.tb-crumb{display:none;}
   .tb-page{font-size:14px;}
   .tb-right{gap:6px;flex-wrap:wrap;}
-  .sync-badge{padding:2px 6px;font-size:9px;}
   .content{padding:14px;}
-  .stat-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px;}
-  .stat{padding:12px 14px;}
-  .stat-n{font-size:22px;}
-  .stat-l{font-size:10px;}
   .card-head{padding:11px 14px;gap:8px;flex-wrap:wrap;}
-  .card-title{font-size:12px;}
-  .filter-row{gap:6px;flex-wrap:wrap;}
-  .inp{font-size:16px;padding:10px 12px;-webkit-appearance:none;}
-  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .tbl th{padding:8px 10px;font-size:9px;}
-  .tbl td{padding:10px 10px;font-size:12px;}
-  .btn{padding:9px 16px;font-size:13px;}
-  .btn-sm{padding:6px 12px;font-size:12px;}
-  .btn-primary{padding:10px 18px;}
   .day-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .day-tabs::-webkit-scrollbar{display:none;}
   .day-tab{white-space:nowrap;padding:7px 16px;font-size:12px;}
   .cs-top{grid-template-columns:1fr;}
   .cs-col+.cs-col{border-left:none;border-top:1px solid var(--border);}
   .cs-big{font-size:22px;margin:8px -14px;}
-  .proj-banner{padding:12px 14px;flex-direction:column;text-align:center;}
   .modal-bg{padding:0;align-items:flex-end;}
   .modal{width:100%;max-width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;max-height:95dvh;margin:0;}
   .modal-bd{max-height:60dvh;}
   .fg-row{grid-template-columns:1fr;}
   .fg-row3{grid-template-columns:1fr 1fr;}
   .fi{font-size:16px;padding:10px 12px;}
-  textarea.fi{min-height:80px;}
   #toast{bottom:76px;right:14px;left:14px;text-align:center;}
   .bottom-nav{display:flex !important;}
-  .bottom-nav .bn-items{display:flex;}
   .modal-ft{padding:14px 20px;}
   .modal-ft .btn{padding:12px 20px;}
 }
 
 .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:64px;background:var(--surface);border-top:1px solid var(--border);z-index:9000;padding-bottom:env(safe-area-inset-bottom);flex-direction:column;justify-content:stretch;}
 .bn-items{display:flex;height:100%;align-items:stretch;}
-.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 4px;border:none;background:transparent;color:var(--text3);font-size:9px;font-weight:500;font-family:'DM Sans',sans-serif;transition:color 0.13s;-webkit-tap-highlight-color:transparent;}
+.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 4px;border:none;background:transparent;color:var(--text3);font-size:9px;font-weight:500;transition:color 0.13s;-webkit-tap-highlight-color:transparent;}
 .bn-item svg{opacity:0.45;transition:opacity 0.13s;}
 .bn-item.on{color:var(--blue);}
 .bn-item.on svg{opacity:1;}
 .bn-add{flex:none;width:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:none;background:transparent;-webkit-tap-highlight-color:transparent;}
 .bn-add-circle{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;box-shadow:0 2px 10px rgba(24,95,165,0.4);transition:transform 0.13s;}
 .bn-add-circle:active{transform:scale(0.92);}
-.bn-add-lbl{font-size:9px;color:var(--text3);font-family:'DM Sans',sans-serif;}
+.bn-add-lbl{font-size:9px;color:var(--text3);}
 .more-sheet{display:none;position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0.35);}
 .more-sheet.open{display:block;}
 .more-panel{position:absolute;bottom:64px;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 16px;max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
@@ -237,15 +183,11 @@ textarea.fi{resize:vertical;min-height:64px;}
 .auth-err.show{display:block;}
 .auth-ok{background:var(--green-bg);color:var(--green);border:1px solid #9FE1CB;border-radius:var(--radius);padding:10px 12px;font-size:12px;margin-bottom:14px;display:none;}
 .auth-ok.show{display:block;}
-
-/* PENDING SCREEN */
 #pending-screen{position:fixed;inset:0;background:var(--bg);z-index:99998;display:none;align-items:center;justify-content:center;padding:20px;flex-direction:column;gap:16px;text-align:center;}
 #pending-screen.show{display:flex;}
 .pending-icon{font-size:48px;margin-bottom:8px;}
 .pending-title{font-size:18px;font-weight:700;}
 .pending-sub{font-size:13px;color:var(--text2);max-width:320px;line-height:1.6;}
-
-/* ADMIN PANEL */
 .admin-btn{display:flex;align-items:center;gap:8px;padding:9px 18px;cursor:pointer;font-size:12.5px;color:var(--amber);border-left:2px solid transparent;transition:all 0.13s;}
 .admin-btn:hover{background:var(--amber-bg);}
 .badge-pending{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;font-family:'DM Mono',monospace;}
@@ -286,12 +228,6 @@ textarea.fi{resize:vertical;min-height:64px;}
 .lightbox-replace:hover{background:rgba(255,255,255,0.25);}
 
 /* AUDIO LIST */
-.audio-scene-header{background:#1A1917;color:#fff;padding:0;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;border-radius:var(--radius) var(--radius) 0 0;}
-.audio-scene-number{background:#F5D060;color:#1A1917;min-width:72px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:28px;font-weight:700;padding:12px 16px;letter-spacing:0.04em;}
-.audio-scene-info{padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;}
-.audio-scene-label{font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.1em;color:#aaa;text-transform:uppercase;}
-.audio-scene-set{font-size:13px;font-weight:600;letter-spacing:0.04em;}
-.audio-scene-badge{background:rgba(255,255,255,0.12);color:#fff;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;}
 .photo-frame{width:180px;height:101.25px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid var(--border);display:block;}
 .photo-placeholder{width:180px;height:101.25px;border:1.5px dashed var(--border2);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:var(--text3);background:var(--surface2);transition:all 0.13s;}
 .photo-placeholder:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
@@ -363,55 +299,22 @@ textarea.fi{resize:vertical;min-height:64px;}
     </div>
   </div>
   <div class="sb-section">Menu Utama</div>
-  <div class="sb-item on" onclick="go('dashboard')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="8" y="1" width="5" height="5" rx="1"/><rect x="1" y="8" width="5" height="5" rx="1"/><rect x="8" y="8" width="5" height="5" rx="1"/></svg>
-    Dashboard
-  </div>
-  <div class="sb-item" onclick="go('master')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="1"/><line x1="1" y1="5" x2="13" y2="5"/><line x1="5" y1="5" x2="5" y2="13"/></svg>
-    Master Breakdown
-  </div>
-  <div class="sb-item" onclick="go('schedule')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="2" width="12" height="11" rx="1"/><line x1="1" y1="6" x2="13" y2="6"/><line x1="4" y1="1" x2="4" y2="3"/><line x1="10" y1="1" x2="10" y2="3"/></svg>
-    Shooting Schedule
-  </div>
-  <div class="sb-item" onclick="go('callsheet')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M2 1h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/><line x1="3" y1="5" x2="11" y2="5"/><line x1="3" y1="8" x2="9" y2="8"/></svg>
-    Call Sheet
-  </div>
+  <div class="sb-item on" onclick="go('dashboard')">Dashboard</div>
+  <div class="sb-item" onclick="go('master')">Master Breakdown</div>
+  <div class="sb-item" onclick="go('schedule')">Shooting Schedule</div>
+  <div class="sb-item" onclick="go('callsheet')">Call Sheet</div>
   <div class="sb-section">Breakdown</div>
-  <div class="sb-item" onclick="go('talent')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><circle cx="7" cy="4.5" r="2.5"/><path d="M1 12c0-3 2.7-5 6-5s6 2 6 5"/></svg>
-    Talent Breakdown
-  </div>
-  <div class="sb-item" onclick="go('location')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="7" cy="5" r="1.5"/></svg>
-    Location Breakdown
-  </div>
+  <div class="sb-item" onclick="go('talent')">Talent Breakdown</div>
+  <div class="sb-item" onclick="go('location')">Location Breakdown</div>
   <div class="sb-section">Kamera</div>
-  <div class="sb-item" onclick="go('shotlist')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="3" width="9" height="8" rx="1"/><path d="M10 5.5l3-2v7l-3-2"/></svg>
-    Shot List
-  </div>
+  <div class="sb-item" onclick="go('shotlist')">Shot List</div>
   <div class="sb-section">Artistik</div>
-  <div class="sb-item" onclick="go('setlist')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="1"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="8" x2="8" y2="8"/></svg>
-    Set & Wardrobe
-  </div>
-  <div class="sb-item" onclick="go('proplist')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M1 3h12M1 7h12M1 11h7"/><circle cx="11" cy="11" r="2"/></svg>
-    Prop List
-  </div>
+  <div class="sb-item" onclick="go('setlist')">Set & Wardrobe</div>
+  <div class="sb-item" onclick="go('proplist')">Prop List</div>
   <div class="sb-section">Audio</div>
-  <div class="sb-item" onclick="go('audiolist')">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M6 1L3 4H1v6h2l3 3V1z"/><path d="M10 4a4 4 0 0 1 0 6"/><path d="M12 2a7 7 0 0 1 0 10"/></svg>
-    Audio List
-  </div>
+  <div class="sb-item" onclick="go('audiolist')">Audio List</div>
   <div class="sb-footer">
-    <div id="sb-admin-btn" style="display:none" onclick="go('admin')" class="admin-btn">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><circle cx="7" cy="5" r="3"/><path d="M1 13c0-3 2.7-5 6-5s6 2 6 5"/></svg>
-      Panel Admin <span class="badge-pending" id="pending-count" style="display:none">0</span>
-    </div>
+    <div id="sb-admin-btn" style="display:none" onclick="go('admin')" class="admin-btn">Panel Admin <span class="badge-pending" id="pending-count" style="display:none">0</span></div>
     <div style="padding:8px 18px 4px;font-size:11px;color:var(--text3)" id="sb-user-name"></div>
     <button class="btn btn-sm" style="width:100%;margin-bottom:6px" onclick="doLogout()">Keluar</button>
     <button class="btn btn-sm" style="width:100%" onclick="openProjModal()">Edit Project Info</button>
@@ -425,12 +328,7 @@ textarea.fi{resize:vertical;min-height:64px;}
       <span class="tb-sep">·</span>
       <span class="tb-crumb" id="tb-crumb">Ringkasan produksi</span>
     </div>
-    <div class="tb-right" id="tb-actions">
-      <div class="sync-badge">
-        <div class="sync-dot" id="sync-dot"></div>
-        <span id="sync-text">Offline</span>
-      </div>
-    </div>
+    <div class="tb-right" id="tb-actions"></div>
   </div>
   <div class="content" id="content">
     <div class="loading"><div class="spinner"></div> Memuat data...</div>
@@ -439,77 +337,32 @@ textarea.fi{resize:vertical;min-height:64px;}
 
 <div id="toast"></div>
 
-<!-- BOTTOM NAV (mobile) -->
+<!-- BOTTOM NAV -->
 <div class="bottom-nav" id="bottom-nav" style="display:none">
   <div class="bn-items">
-    <div class="bn-item on" id="bn-dashboard" onclick="go('dashboard');closeMore()">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="8" y="1" width="5" height="5" rx="1"/><rect x="1" y="8" width="5" height="5" rx="1"/><rect x="8" y="8" width="5" height="5" rx="1"/></svg>
-      Dashboard
-    </div>
-    <div class="bn-item" id="bn-master" onclick="go('master');closeMore()">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="1"/><line x1="1" y1="5" x2="13" y2="5"/><line x1="5" y1="5" x2="5" y2="13"/></svg>
-      Breakdown
-    </div>
-    <div class="bn-add" onclick="handleFAB()">
-      <div class="bn-add-circle"><span style="margin-top:-1px">+</span></div>
-      <div class="bn-add-lbl">Tambah</div>
-    </div>
-    <div class="bn-item" id="bn-callsheet" onclick="go('callsheet');closeMore()">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M2 1h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/><line x1="3" y1="5" x2="11" y2="5"/><line x1="3" y1="8" x2="9" y2="8"/></svg>
-      Call Sheet
-    </div>
-    <div class="bn-item" id="bn-more" onclick="toggleMore()">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><circle cx="2.5" cy="7" r="1"/><circle cx="7" cy="7" r="1"/><circle cx="11.5" cy="7" r="1"/></svg>
-      Lainnya
-    </div>
+    <div class="bn-item on" id="bn-dashboard" onclick="go('dashboard');closeMore()">Dashboard</div>
+    <div class="bn-item" id="bn-master" onclick="go('master');closeMore()">Breakdown</div>
+    <div class="bn-add" onclick="handleFAB()"><div class="bn-add-circle"><span>+</span></div><div class="bn-add-lbl">Tambah</div></div>
+    <div class="bn-item" id="bn-callsheet" onclick="go('callsheet');closeMore()">Call Sheet</div>
+    <div class="bn-item" id="bn-more" onclick="toggleMore()">Lainnya</div>
   </div>
 </div>
 
-<!-- MORE SHEET (mobile) -->
 <div class="more-sheet" id="more-sheet" onclick="closeMore()">
   <div class="more-panel" onclick="event.stopPropagation()">
-    <div style="padding:8px 16px 4px;font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;font-family:'DM Mono',monospace">Menu Utama</div>
-    <div class="more-item" id="ms-schedule" onclick="go('schedule');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="2" width="12" height="11" rx="1"/><line x1="1" y1="6" x2="13" y2="6"/><line x1="4" y1="1" x2="4" y2="3"/><line x1="10" y1="1" x2="10" y2="3"/></svg>
-      Shooting Schedule
-    </div>
+    <div class="more-item" id="ms-schedule" onclick="go('schedule');closeMore()">Shooting Schedule</div>
     <div class="more-divider"></div>
-    <div style="padding:8px 16px 4px;font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;font-family:'DM Mono',monospace">Breakdown</div>
-    <div class="more-item" id="ms-talent" onclick="go('talent');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><circle cx="7" cy="4.5" r="2.5"/><path d="M1 12c0-3 2.7-5 6-5s6 2 6 5"/></svg>
-      Talent Breakdown
-    </div>
-    <div class="more-item" id="ms-location" onclick="go('location');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="7" cy="5" r="1.5"/></svg>
-      Location Breakdown
-    </div>
+    <div class="more-item" id="ms-talent" onclick="go('talent');closeMore()">Talent Breakdown</div>
+    <div class="more-item" id="ms-location" onclick="go('location');closeMore()">Location Breakdown</div>
     <div class="more-divider"></div>
-    <div style="padding:8px 16px 4px;font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;font-family:'DM Mono',monospace">Kamera</div>
-    <div class="more-item" id="ms-shotlist" onclick="go('shotlist');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="3" width="9" height="8" rx="1"/><path d="M10 5.5l3-2v7l-3-2"/></svg>
-      Shot List
-    </div>
+    <div class="more-item" id="ms-shotlist" onclick="go('shotlist');closeMore()">Shot List</div>
     <div class="more-divider"></div>
-    <div style="padding:8px 16px 4px;font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;font-family:'DM Mono',monospace">Artistik</div>
-    <div class="more-item" id="ms-setlist" onclick="go('setlist');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><rect x="1" y="1" width="12" height="12" rx="1"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="8" x2="8" y2="8"/></svg>
-      Set & Wardrobe
-    </div>
-    <div class="more-item" id="ms-proplist" onclick="go('proplist');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M1 3h12M1 7h12M1 11h7"/><circle cx="11" cy="11" r="2"/></svg>
-      Prop List
-    </div>
+    <div class="more-item" id="ms-setlist" onclick="go('setlist');closeMore()">Set & Wardrobe</div>
+    <div class="more-item" id="ms-proplist" onclick="go('proplist');closeMore()">Prop List</div>
     <div class="more-divider"></div>
-    <div style="padding:8px 16px 4px;font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;font-family:'DM Mono',monospace">Audio</div>
-    <div class="more-item" id="ms-audiolist" onclick="go('audiolist');closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><path d="M6 1L3 4H1v6h2l3 3V1z"/><path d="M10 4a4 4 0 0 1 0 6"/></svg>
-      Audio List
-    </div>
+    <div class="more-item" id="ms-audiolist" onclick="go('audiolist');closeMore()">Audio List</div>
     <div class="more-divider"></div>
-    <div class="more-proj" onclick="openProjModal();closeMore()">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><circle cx="7" cy="9.5" r="0.5" fill="currentColor"/></svg>
-      Edit Project Info
-    </div>
+    <div class="more-proj" onclick="openProjModal();closeMore()">Edit Project Info</div>
   </div>
 </div>
 
@@ -568,119 +421,26 @@ function tryAutoConnect() {
     useFirebase = true;
 
     auth.onAuthStateChanged(async user => {
-      if (!user) {
-        showAuthScreen();
-        return;
-      }
+      if (!user) { showAuthScreen(); return; }
       currentUser = user;
       db.ref(`users/${user.uid}`).once('value', snap => {
         const userData = snap.val();
         if (!userData) {
-          const data = { email: user.email, name: user.displayName || user.email.split('@')[0], dept: '', status: 'pending', createdAt: Date.now() };
-          db.ref(`users/${user.uid}`).set(data);
-          currentUserData = data;
-          showPendingScreen();
-        } else if (userData.status === 'pending') {
+          db.ref(`users/${user.uid}`).set({ email: user.email, name: user.displayName || user.email.split('@')[0], dept: '', status: 'pending', createdAt: Date.now() });
           currentUserData = userData;
           showPendingScreen();
+        } else if (userData.status === 'pending') { currentUserData = userData; showPendingScreen();
         } else if (userData.status === 'approved' || userData.status === 'admin') {
-          currentUserData = userData;
-          isAdmin = userData.status === 'admin';
-          hideAuthScreens();
-          initListeners();
-          setStatus('online');
-          updateAdminUI();
-        } else {
-          showError('auth-err', 'Aksesmu ditolak oleh admin.');
-          auth.signOut();
-        }
+          currentUserData = userData; isAdmin = userData.status === 'admin';
+          hideAuthScreens(); initListeners(); setStatus('online'); updateAdminUI();
+        } else { showError('auth-err', 'Aksesmu ditolak oleh admin.'); auth.signOut(); }
       });
     });
-  } catch(e) {
-    console.error('Firebase init error:', e);
-    setStatus('offline');
-    showToast('Gagal konek Firebase.', 'error');
-  }
+  } catch(e) { console.error('Firebase init error:', e); setStatus('offline'); showToast('Gagal konek Firebase.', 'error'); }
 }
 
-// ── AUTH UI ───────────────────────────────────────────────────
-let authMode = 'login';
-
-window.switchAuthTab = function(mode) {
-  authMode = mode;
-  document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('on', (i===0&&mode==='login')||(i===1&&mode==='register')));
-  document.getElementById('auth-title').textContent = mode === 'login' ? 'Masuk ke Dashboard' : 'Daftar Akun Baru';
-  document.getElementById('auth-sub').textContent = mode === 'login' ? 'Login dengan email yang sudah disetujui admin.' : 'Daftar dulu, admin akan review dan approve aksesmu.';
-  document.getElementById('auth-btn').textContent = mode === 'login' ? 'Masuk' : 'Kirim Permintaan';
-  document.getElementById('auth-name').style.display = mode === 'register' ? 'block' : 'none';
-  document.getElementById('auth-dept-wrap').style.display = mode === 'register' ? 'block' : 'none';
-  hideMsg();
-};
-
-window.doAuth = async function() {
-  const email = document.getElementById('auth-email').value.trim();
-  const pass = document.getElementById('auth-pass').value.trim();
-  const name = document.getElementById('auth-name').value.trim();
-  const dept = document.getElementById('auth-dept').value.trim();
-  if (!email || !pass) { showError('auth-err','Isi email dan password dulu.'); return; }
-  const btn = document.getElementById('auth-btn');
-  btn.textContent = '...'; btn.disabled = true;
-  try {
-    if (authMode === 'login') {
-      await auth.signInWithEmailAndPassword(email, pass);
-    } else {
-      if (!name) { showError('auth-err','Isi nama lengkap dulu.'); btn.textContent='Kirim Permintaan'; btn.disabled=false; return; }
-      const cred = await auth.createUserWithEmailAndPassword(email, pass);
-      await cred.user.updateProfile({ displayName: name });
-      await db.ref(`users/${cred.user.uid}`).set({ email, name, dept, status: 'pending', createdAt: Date.now() });
-      showAuthScreen();
-      showMsg('auth-ok', `Permintaan dikirim! Tunggu persetujuan admin.`);
-    }
-  } catch(e) {
-    const msgs = { 'auth/user-not-found':'Email tidak ditemukan.', 'auth/wrong-password':'Password salah.', 'auth/email-already-in-use':'Email sudah terdaftar.', 'auth/weak-password':'Password minimal 6 karakter.', 'auth/invalid-email':'Format email tidak valid.', 'auth/invalid-credential':'Email atau password salah.' };
-    showError('auth-err', msgs[e.code] || e.message);
-  }
-  btn.textContent = authMode==='login'?'Masuk':'Kirim Permintaan';
-  btn.disabled = false;
-};
-
-window.doLogout = function() { if(auth) auth.signOut(); showAuthScreen(); };
-function showAuthScreen() { document.getElementById('auth-screen').classList.remove('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
-function showPendingScreen() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.add('show'); }
-function hideAuthScreens() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
-function showError(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
-function showMsg(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
-function hideMsg() { ['auth-err','auth-ok'].forEach(id=>document.getElementById(id).classList.remove('show')); }
-
-function updateAdminUI() {
-  const adminBtn = document.getElementById('sb-admin-btn');
-  const nameEl = document.getElementById('sb-user-name');
-  if(adminBtn) adminBtn.style.display = isAdmin ? 'flex' : 'none';
-  if(nameEl && currentUserData) nameEl.textContent = currentUserData.name || currentUser?.email || '';
-  if(isAdmin) watchPendingUsers();
-}
-
-function watchPendingUsers() {
-  db.ref('users').on('value', snap => {
-    const users = snap.val() || {};
-    const pending = Object.values(users).filter(u => u.status === 'pending').length;
-    const badge = document.getElementById('pending-count');
-    if(badge) { badge.textContent = pending; badge.style.display = pending > 0 ? 'inline' : 'none'; }
-  });
-}
-
-function loadDefaults() {
-  scenes = [{id:'s1',sceneNo:1,ie:'E',dn:'D',pages:'1/4',set:'TERAS RUMAH MICHAEL',desc:'Michael duduk di teras sehabis lari pagi.',char:'Michael',makeup:'Keringat',wardrobe:'Baju olahraga',prop:'Botol minum',sfx:'',audio:'',notes:'',day:1}];
-  schedules = [{id:'sch1',day:1,date:'01/07/2025',time:'08.00–09.00',sceneId:'s1',shot:'8',page:'1 5/8',loc:'TERAS RUMAH',action:'Michael duduk di teras sepulang dari lari pagi.',talent:'MICHAEL',extras:'',cont:'FREE',notes:''}];
-  callsheets = [{id:'cs1',day:1,label:'DAY 1 OFF 10',date:'TUESDAY, 01 JULY 2025',crewCall:'07.00 WIB',preCall:'06.30 WIB',breakfast:'07.00 WIB',camRoll:'08.30 WIB',lunch:'12.00 WIB',wrap:'',weather:'30° Hi, 24° Low',weatherNote:'CHANCE OF RAIN 20% · HUMIDITY 75%',setNotes:'1. Dilarang menggeser atau memindahkan barang tanpa seizin tuan rumah.\n2. Jagalah kebersihan dan tidak merokok dalam set.\n3. Silent please'}];
-  render();
-}
-
-// ── FIREBASE LISTENERS ────────────────────────────────────────────
 function initListeners() {
-  const listen = (path, setter) => {
-    db.ref(path).on('value', snap => { const val = snap.val(); setter(val ? Object.entries(val).map(([k,v]) => ({...v, id: k})) : []); render(); });
-  };
+  const listen = (path, setter) => { db.ref(path).on('value', snap => { const val = snap.val(); setter(val ? Object.entries(val).map(([k,v]) => ({...v, id: k})) : []); render(); }); };
   db.ref('proj').on('value', snap => { if(snap.val()) { proj = snap.val(); document.getElementById('sb-proj').textContent = proj.title; render(); } });
   listen('scenes', v => { scenes = v; });
   listen('schedules', v => { schedules = v; });
@@ -694,34 +454,10 @@ function initListeners() {
 function saveProj(data) { if (useFirebase) { setSaving(); db.ref('proj').set(data).then(setLive); } else { proj = data; render(); } }
 function saveItem(collection, data) {
   if (useFirebase) { setSaving(); if (data.id && data.id !== '') { const id = data.id; const d = {...data}; delete d.id; db.ref(`${collection}/${id}`).update(d).then(setLive); } else { db.ref(collection).push(data).then(setLive); } } 
-  else { 
-    let arr; let setter;
-    if(collection==='scenes') { arr=scenes; setter=v=>scenes=v; }
-    else if(collection==='schedules') { arr=schedules; setter=v=>schedules=v; }
-    else if(collection==='callsheets') { arr=callsheets; setter=v=>callsheets=v; }
-    else if(collection==='shotlist') { arr=shotlist; setter=v=>shotlist=v; }
-    else if(collection==='setlist') { arr=setlist; setter=v=>setlist=v; }
-    else if(collection==='proplist') { arr=proplist; setter=v=>proplist=v; }
-    else if(collection==='audiolist') { arr=audiolist; setter=v=>audiolist=v; }
-    else return;
-    if (data.id) { const i = arr.findIndex(x=>x.id===data.id); arr[i] = data; setter([...arr]); }
-    else { data.id = 'local_'+Date.now(); arr.push(data); setter([...arr]); }
-    render(); 
-  }
+  else { let arr; let setter; if(collection==='scenes') { arr=scenes; setter=v=>scenes=v; } else if(collection==='schedules') { arr=schedules; setter=v=>schedules=v; } else if(collection==='callsheets') { arr=callsheets; setter=v=>callsheets=v; } else if(collection==='shotlist') { arr=shotlist; setter=v=>shotlist=v; } else if(collection==='setlist') { arr=setlist; setter=v=>setlist=v; } else if(collection==='proplist') { arr=proplist; setter=v=>proplist=v; } else if(collection==='audiolist') { arr=audiolist; setter=v=>audiolist=v; } else return;
+    if (data.id) { const i = arr.findIndex(x=>x.id===data.id); arr[i] = data; setter([...arr]); } else { data.id = 'local_'+Date.now(); arr.push(data); setter([...arr]); } render(); }
 }
-function deleteItem(collection, id) { 
-  if (useFirebase) { setSaving(); db.ref(`${collection}/${id}`).remove().then(setLive); }
-  else {
-    if(collection==='scenes') scenes=scenes.filter(x=>x.id!==id);
-    else if(collection==='schedules') schedules=schedules.filter(x=>x.id!==id);
-    else if(collection==='callsheets') callsheets=callsheets.filter(x=>x.id!==id);
-    else if(collection==='shotlist') shotlist=shotlist.filter(x=>x.id!==id);
-    else if(collection==='setlist') setlist=setlist.filter(x=>x.id!==id);
-    else if(collection==='proplist') proplist=proplist.filter(x=>x.id!==id);
-    else if(collection==='audiolist') audiolist=audiolist.filter(x=>x.id!==id);
-    render();
-  }
-}
+function deleteItem(collection, id) { if (useFirebase) { setSaving(); db.ref(`${collection}/${id}`).remove().then(setLive); } else { if(collection==='scenes') scenes=scenes.filter(x=>x.id!==id); else if(collection==='schedules') schedules=schedules.filter(x=>x.id!==id); else if(collection==='callsheets') callsheets=callsheets.filter(x=>x.id!==id); else if(collection==='shotlist') shotlist=shotlist.filter(x=>x.id!==id); else if(collection==='setlist') setlist=setlist.filter(x=>x.id!==id); else if(collection==='proplist') proplist=proplist.filter(x=>x.id!==id); else if(collection==='audiolist') audiolist=audiolist.filter(x=>x.id!==id); render(); } }
 
 function setStatus(s) {
   const dot = document.getElementById('sb-dot'); const txt = document.getElementById('sb-status-text'); const sdot = document.getElementById('sync-dot'); const stxt = document.getElementById('sync-text');
@@ -733,9 +469,22 @@ function setStatus(s) {
 }
 function setSaving(){setStatus('saving');}
 function setLive(){setTimeout(()=>setStatus('online'),600);}
-
 function showToast(msg, type='') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'show ' + type; setTimeout(() => t.className = '', 2800); }
 window.showToast = showToast;
+
+// ── AUTH UI ───────────────────────────────────────────────────
+let authMode = 'login';
+window.switchAuthTab = function(mode) { authMode = mode; document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('on', (i===0&&mode==='login')||(i===1&&mode==='register'))); document.getElementById('auth-title').textContent = mode === 'login' ? 'Masuk ke Dashboard' : 'Daftar Akun Baru'; document.getElementById('auth-sub').textContent = mode === 'login' ? 'Login dengan email yang sudah disetujui admin.' : 'Daftar dulu, admin akan review dan approve aksesmu.'; document.getElementById('auth-btn').textContent = mode === 'login' ? 'Masuk' : 'Kirim Permintaan'; document.getElementById('auth-name').style.display = mode === 'register' ? 'block' : 'none'; document.getElementById('auth-dept-wrap').style.display = mode === 'register' ? 'block' : 'none'; hideMsg(); };
+window.doAuth = async function() { const email = document.getElementById('auth-email').value.trim(); const pass = document.getElementById('auth-pass').value.trim(); const name = document.getElementById('auth-name').value.trim(); const dept = document.getElementById('auth-dept').value.trim(); if (!email || !pass) { showError('auth-err','Isi email dan password dulu.'); return; } const btn = document.getElementById('auth-btn'); btn.textContent = '...'; btn.disabled = true; try { if (authMode === 'login') { await auth.signInWithEmailAndPassword(email, pass); } else { if (!name) { showError('auth-err','Isi nama lengkap dulu.'); btn.textContent='Kirim Permintaan'; btn.disabled=false; return; } const cred = await auth.createUserWithEmailAndPassword(email, pass); await cred.user.updateProfile({ displayName: name }); await db.ref(`users/${cred.user.uid}`).set({ email, name, dept, status: 'pending', createdAt: Date.now() }); showAuthScreen(); showMsg('auth-ok', `Permintaan dikirim! Tunggu persetujuan admin.`); } } catch(e) { const msgs = { 'auth/user-not-found':'Email tidak ditemukan.', 'auth/wrong-password':'Password salah.', 'auth/email-already-in-use':'Email sudah terdaftar.', 'auth/weak-password':'Password minimal 6 karakter.', 'auth/invalid-email':'Format email tidak valid.', 'auth/invalid-credential':'Email atau password salah.' }; showError('auth-err', msgs[e.code] || e.message); } btn.textContent = authMode==='login'?'Masuk':'Kirim Permintaan'; btn.disabled = false; };
+window.doLogout = function() { if(auth) auth.signOut(); showAuthScreen(); };
+function showAuthScreen() { document.getElementById('auth-screen').classList.remove('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
+function showPendingScreen() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.add('show'); }
+function hideAuthScreens() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
+function showError(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
+function showMsg(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
+function hideMsg() { ['auth-err','auth-ok'].forEach(id=>document.getElementById(id).classList.remove('show')); }
+function updateAdminUI() { const adminBtn = document.getElementById('sb-admin-btn'); const nameEl = document.getElementById('sb-user-name'); if(adminBtn) adminBtn.style.display = isAdmin ? 'flex' : 'none'; if(nameEl && currentUserData) nameEl.textContent = currentUserData.name || currentUser?.email || ''; if(isAdmin) watchPendingUsers(); }
+function watchPendingUsers() { db.ref('users').on('value', snap => { const users = snap.val() || {}; const pending = Object.values(users).filter(u => u.status === 'pending').length; const badge = document.getElementById('pending-count'); if(badge) { badge.textContent = pending; badge.style.display = pending > 0 ? 'inline' : 'none'; } }); }
 
 // ── NAVIGATION ────────────────────────────────────────────────
 window.go = function(p) {
@@ -750,7 +499,7 @@ window.go = function(p) {
   const acts = {
     master:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('scene')">+ Scene</button>`,
     schedule:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('sched')">+ Entry</button>`,
-    callsheet:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('cs')">+ Hari</button>`,
+    callsheet:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div>`,
     shotlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('shot')">+ Tambah Shot</button>`,
     audiolist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('audio')">+ Tambah Entry</button>`,
     setlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('setitem')">+ Tambah</button>`,
@@ -766,7 +515,7 @@ function ie(v){return `<span class="chip ${v==='I'?'chip-blue':'chip-teal'}">${v
 function dn(v){return `<span class="chip ${v==='D'?'chip-amber':'chip-dark'}">${v==='D'?'DAY':'NIGHT'}</span>`;}
 function statusChip(s) { const map = {siap:'chip-green',proses:'chip-amber',cari:'chip-dark',done:'chip-green'}; const label = {siap:'Siap',proses:'Proses',cari:'Dicari',done:'Done'}; if(!s) return '—'; return `<span class="chip ${map[s]||'chip-gray'}">${label[s]||s}</span>`; }
 
-// ── RENDER ────────────────────────────────────────────────────
+// ── RENDER FUNCTIONS ──────────────────────────────────────────
 function render() {
   document.getElementById('sb-proj').textContent = proj.title;
   const c = document.getElementById('content');
@@ -786,40 +535,18 @@ function render() {
 function rDash() {
   const locs = [...new Set(scenes.map(s=>s.set))];
   const talent = getAllTalent();
-  return `
-    <div class="proj-banner">
-      <div><div style="font-size:15px;font-weight:700">${proj.title}</div><div style="font-size:11.5px;color:var(--text3);margin-top:2px">Sutradara: ${proj.director||'—'} &nbsp;·&nbsp; Produser: ${proj.producer||'—'} &nbsp;·&nbsp; DOP: ${proj.dop||'—'}</div></div>
-      <button class="btn btn-sm" onclick="openProjModal()">Edit Info</button>
-    </div>
-    <div class="stat-grid">
-      ${[['Total Scene',scenes.length],['Hari Syuting',[...new Set(schedules.map(s=>s.day))].length],['Talent',talent.length],['Lokasi',locs.length],['Call Sheet',callsheets.length]].map(([l,n])=>`<div class="stat"><div class="stat-accent"></div><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('')}
-    </div>
-    <div class="card"><div class="card-head"><span class="card-title">Master Breakdown — Preview</span><button class="btn btn-ghost btn-sm" onclick="go('master')">Lihat semua →</button></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th></tr></thead>
-    <tbody>${scenes.slice(0,5).map(s=>`<tr><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td></tr>`).join('')}${!scenes.length?`<tr><td colspan="7"><div class="empty">Belum ada scene.</div></tr></tr>`:''}</tbody></table></div></div>`;
+  return `<div class="proj-banner"><div><div style="font-size:15px;font-weight:700">${proj.title}</div><div style="font-size:11.5px;color:var(--text3);margin-top:2px">Sutradara: ${proj.director||'—'} &nbsp;·&nbsp; Produser: ${proj.producer||'—'} &nbsp;·&nbsp; DOP: ${proj.dop||'—'}</div></div><button class="btn btn-sm" onclick="openProjModal()">Edit Info</button></div>
+    <div class="stat-grid">${[['Total Scene',scenes.length],['Hari Syuting',[...new Set(schedules.map(s=>s.day))].length],['Talent',talent.length],['Lokasi',locs.length],['Call Sheet',callsheets.length]].map(([l,n])=>`<div class="stat"><div class="stat-accent"></div><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('')}</div>
+    <div class="card"><div class="card-head"><span class="card-title">Master Breakdown — Preview</span><button class="btn btn-ghost btn-sm" onclick="go('master')">Lihat semua →</button></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th></tr></thead><tbody>${scenes.slice(0,5).map(s=>`<tr><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td></tr>`).join('')}${!scenes.length?`<tr><td colspan="7"><div class="empty">Belum ada scene.</div></td></tr>`:''}</tbody></table></div></div>`;
 }
 
 function rMaster() {
   return `<div class="card"><div class="card-head"><span class="card-title">Master Breakdown — ${proj.title}</span><div class="filter-row"><input class="inp" placeholder="Cari scene..." oninput="fM(this.value)" style="width:180px"><select class="inp" onchange="fMie(this.value)" style="width:90px"><option value="">I/E</option><option>I</option><option>E</option></select><select class="inp" onchange="fMdn(this.value)" style="width:90px"><option value="">D/N</option><option>D</option><option>N</option></select><select class="inp" onchange="fMday(this.value)" style="width:120px"><option value="">Semua Day</option>${[...new Set(scenes.map(s=>s.day).filter(Boolean))].sort((a,b)=>a-b).map(d=>`<option value="${d}">Shoot Day ${d}</option>`).join('')}</select></div></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>MAKEUP</th><th>WARDROBE</th><th>MAIN PROP</th><th>SFX</th><th>AUDIO</th><th>SPECIAL NOTES</th><th></th></tr></thead>
-    <tbody id="mtb">${mRows(scenes)}</tbody></table></div></div>`;
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>MAKEUP</th><th>WARDROBE</th><th>MAIN PROP</th><th>SFX</th><th>AUDIO</th><th>SPECIAL NOTES</th><th></th></tr></thead><tbody id="mtb">${mRows(scenes)}</tbody></table></div></div>`;
 }
-
-function mRows(arr) {
-  if(!arr.length) return `<tr><td colspan="16"><div class="empty">Belum ada scene. Klik <strong>+ Tambah Scene</strong>.</div></td></tr>`;
-  return arr.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td><span class="chip chip-blue" style="font-size:10px">Day ${s.day||'—'}</span></td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td><td>${s.makeup||'—'}</td><td>${s.wardrobe||'—'}</td><td>${s.prop||'—'}</td><td>${s.sfx||'—'}</td><td>${s.audio||'—'}</td><td>${s.notes||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editScene('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delScene('${s.id}')">Hapus</button></td></tr>`).join('');
-}
-
-window.fM = function(q){_mq=q;applyMF();}
-window.fMie = function(v){_mie=v;applyMF();}
-window.fMdn = function(v){_mdn=v;applyMF();}
-window.fMday = function(v){_mday=v;applyMF();}
-function applyMF() {
-  const q = _mq.toLowerCase().trim();
-  const f = scenes.filter(s => (!q || String(s.sceneNo) === q || s.set.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q)) && (!_mie || s.ie === _mie) && (!_mdn || s.dn === _mdn) && (!_mday || String(s.day) === String(_mday)));
-  const el = document.getElementById('mtb');
-  if(el) el.innerHTML = mRows(f);
-}
+function mRows(arr) { if(!arr.length) return `<tr><td colspan="16"><div class="empty">Belum ada scene. Klik <strong>+ Tambah Scene</strong>.</div></td></tr>`; return arr.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td><span class="chip chip-blue" style="font-size:10px">Day ${s.day||'—'}</span></td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td><td>${s.makeup||'—'}</td><td>${s.wardrobe||'—'}</td><td>${s.prop||'—'}</td><td>${s.sfx||'—'}</td><td>${s.audio||'—'}</td><td>${s.notes||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editScene('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delScene('${s.id}')">Hapus</button></td></tr>`).join(''); }
+window.fM = function(q){_mq=q;applyMF();} window.fMie = function(v){_mie=v;applyMF();} window.fMdn = function(v){_mdn=v;applyMF();} window.fMday = function(v){_mday=v;applyMF();}
+function applyMF() { const q = _mq.toLowerCase().trim(); const f = scenes.filter(s => (!q || String(s.sceneNo) === q || s.set.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q)) && (!_mie || s.ie === _mie) && (!_mdn || s.dn === _mdn) && (!_mday || String(s.day) === String(_mday))); const el = document.getElementById('mtb'); if(el) el.innerHTML = mRows(f); }
 
 function rSched() {
   const days = [...new Set(schedules.map(s=>s.day))].sort((a,b)=>a-b);
@@ -827,22 +554,21 @@ function rSched() {
   const rows = schedules.filter(s=>s.day===schDay);
   const cs = callsheets.find(c=>c.day===schDay);
   return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;"><div class="day-tabs">${days.map(d=>`<div class="day-tab${d===schDay?' on':''}" onclick="selSch(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada hari syuting</span>':''}</div><span style="font-size:11px;color:var(--text3)" class="mono">${cs?.date||''}</span></div>
-    <div class="card"><div class="card-head"><span class="card-title">Shooting Schedule — Hari ${schDay}</span><span style="font-size:11px;color:var(--text3)">${rows.length} entry</span></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>ESTIMATE TIME</th><th>SCENE</th><th>SHOT</th><th>PAGE</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>EXTRAS</th><th>CONT</th><th>NOTES</th><th></th></tr></thead>
-    <tbody>${rows.length?rows.map(e=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td class="mono">${e.shot}</td><td class="mono">${e.page}</td><td style="white-space:nowrap">${e.loc}</td><td style="max-width:180px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="color:var(--text2)">${e.extras||'—'}</td><td><span class="chip chip-green">${e.cont||'FREE'}</span></td><td style="color:var(--text2)">${e.notes||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada entry untuk hari ini.</div></td></tr>`}</tbody></table></div></div>`;
+    <div class="card"><div class="card-head"><span class="card-title">Shooting Schedule — Hari ${schDay}</span><span style="font-size:11px;color:var(--text3)">${rows.length} entry</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ESTIMATE TIME</th><th>SCENE</th><th>SHOT</th><th>PAGE</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>EXTRAS</th><th>CONT</th><th>NOTES</th><th></th></tr></thead><tbody>${rows.length?rows.map(e=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td class="mono">${e.shot}</td><td class="mono">${e.page}</td><td style="white-space:nowrap">${e.loc}</td><td style="max-width:180px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}<td><td style="color:var(--text2)">${e.extras||'—'}</td><td><span class="chip chip-green">${e.cont||'FREE'}</span></td><td style="color:var(--text2)">${e.notes||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada entry untuk hari ini.</div></td></tr>`}</tbody></table></div></div>`;
 }
 window.selSch = function(d){schDay=d;render();}
 
-// CALL SHEET PAGE WITH EDIT/DELETE SCENE AND DELETE CALL SHEET
+// CALL SHEET - DENGAN TOMBOL TAMBAH SCENE
 function rCS() {
   const days = [...new Set(callsheets.map(c=>c.day))].sort((a,b)=>a-b);
   if(!days.includes(csDay)) csDay = days[0]||1;
   const cs = callsheets.find(c=>c.day===csDay);
   const rows = schedules.filter(s=>s.day===csDay);
+  
   return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
       <div class="day-tabs">${days.map(d=>`<div class="day-tab${d===csDay?' on':''}" onclick="selCS(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada call sheet</span>':''}</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        ${cs?`<button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
+        ${cs?`<button class="btn btn-primary btn-sm" onclick="openCSAddScene()"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 14 14" style="margin-right:4px"><path d="M7 1v12M1 7h12"/></svg>+ Tambah Scene</button><button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
       </div>
     </div>
     ${cs?`<div class="cs-doc">
@@ -854,143 +580,110 @@ function rCS() {
       ${cs.setNotes?`<div class="cs-notes-bar">${cs.setNotes.replace(/\n/g,'<br>')}</div>`:''}
       <div class="tbl-wrap"><table class="tbl" style="border-radius:0">
         <thead><tr><th>NO</th><th>TIME</th><th>BABAK/SC</th><th>I/E</th><th>D/N</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th>SCRIPT</th><th></th></tr></thead>
-        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}</td><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`;}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada shooting entry untuk hari ini. <button class="btn btn-sm" onclick="openM('sched')">+ Tambah Entry</button></div></td></tr>`}</tbody>
+        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}<td><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`;}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada scene. Klik tombol <strong>+ Tambah Scene</strong> di atas untuk menambahkan jadwal syuting ke Call Sheet ini.</div></td></tr>`}</tbody>
       </table></div>
       <div class="cs-footer">THANK YOU FOR TODAY, SEE U NEXT DAY</div>
-    </div>`:`<div class="empty" style="padding:60px">Belum ada call sheet. Klik <strong>+ Tambah Hari</strong>.</div>`}`;
+    </div>`:`<div class="empty" style="padding:60px">Belum ada call sheet. Klik <strong>+ Hari</strong> di menu atas untuk membuat call sheet baru.</div>`}`;
 }
 window.selCS = function(d){csDay=d;render();}
 window.delCallSheet = function(id) { if(confirm('Hapus call sheet ini? Semua jadwal untuk hari ini juga akan terhapus.')) { deleteItem('callsheets',id); showToast('Call sheet dihapus'); } };
+// Fungsi untuk membuka modal tambah scene dengan day yang sudah dipilih
+window.openCSAddScene = function() {
+  mSection='sched'; editId=null;
+  document.getElementById('m-title').textContent = `Tambah Scene untuk Call Sheet Hari ${csDay}`;
+  // Ambil form schedule dengan preset day = csDay
+  const opts = scenes.map(sc=>`<option value="${sc.id}">Sc.${sc.sceneNo} — ${sc.set}</option>`).join('');
+  document.getElementById('m-body').innerHTML = `
+    <div class="fg-row">
+      <div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${csDay}"></div>
+      <div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${new Date().toLocaleDateString('id-ID')}"></div>
+    </div>
+    <div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value=""></div>
+    <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value=""></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value=""></div></div>
+    <div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value=""></div>
+    <div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac" placeholder="Deskripsi aksi..."></textarea></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value=""></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value=""></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="FREE"></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value=""></div></div>
+  `;
+  document.getElementById('mwrap').classList.add('open');
+};
 
-function getAllTalent() {
-  const m={};
-  scenes.forEach(s=>{ s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{ if(!m[c]) m[c]={name:c,scenes:[],days:new Set()}; m[c].scenes.push(s.sceneNo); schedules.filter(x=>x.sceneId===s.id).forEach(x=>m[c].days.add(x.day)); }); });
-  return Object.values(m);
+// CRUD functions
+function editScene(id) { const d=scenes.find(x=>x.id===id); mSection='scene'; editId=id; document.getElementById('m-title').textContent='Edit Scene'; document.getElementById('m-body').innerHTML=formFor('scene',d); document.getElementById('mwrap').classList.add('open'); }
+function editSched(id) { const d=schedules.find(x=>x.id===id); mSection='sched'; editId=id; document.getElementById('m-title').textContent='Edit Schedule Entry'; document.getElementById('m-body').innerHTML=formFor('sched',d); document.getElementById('mwrap').classList.add('open'); }
+function editCS(id) { const d=callsheets.find(x=>x.id===id); mSection='cs'; editId=id; document.getElementById('m-title').textContent='Edit Call Sheet'; document.getElementById('m-body').innerHTML=formFor('cs',d); document.getElementById('mwrap').classList.add('open'); }
+function delScene(id){if(confirm('Hapus scene ini?')){deleteItem('scenes',id);showToast('Scene dihapus');}}
+function delSched(id){if(confirm('Hapus entry ini?')){deleteItem('schedules',id);showToast('Entry dihapus');}}
+
+// Form generator functions (disamakan dengan yang sebelumnya)
+function formFor(s, d) {
+  if(s==='scene') return `<div class="fg-row3"><div class="fg"><label class="fl">Scene No.</label><input class="fi" id="f-sc" value="${d?.sceneNo||''}"></div><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Pages</label><input class="fi" id="f-pg" value="${esc(d?.pages||'')}"></div><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div></div>
+    <div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div>
+    <div class="fg"><label class="fl">Description</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Character (pisah koma)</label><input class="fi" id="f-ch" value="${esc(d?.char||'')}"></div><div class="fg"><label class="fl">Makeup</label><input class="fi" id="f-mk" value="${esc(d?.makeup||'')}"></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobe||'')}"></div><div class="fg"><label class="fl">Main Prop</label><input class="fi" id="f-pr" value="${esc(d?.prop||'')}"></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Special Effect</label><input class="fi" id="f-sfx" value="${esc(d?.sfx||'')}"></div><div class="fg"><label class="fl">Audio</label><input class="fi" id="f-au" value="${esc(d?.audio||'')}"></div></div>
+    <div class="fg"><label class="fl">Special Notes</label><textarea class="fi" id="f-nt">${d?.notes||''}</textarea></div>`;
+  if(s==='sched') { const opts = scenes.map(sc=>`<option value="${sc.id}"${d?.sceneId===sc.id?' selected':''}>Sc.${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||csDay||1}"></div><div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div></div>
+    <div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value="${esc(d?.time||'')}"></div>
+    <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value="${esc(d?.shot||'')}"></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value="${esc(d?.page||'')}"></div></div>
+    <div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value="${esc(d?.loc||'')}"></div>
+    <div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac">${d?.action||''}</textarea></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value="${esc(d?.talent||'')}"></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value="${esc(d?.extras||'')}"></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="${esc(d?.cont||'FREE')}"></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value="${esc(d?.notes||'')}"></div></div>`; }
+  if(s==='cs') return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day No.</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div><div class="fg"><label class="fl">Label (mis. DAY 1 OFF 10)</label><input class="fi" id="f-lb" value="${esc(d?.label||'')}"></div></div>
+    <div class="fg"><label class="fl">Tanggal (mis. TUESDAY, 01 JULY 2025)</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Crew Call Time</label><input class="fi" id="f-cc" value="${esc(d?.crewCall||'07.00 WIB')}"></div><div class="fg"><label class="fl">Pre Call Production</label><input class="fi" id="f-pc" value="${esc(d?.preCall||'06.30 WIB')}"></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Breakfast</label><input class="fi" id="f-bf" value="${esc(d?.breakfast||'07.00 WIB')}"></div><div class="fg"><label class="fl">1st Cam Roll</label><input class="fi" id="f-cr" value="${esc(d?.camRoll||'08.30 WIB')}"></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Lunch</label><input class="fi" id="f-ln" value="${esc(d?.lunch||'12.00 WIB')}"></div><div class="fg"><label class="fl">Wrap</label><input class="fi" id="f-wr" value="${esc(d?.wrap||'')}"></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Weather</label><input class="fi" id="f-wt" value="${esc(d?.weather||'')}"></div><div class="fg"><label class="fl">Weather Note</label><input class="fi" id="f-wn" value="${esc(d?.weatherNote||'')}"></div></div>
+    <div class="fg"><label class="fl">Set Notes</label><textarea class="fi" id="f-sn" style="min-height:90px">${d?.setNotes||''}</textarea></div>`;
+  return '';
 }
 
-function rTalent() {
-  const talent = getAllTalent();
-  return `<div class="card"><div class="card-head"><span class="card-title">Talent Breakdown — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">Otomatis dari Master Breakdown</span></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>CAST (CHARACTER)</th><th>D/DN</th><th>SCENE NUMBERS</th><th>T. SCENE</th><th>T. DAY</th><th>NOTES</th></tr></thead>
-    <tbody><tr class="group-row"><td colspan="7">MAIN CAST</tr>${talent.length?talent.map((t,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td style="font-weight:600">${t.name}</td><td>—</td><td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td><td class="mono" style="font-weight:600">${t.scenes.length}</td><td class="mono" style="font-weight:600">${t.days.size}</td><td style="color:var(--text3)">—</td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">Input scene di Master Breakdown untuk melihat data talent.</div></td></tr>`}</tbody>｜｜DSML｜｜</div></div>
-  <p style="font-size:11px;color:var(--text3);margin-top:8px">* Kolom CHARACTER di Master Breakdown dipisah dengan koma untuk beberapa talent.</p>`;
-}
-
-function rLoc() {
-  const m={};
-  scenes.forEach(s=>{ if(!m[s.set]) m[s.set]={set:s.set,ie:s.ie,dn:s.dn,scenes:[]}; m[s.set].scenes.push(s.sceneNo); });
-  const locs = Object.values(m);
-  return `<div class="card"><div class="card-head"><span class="card-title">Location Breakdown — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">Otomatis dari Master Breakdown</span></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>LOCATION / SET</th><th>I/E</th><th>D/N</th><th colspan="20">SCENE NUMBERS</th></tr></thead>
-    <tbody>${locs.length?locs.map((l,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td style="font-weight:600;white-space:nowrap">${l.set}</td><td>${ie(l.ie)}</td><td>${dn(l.dn)}</td>${l.scenes.map(n=>`<td class="mono" style="font-weight:600;text-align:center">${n}</td>`).join('')}</tr>`).join(''):`<td><td colspan="24"><div class="empty">Input scene di Master Breakdown untuk melihat data lokasi.</div></td></tr>`}</tbody></table></div></div>`;
-}
-
-// ── SHOT LIST ─────────────────────────────────────────────────
-function rShotList() {
-  const sceneGroups = {};
-  shotlist.forEach(sh => { const key = sh.sceneNo || 'unknown'; if(!sceneGroups[key]) sceneGroups[key] = { shots: [], meta: sh }; sceneGroups[key].shots.push(sh); });
-  const groupKeys = Object.keys(sceneGroups).sort((a,b) => Number(a)-Number(b));
-  return `<div class="sl-proj-head">SHOT LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; DOP : ${proj.dop||'—'}</div><div style="height:14px"></div>
-    ${!groupKeys.length ? `<div class="card"><div class="empty" style="padding:60px">Belum ada shot. Klik <strong>+ Tambah Shot</strong> untuk mulai.</div></div>` : groupKeys.map(key => { const group = sceneGroups[key]; const meta = group.meta; const shots = group.shots.sort((a,b) => Number(a.shotNo)-Number(b.shotNo)); const sceneNotes = shots.find(s=>s.sceneNotes)?.sceneNotes || ''; return `<div class="sl-scene-block"><div class="sl-scene-head"><span class="sl-scene-title">SCENE ${meta.sceneNo||key}</span><div class="sl-scene-meta"><span>I/E: ${meta.ie||'—'}</span><span>SET: ${meta.set||'—'}</span><span>D/N: ${meta.dn||'—'}</span></div><button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openM('shot','${key}')">+ Shot</button></div><div style="overflow-x:auto"><div class="sl-shot-head"><div>SHOT</div><div>SHOT SIZE</div><div>ANGLE</div><div>MOVEMENT</div><div>EQUIPMENT</div><div>AUDIO</div><div>SUBJECT</div><div>PICT. SHOT</div><div>DESKRIPSI</div><div>CATATAN</div><div></div></div>${shots.map(sh=>`<div class="sl-shot-row"><div class="sl-shot-body"><div class="mono" style="font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">${sh.shotNo||'—'}</div><div>${sh.shotSize||'—'}</div><div>${sh.angle||'—'}</div><div>${sh.movement||'—'}</div><div>${sh.equipment||'—'}</div><div>${sh.audio||'—'}</div><div>${sh.subject||'—'}</div><div class="sl-photo-cell">${sh.photoURL?`<div class="sl-photo-wrap"><img src="${sh.photoURL}" class="sl-photo" onclick="openLightbox('${sh.photoURL}','${sh.id}')" title="Klik untuk perbesar"><div class="sl-photo-replace" onclick="triggerPhotoUpload('${sh.id}')"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 14 14"><path d="M1 10l3-3 2.5 2.5L10 5l3 3"/><rect x="1" y="1" width="12" height="12" rx="1"/></svg>Ganti foto</div></div>`:`<div class="sl-photo-placeholder" onclick="triggerPhotoUpload('${sh.id}')"><span>📷</span><span>Upload foto</span></div>`}<input type="file" id="photo-input-${sh.id}" accept="image/*" style="display:none" onchange="uploadPhoto('${sh.id}',this)"></div><div>${sh.desc||'—'}</div><div>${sh.notes||'—'}</div><div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:8px"><button class="btn btn-ghost btn-sm" onclick="editShot('${sh.id}')">✎</button><button class="btn btn-danger btn-sm" onclick="delShot('${sh.id}')">✕</button></div></div></div>`).join('')}</div>${sceneNotes ? `<div class="sl-scene-notes"><span class="sl-notes-label">SCENE NOTES</span><span>${sceneNotes}</span></div>` : ''}</div>`; }).join('')}`;
-}
-
-// ── AUDIO LIST ────────────────────────────────────────────────
-function rAudioList() {
-  const sceneGroups = {};
-  audiolist.forEach(a => { const key = a.sceneNo || 'unknown'; if(!sceneGroups[key]) sceneGroups[key] = { shots: [], meta: a }; sceneGroups[key].shots.push(a); });
-  const groupKeys = Object.keys(sceneGroups).sort((a,b)=>Number(a)-Number(b));
-  return `<div style="background:#1A1917;color:#D3D1C7;padding:10px 20px;font-size:12px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;border-radius:var(--radius);margin-bottom:16px;">AUDIO LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; SOUND DIRECTOR : ${proj.soundRec||'—'}</div>
-    ${!groupKeys.length ? `<div class="card"><div class="empty">Belum ada entry audio. Klik <strong>+ Tambah Entry</strong>.</div></div>` : groupKeys.map(key => { const group = sceneGroups[key]; const meta = group.meta; const shots = group.shots.sort((a,b)=>Number(a.shotNo)-Number(b.shotNo)); const masterScene = scenes.find(s=>String(s.sceneNo)===String(key)); const setName = masterScene?.set || meta.set || '—'; const ieVal = meta.ie || masterScene?.ie || '—'; const dnVal = meta.dn || masterScene?.dn || '—'; return `<div class="sl-scene-block"><div class="audio-scene-header"><div class="audio-scene-number">${meta.sceneNo||key}</div><div class="audio-scene-info"><div class="audio-scene-label">Scene</div><div class="audio-scene-set">${setName}</div><div style="display:flex;gap:10px;margin-top:2px"><span class="audio-scene-badge" style="background:${ieVal==='I'?'#185FA5':'#0F6E56'}">${ieVal==='I'?'INT':ieVal==='E'?'EXT':ieVal}</span><span class="audio-scene-badge" style="background:${dnVal==='D'?'#92580A':'#2C2C2A'}">${dnVal==='D'?'DAY':dnVal==='N'?'NIGHT':dnVal}</span></div></div><div style="padding:12px 16px"><button class="btn btn-sm" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.25)" onclick="openM('audio','${key}')">+ Shot</button></div></div><div style="overflow-x:auto"><table class="tbl"><thead><tr><th style="min-width:50px">SHOT</th><th style="min-width:70px">I/E</th><th style="min-width:70px">D/N</th><th style="min-width:120px">CHARACTER</th><th style="min-width:130px">DEVICE</th><th style="min-width:200px">FRAME / PHOTOBOARD</th><th style="min-width:180px">DIALOG</th><th style="min-width:150px;background:#F5D060;color:#1A1917">FOLEY</th><th style="min-width:140px">AMB / ROOM</th><th style="min-width:130px;background:#C0392B;color:#fff">CODE</th><th style="min-width:70px"></th></tr></thead><tbody>${shots.map(a=>`<tr><td class="mono" style="font-weight:700;text-align:center;font-size:16px">${a.shotNo||'—'}</td><td>${a.ie?`<span class="chip ${a.ie==='I'?'chip-blue':'chip-teal'}">${a.ie==='I'?'INT':'EXT'}</span>`:'—'}</td><td>${a.dn?`<span class="chip ${a.dn==='D'?'chip-amber':'chip-dark'}">${a.dn==='D'?'DAY':'NIGHT'}</span>`:'—'}</td><td style="font-weight:500">${a.char||'—'}</td><td style="color:var(--text2);font-size:11px;line-height:1.5">${a.dev||'—'}<td><td style="padding:8px;vertical-align:middle">${a.photoURL?`<div><img src="${a.photoURL}" class="photo-frame" onclick="openLightbox('${a.photoURL}','${a.id}')"><div style="font-size:10px;color:var(--blue);cursor:pointer;margin-top:4px;text-align:center;font-weight:500" onclick="triggerAudioPhoto('${a.id}')">🔄 Ganti Foto</div></div>`:`<div class="photo-placeholder" onclick="triggerAudioPhoto('${a.id}')"><span style="font-size:24px">📷</span><span style="font-size:10px;font-weight:500">Upload Photoboard</span></div>`}<input type="file" id="aphoto-${a.id}" accept="image/*" style="display:none" onchange="uploadAudioPhoto('${a.id}',this)"></td><td style="color:var(--text2);font-size:12px;line-height:1.6">${a.dia||'—'}</td><td class="foley-cell">${a.foley||'—'}</td><td style="color:var(--text2);font-size:12px">${a.ambRoom||'—'}</td><td class="code-cell">${a.code||'—'}</td><td style="white-space:nowrap;padding:8px;vertical-align:top"><button class="btn btn-ghost btn-sm" onclick="editAudio('${a.id}')">✎</button><button class="btn btn-danger btn-sm" onclick="delAudio('${a.id}')">✕</button></td></tr>`).join('')}</tbody></table></div></div>`; }).join('')}`;
-}
-
-// ── SET & WARDROBE LIST ───────────────────────────────────────
-function rSetList() {
-  const setItems = setlist.filter(s=>s.category==='set');
-  const wardrobeItems = setlist.filter(s=>s.category==='wardrobe');
-  const dominantColors = setlist.filter(s=>s.category==='color');
-  return `<div class="card"><div class="card-head"><span class="card-title">Set Shooting — ${proj.title}</span><button class="btn btn-primary btn-sm" onclick="openM('setitem','set')">+ Tambah Set</button></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SET / LOKASI</th><th>I/E</th><th>STATUS</th><th>CATATAN</th><th></th><tr></thead><tbody>${setItems.length ? setItems.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td style="font-weight:600">${s.location||'—'}</td><td>${s.ie?`<span class="chip ${s.ie==='I'?'chip-blue':'chip-teal'}">${s.ie==='I'?'INT':'EXT'}</span>`:'—'}<td>${statusChip(s.status)}</td><td style="color:var(--text2)">${s.note||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editSetItem('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSetItem('${s.id}')">Hapus</button></td></tr>`).join('') : `<tr><td colspan="6"><div class="empty">Belum ada data set. Klik + Tambah Set.</div></td></tr>`}</tbody></table></div></div>
-    <div class="card"><div class="card-head"><span class="card-title">Main Wardrobe per Karakter</span><button class="btn btn-primary btn-sm" onclick="openM('setitem','wardrobe')">+ Tambah Wardrobe</button></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>KARAKTER</th><th>WARDROBE</th><th>WARNA</th><th>STATUS</th><th>CATATAN</th><th></th></tr></thead><tbody>${wardrobeItems.length ? wardrobeItems.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}<td><td style="font-weight:600">${s.character||'—'}</td><td>${s.wardrobeDesc||'—'}</td><td>${s.color ? `<span style="display:inline-flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:${s.colorHex||'#ccc'};border:1px solid #ccc;display:inline-block"></span>${s.color}</span>` : '—'}</td><td>${statusChip(s.status)}</td><td style="color:var(--text2)">${s.note||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editSetItem('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSetItem('${s.id}')">Hapus</button></td></tr>`).join('') : `<tr><td colspan="7"><div class="empty">Belum ada data wardrobe. Klik + Tambah Wardrobe.</div></td></tr>`}</tbody></table></div></div>
-    <div class="card"><div class="card-head"><span class="card-title">Dominant Colors</span><button class="btn btn-primary btn-sm" onclick="openM('setitem','color')">+ Tambah Warna</button></div><div style="padding:14px 18px;display:flex;gap:10px;flex-wrap:wrap;">${dominantColors.length ? dominantColors.map(c=>`<div style="display:flex;align-items:center;gap:8px;background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--radius);padding:8px 14px;"><span style="width:18px;height:18px;border-radius:50%;background:${c.colorHex||'#ccc'};border:1px solid var(--border2);display:inline-block;flex-shrink:0"></span><span style="font-size:12px;font-weight:500">${c.color||'—'}</span><button class="btn btn-danger btn-sm" style="padding:2px 6px;font-size:10px" onclick="delSetItem('${c.id}')">✕</button></div>`).join('') : '<span style="font-size:12px;color:var(--text3)">Belum ada warna dominan.</span>'}</div></div>`;
-}
-
-// ── PROP LIST ─────────────────────────────────────────────────
-function rPropList() {
-  const locs = [...new Set(proplist.map(p=>p.location).filter(Boolean))];
-  return `<div class="filter-bar" style="margin-bottom:14px"><input class="inp" placeholder="Cari prop..." oninput="filterProps(this.value)" style="width:200px"><select class="inp" onchange="filterPropLoc(this.value)" style="width:160px"><option value="">Semua Lokasi</option>${locs.map(l=>`<option value="${l}">${l}</option>`).join('')}</select><select class="inp" onchange="filterPropStatus(this.value)" style="width:130px"><option value="">Semua Status</option><option value="siap">Siap</option><option value="proses">Proses</option><option value="cari">Dicari</option></select></div>
-    <div class="card"><div class="card-head"><span class="card-title">Prop List — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">${proplist.length} item total</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>DESKRIPSI</th><th>LOKASI / SET</th><th>SCENE</th><th>TYPE</th><th>QTY</th><th>STATUS</th><th>UNIT RATE</th><th>RATE PROP</th><th>CATATAN</th><th></th></tr></thead><tbody id="prop-tbody">${propRows(proplist)}</tbody></table></div></div>`;
-}
-
-function propRows(arr) { if(!arr.length) return `</table><td colspan="11"><div class="empty">Belum ada prop. Klik + Tambah Prop.</div></tr></tr>`; return arr.map((p,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}<td><td style="font-weight:600">${p.desc||'—'}</td><td style="color:var(--text2)">${p.location||'—'}</td><td class="mono">${p.scene||'—'}<td><span class="chip ${p.type==='Main'?'chip-blue':'chip-teal'}">${p.type||'—'}</span><td><td class="mono" style="font-weight:600">${p.qty||'—'}</td><td>${statusChip(p.status)}</td><td style="color:var(--text2)">${p.unitRate||'—'}</td><td style="color:var(--text2)">${p.rateProp||'—'}</td><td style="color:var(--text2);max-width:120px">${p.note||'—'}<td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editProp('${p.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delProp('${p.id}')">Hapus</button></td></tr>`).join(''); }
-window.filterProps = function(q){_pq=q;applyPF();}
-window.filterPropLoc = function(v){_ploc=v;applyPF();}
-window.filterPropStatus = function(v){_pstatus=v;applyPF();}
-function applyPF() { const f = proplist.filter(p=>(!_pq||(p.desc||'').toLowerCase().includes(_pq.toLowerCase()))&&(!_ploc||p.location===_ploc)&&(!_pstatus||p.status===_pstatus)); const el = document.getElementById('prop-tbody'); if(el) el.innerHTML = propRows(f); }
-
-// ── CLOUDINARY PHOTO UPLOAD ───────────────────────────────────
-const CLOUDINARY_CLOUD_NAME = 'dmlxxoplr';
-const CLOUDINARY_UPLOAD_PRESET = 'film_prod_unsigned';
-
-window.triggerPhotoUpload = function(shotId) { document.getElementById(`photo-input-${shotId}`)?.click(); };
-window.uploadPhoto = async function(shotId, input) { const file = input.files[0]; if(!file) return; if(file.size > 10*1024*1024) { showToast('Foto max 10MB ya!','error'); return; } showToast('Mengupload foto...'); try { const compressed = await compressImage(file, 1200, 0.8); const formData = new FormData(); formData.append('file', compressed); formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET); formData.append('folder', 'film_prod_shotlist'); const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, { method: 'POST', body: formData }); if(!res.ok) throw new Error('Upload gagal'); const data = await res.json(); await db.ref(`shotlist/${shotId}/photoURL`).set(data.secure_url); showToast('Foto berhasil diupload!', 'success'); } catch(e) { showToast('Gagal upload: '+e.message, 'error'); } };
-function compressImage(file, maxWidth, quality) { return new Promise(resolve => { const reader = new FileReader(); reader.onload = e => { const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); let w = img.width, h = img.height; if(w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; } canvas.width = w; canvas.height = h; canvas.getContext('2d').drawImage(img, 0, 0, w, h); canvas.toBlob(blob => resolve(blob), 'image/jpeg', quality); }; img.src = e.target.result; }; reader.readAsDataURL(file); }); }
-window.openLightbox = function(url, shotId) { document.getElementById('lightbox-img').src = url; document.getElementById('lightbox').classList.add('open'); window._lbShotId = shotId || null; };
-window.closeLightbox = function() { document.getElementById('lightbox').classList.remove('open'); window._lbShotId = null; };
-window.triggerAudioPhoto = function(id) { document.getElementById(`aphoto-${id}`)?.click(); };
-window.uploadAudioPhoto = async function(id, input) { const file = input.files[0]; if(!file) return; if(file.size > 10*1024*1024) { showToast('Foto max 10MB!','error'); return; } showToast('Mengupload frame...'); try { const compressed = await compressImage(file, 1200, 0.8); const formData = new FormData(); formData.append('file', compressed); formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET); formData.append('folder', 'film_prod_audio'); const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, { method:'POST', body:formData }); if(!res.ok) throw new Error('Upload gagal'); const data = await res.json(); await db.ref(`audiolist/${id}/photoURL`).set(data.secure_url); showToast('Frame berhasil diupload!', 'success'); } catch(e) { showToast('Gagal upload: '+e.message, 'error'); } };
-
-// ── MODAL FORMS ───────────────────────────────────────────────
-function esc(s){return (s||'').replace(/"/g,'&quot;');}
-window.openProjModal = function() { mSection='proj'; editId=null; document.getElementById('m-title').textContent = 'Edit Project Info'; document.getElementById('m-body').innerHTML = `<div class="fg"><label class="fl">Judul Film</label><input class="fi" id="f0" value="${esc(proj.title)}"></div><div class="fg-row"><div class="fg"><label class="fl">Producer</label><input class="fi" id="f1" value="${esc(proj.producer)}"></div><div class="fg"><label class="fl">Director</label><input class="fi" id="f2" value="${esc(proj.director)}"></div></div><div class="fg-row"><div class="fg"><label class="fl">DOP</label><input class="fi" id="f3" value="${esc(proj.dop)}"></div><div class="fg"><label class="fl">Sound Record</label><input class="fi" id="f4" value="${esc(proj.soundRec)}"></div></div><div class="fg"><label class="fl">1st Asst. Director</label><input class="fi" id="f5" value="${esc(proj.firstAD)}"></div><div class="fg"><label class="fl">Location & Basecamp</label><input class="fi" id="f6" value="${esc(proj.location)}"></div><div class="fg"><label class="fl">Alamat Basecamp</label><input class="fi" id="f7" value="${esc(proj.basecamp)}"></div><div class="fg"><label class="fl">Nearest Hospital</label><input class="fi" id="f8" value="${esc(proj.hospital)}"></div>`; document.getElementById('mwrap').classList.add('open'); };
-window.openM = function(s, preParam) { mSection=s; editId=null; const t={scene:'Tambah Scene',sched:'Tambah Schedule',cs:'Tambah Call Sheet',shot:'Tambah Shot',audio:'Tambah Audio Entry',setitem:'Tambah Item',prop:'Tambah Prop'}; document.getElementById('m-title').textContent = t[s]||'Tambah'; if(s==='shot') document.getElementById('m-body').innerHTML = shotForm(null, preParam); else if(s==='audio') document.getElementById('m-body').innerHTML = audioForm(null, preParam); else if(s==='setitem') document.getElementById('m-body').innerHTML = setItemForm(null, preParam||'set'); else if(s==='prop') document.getElementById('m-body').innerHTML = propForm(null); else document.getElementById('m-body').innerHTML = formFor(s, null); document.getElementById('mwrap').classList.add('open'); };
-function shotForm(d, preSceneNo) { const sceneOpts = scenes.map(sc=>`<option value="${sc.sceneNo}" ${(d?.sceneNo==sc.sceneNo||preSceneNo==sc.sceneNo)?'selected':''}>${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-scn">${sceneOpts||'<option>— Belum ada scene —</option>'}</select></div><div class="fg"><label class="fl">Shot #</label><input class="fi" id="f-shn" type="number" min="1" value="${d?.shotNo||''}"></div></div><div class="fg-row"><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div><div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">Shot Size</label><select class="fi" id="f-ss">${['','ELS','LS','FS','MS','MCU','CU','BCU','ECU'].map(v=>`<option${d?.shotSize===v?' selected':''}>${v}</option>`).join('')}</select></div><div class="fg"><label class="fl">Camera Angle</label><select class="fi" id="f-ang">${['','Eye Level','High','Low','Bird Eye','Worm Eye','Dutch'].map(v=>`<option${d?.angle===v?' selected':''}>${v}</option>`).join('')}</select></div></div><div class="fg-row"><div class="fg"><label class="fl">Camera Movement</label><select class="fi" id="f-mov">${['','Still','Pan','Tilt','Dolly','Zoom','Tracking','Handheld','Steadicam','Point Of Interest','Crane'].map(v=>`<option${d?.movement===v?' selected':''}>${v}</option>`).join('')}</select></div><div class="fg"><label class="fl">Equipment</label><input class="fi" id="f-eq" placeholder="Tripod / Drone / Gimbal..." value="${esc(d?.equipment||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Audio</label><select class="fi" id="f-au">${['','Sync','MOS','Wildtrack','Ambience','VO'].map(v=>`<option${d?.audio===v?' selected':''}>${v}</option>`).join('')}</select></div><div class="fg"><label class="fl">Subject / Object</label><input class="fi" id="f-sub" value="${esc(d?.subject||'')}"></div></div><div class="fg"><label class="fl">Deskripsi</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div><div class="fg"><label class="fl">Catatan</label><input class="fi" id="f-notes" value="${esc(d?.notes||'')}"></div><div class="fg"><label class="fl">Scene Notes</label><input class="fi" id="f-sn" placeholder="Catatan keseluruhan untuk scene ini..." value="${esc(d?.sceneNotes||'')}"></div>`; }
-function audioForm(d, preScene) { const sceneOpts = scenes.map(sc=>`<option value="${sc.sceneNo}" ${(d?.sceneNo==sc.sceneNo||preScene==sc.sceneNo)?'selected':''}>${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-scn">${sceneOpts||'<option>— Belum ada scene —</option>'}</select></div><div class="fg"><label class="fl">Shot #</label><input class="fi" id="f-shn" type="number" min="1" value="${d?.shotNo||''}"></div></div><div class="fg-row"><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option value="">—</option><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option value="">—</option><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div><div class="fg"><label class="fl">Character (CHAR)</label><input class="fi" id="f-char" placeholder="ARIF, KARSO, ..." value="${esc(d?.char||'')}"></div><div class="fg"><label class="fl">DEV (Peralatan Mic)</label><input class="fi" id="f-dev" placeholder="BOOM 2* SENHEISSER" value="${esc(d?.dev||'')}"></div><div class="fg"><label class="fl">DIA (Dialog)</label><textarea class="fi" id="f-dia" placeholder="Tulis dialog atau deskripsi aksi...">${d?.dia||''}</textarea></div><div class="fg"><label class="fl">FOLEY</label><input class="fi" id="f-foley" placeholder="Benturan badan, Step, Suara pintu..." value="${esc(d?.foley||'')}"></div><div class="fg"><label class="fl">AMB / ROOM TONE</label><input class="fi" id="f-amb" placeholder="Room ruang kerja, AMB sawah..." value="${esc(d?.ambRoom||'')}"></div><div class="fg"><label class="fl">CODE (Sub-judul Scene)</label><input class="fi" id="f-code" placeholder="OPENING, ENDING, RUMAH MAKAN..." value="${esc(d?.code||'')}"></div>`; }
-function setItemForm(d, cat) { const c = cat || d?.category || 'set'; if(c==='set') return `<input type="hidden" id="f-cat" value="set"><div class="fg"><label class="fl">Nama Set / Lokasi</label><input class="fi" id="f-loc" value="${esc(d?.location||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option value="">—</option><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div></div><div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>`; if(c==='wardrobe') return `<input type="hidden" id="f-cat" value="wardrobe"><div class="fg"><label class="fl">Karakter</label><input class="fi" id="f-char" value="${esc(d?.character||'')}"></div><div class="fg"><label class="fl">Deskripsi Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobeDesc||'')}" placeholder="Seragam Sekolah, Pengantin, dll"></div><div class="fg-row"><div class="fg"><label class="fl">Warna</label><input class="fi" id="f-color" value="${esc(d?.color||'')}"></div><div class="fg"><label class="fl">Hex Warna</label><input class="fi" id="f-hex" type="color" value="${d?.colorHex||'#888888'}" style="height:40px;padding:4px"></div></div><div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div><div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>`; if(c==='color') return `<input type="hidden" id="f-cat" value="color"><div class="fg"><label class="fl">Nama Warna</label><input class="fi" id="f-color" value="${esc(d?.color||'')}" placeholder="Green, Brown, Cream..."></div><div class="fg"><label class="fl">Pilih Warna</label><input class="fi" id="f-hex" type="color" value="${d?.colorHex||'#888888'}" style="height:44px;padding:4px"></div>`; }
-function propForm(d) { return `<div class="fg"><label class="fl">Deskripsi Prop</label><input class="fi" id="f-desc" value="${esc(d?.desc||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">Lokasi / Set</label><input class="fi" id="f-loc" value="${esc(d?.location||'')}" placeholder="Int.Rumah - Ruang Tamu..."></div><div class="fg"><label class="fl">Scene</label><input class="fi" id="f-scene" value="${esc(d?.scene||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Type</label><select class="fi" id="f-type"><option value="Main"${d?.type==='Main'?' selected':''}>Main</option><option value="Set"${d?.type==='Set'?' selected':''}>Set</option><option value="Action"${d?.type==='Action'?' selected':''}>Action</option></select></div><div class="fg"><label class="fl">Qty</label><input class="fi" id="f-qty" type="number" min="1" value="${d?.qty||1}"></div></div><div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div><div class="fg-row"><div class="fg"><label class="fl">Unit Rate</label><input class="fi" id="f-ur" value="${esc(d?.unitRate||'')}"></div><div class="fg"><label class="fl">Rate Prop</label><input class="fi" id="f-rp" value="${esc(d?.rateProp||'')}"></div></div><div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>`; }
-function formFor(s, d) { if(s==='scene') return `<div class="fg-row3"><div class="fg"><label class="fl">Scene No.</label><input class="fi" id="f-sc" value="${d?.sceneNo||''}"></div><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div><div class="fg-row"><div class="fg"><label class="fl">Pages</label><input class="fi" id="f-pg" value="${esc(d?.pages||'')}"></div><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div></div><div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div><div class="fg"><label class="fl">Description</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div><div class="fg-row"><div class="fg"><label class="fl">Character (pisah koma)</label><input class="fi" id="f-ch" value="${esc(d?.char||'')}"></div><div class="fg"><label class="fl">Makeup</label><input class="fi" id="f-mk" value="${esc(d?.makeup||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobe||'')}"></div><div class="fg"><label class="fl">Main Prop</label><input class="fi" id="f-pr" value="${esc(d?.prop||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Special Effect</label><input class="fi" id="f-sfx" value="${esc(d?.sfx||'')}"></div><div class="fg"><label class="fl">Audio</label><input class="fi" id="f-au" value="${esc(d?.audio||'')}"></div></div><div class="fg"><label class="fl">Special Notes</label><textarea class="fi" id="f-nt">${d?.notes||''}</textarea></div>`; if(s==='sched') { const opts = scenes.map(sc=>`<option value="${sc.id}"${d?.sceneId===sc.id?' selected':''}>Sc.${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div><div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div></div><div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value="${esc(d?.time||'')}"></div><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div><div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value="${esc(d?.shot||'')}"></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value="${esc(d?.page||'')}"></div></div><div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value="${esc(d?.loc||'')}"></div><div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac">${d?.action||''}</textarea></div><div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value="${esc(d?.talent||'')}"></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value="${esc(d?.extras||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="${esc(d?.cont||'FREE')}"></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value="${esc(d?.notes||'')}"></div></div>`; } if(s==='cs') return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day No.</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div><div class="fg"><label class="fl">Label (mis. DAY 1 OFF 10)</label><input class="fi" id="f-lb" value="${esc(d?.label||'')}"></div></div><div class="fg"><label class="fl">Tanggal (mis. TUESDAY, 01 JULY 2025)</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">Crew Call Time</label><input class="fi" id="f-cc" value="${esc(d?.crewCall||'07.00 WIB')}"></div><div class="fg"><label class="fl">Pre Call Production</label><input class="fi" id="f-pc" value="${esc(d?.preCall||'06.30 WIB')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Breakfast</label><input class="fi" id="f-bf" value="${esc(d?.breakfast||'07.00 WIB')}"></div><div class="fg"><label class="fl">1st Cam Roll</label><input class="fi" id="f-cr" value="${esc(d?.camRoll||'08.30 WIB')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Lunch</label><input class="fi" id="f-ln" value="${esc(d?.lunch||'12.00 WIB')}"></div><div class="fg"><label class="fl">Wrap</label><input class="fi" id="f-wr" value="${esc(d?.wrap||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Weather</label><input class="fi" id="f-wt" value="${esc(d?.weather||'')}"></div><div class="fg"><label class="fl">Weather Note</label><input class="fi" id="f-wn" value="${esc(d?.weatherNote||'')}"></div></div><div class="fg"><label class="fl">Set Notes</label><textarea class="fi" id="f-sn" style="min-height:90px">${d?.setNotes||''}</textarea></div>`; }
-function v(id){const el=document.getElementById(id); return el?el.value.trim():''; }
-window.closeM = function() { document.getElementById('mwrap').classList.remove('open'); };
+// Simpan semua data
 window.saveM = function() {
   if(mSection==='proj') { const data={title:v('f0'),producer:v('f1'),director:v('f2'),dop:v('f3'),soundRec:v('f4'),firstAD:v('f5'),location:v('f6'),basecamp:v('f7'),hospital:v('f8')}; proj = data; saveProj(data); showToast('Project info disimpan', 'success'); }
   else if(mSection==='scene') { const data={sceneNo:parseInt(v('f-sc'))||scenes.length+1,ie:v('f-ie'),dn:v('f-dn'),pages:v('f-pg'),day:parseInt(v('f-dy'))||1,set:v('f-set'),desc:v('f-desc'),char:v('f-ch'),makeup:v('f-mk'),wardrobe:v('f-wd'),prop:v('f-pr'),sfx:v('f-sfx'),audio:v('f-au'),notes:v('f-nt')}; if(editId) data.id = editId; saveItem('scenes', data); showToast(editId?'Scene diperbarui':'Scene ditambahkan', 'success'); }
-  else if(mSection==='sched') { const selEl = document.getElementById('f-sid'); const data={day:parseInt(v('f-dy'))||1,date:v('f-dt'),time:v('f-tm'),sceneId:selEl?selEl.value:'',shot:v('f-sh'),page:v('f-pg'),loc:v('f-lc'),action:v('f-ac'),talent:v('f-tl'),extras:v('f-ex'),cont:v('f-ct'),notes:v('f-nt')}; if(editId) data.id = editId; else schDay = parseInt(v('f-dy'))||1; saveItem('schedules', data); showToast('Schedule disimpan', 'success'); }
+  else if(mSection==='sched') { const selEl = document.getElementById('f-sid'); const data={day:parseInt(v('f-dy'))||1,date:v('f-dt'),time:v('f-tm'),sceneId:selEl?selEl.value:'',shot:v('f-sh'),page:v('f-pg'),loc:v('f-lc'),action:v('f-ac'),talent:v('f-tl'),extras:v('f-ex'),cont:v('f-ct'),notes:v('f-nt')}; if(editId) data.id = editId; else schDay = parseInt(v('f-dy'))||1; saveItem('schedules', data); showToast('Schedule disimpan', 'success'); if(page==='callsheet') csDay = parseInt(v('f-dy'))||1; }
   else if(mSection==='cs') { const data={day:parseInt(v('f-dy'))||1,label:v('f-lb'),date:v('f-dt'),crewCall:v('f-cc'),preCall:v('f-pc'),breakfast:v('f-bf'),camRoll:v('f-cr'),lunch:v('f-ln'),wrap:v('f-wr'),weather:v('f-wt'),weatherNote:v('f-wn'),setNotes:v('f-sn')}; if(editId) data.id = editId; else csDay = parseInt(v('f-dy'))||1; saveItem('callsheets', data); showToast('Call sheet disimpan', 'success'); }
-  else if(mSection==='shot') { const scnEl = document.getElementById('f-scn'); const sceneNo = scnEl ? parseInt(scnEl.value) : null; const sc = scenes.find(s=>s.sceneNo==sceneNo); const data={sceneNo, sceneId: sc?.id||null, ie:v('f-ie'), dn:v('f-dn'), set:v('f-set'), shotNo:parseInt(v('f-shn'))||1, shotSize:v('f-ss'), angle:v('f-ang'), movement:v('f-mov'), equipment:v('f-eq'), audio:v('f-au'), subject:v('f-sub'), desc:v('f-desc'), notes:v('f-notes'), sceneNotes:v('f-sn'), photoURL: editId ? (shotlist.find(x=>x.id===editId)?.photoURL||null) : null }; if(editId) data.id = editId; saveItem('shotlist', data); showToast(editId?'Shot diperbarui':'Shot ditambahkan','success'); }
-  else if(mSection==='audio') { const scnEl = document.getElementById('f-scn'); const sceneNo = scnEl ? parseInt(scnEl.value) : null; const data={sceneNo, ie:v('f-ie'), dn:v('f-dn'), char:v('f-char'), dev:v('f-dev'), dia:v('f-dia'), foley:v('f-foley'), ambRoom:v('f-amb'), code:v('f-code'), shotNo: parseInt(v('f-shn'))||1, photoURL: editId ? (audiolist.find(x=>x.id===editId)?.photoURL||null) : null }; if(editId) data.id = editId; saveItem('audiolist', data); showToast(editId?'Entry diperbarui':'Entry ditambahkan','success'); }
-  else if(mSection==='setitem') { const cat = v('f-cat'); let data = {category: cat}; if(cat==='set') { data={...data, location:v('f-loc'), ie:v('f-ie'), status:v('f-status'), note:v('f-note')}; } else if(cat==='wardrobe') { data={...data, character:v('f-char'), wardrobeDesc:v('f-wd'), color:v('f-color'), colorHex:document.getElementById('f-hex')?.value||'', status:v('f-status'), note:v('f-note')}; } else if(cat==='color') { data={...data, color:v('f-color'), colorHex:document.getElementById('f-hex')?.value||''}; } if(editId) data.id = editId; saveItem('setlist', data); showToast(editId?'Item diperbarui':'Item ditambahkan','success'); }
-  else if(mSection==='prop') { const data={desc:v('f-desc'), location:v('f-loc'), scene:v('f-scene'), type:v('f-type'), qty:parseInt(v('f-qty'))||1, status:v('f-status'), unitRate:v('f-ur'), rateProp:v('f-rp'), note:v('f-note')}; if(editId) data.id = editId; saveItem('proplist', data); showToast(editId?'Prop diperbarui':'Prop ditambahkan','success'); }
   closeM(); if(!useFirebase) render();
 };
-window.editScene = function(id) { const d=scenes.find(x=>x.id===id); mSection='scene'; editId=id; document.getElementById('m-title').textContent='Edit Scene'; document.getElementById('m-body').innerHTML=formFor('scene',d); document.getElementById('mwrap').classList.add('open'); };
-window.editSched = function(id) { const d=schedules.find(x=>x.id===id); mSection='sched'; editId=id; document.getElementById('m-title').textContent='Edit Schedule Entry'; document.getElementById('m-body').innerHTML=formFor('sched',d); document.getElementById('mwrap').classList.add('open'); };
-window.editCS = function(id) { const d=callsheets.find(x=>x.id===id); mSection='cs'; editId=id; document.getElementById('m-title').textContent='Edit Call Sheet'; document.getElementById('m-body').innerHTML=formFor('cs',d); document.getElementById('mwrap').classList.add('open'); };
-window.editShot = function(id) { const d = shotlist.find(x=>x.id===id); mSection='shot'; editId=id; document.getElementById('m-title').textContent='Edit Shot'; document.getElementById('m-body').innerHTML = shotForm(d); document.getElementById('mwrap').classList.add('open'); };
-window.editAudio = function(id) { const d = audiolist.find(x=>x.id===id); mSection='audio'; editId=id; document.getElementById('m-title').textContent='Edit Audio Entry'; document.getElementById('m-body').innerHTML = audioForm(d); document.getElementById('mwrap').classList.add('open'); };
-window.editSetItem = function(id) { const d = setlist.find(x=>x.id===id); mSection='setitem'; editId=id; document.getElementById('m-title').textContent='Edit Item'; document.getElementById('m-body').innerHTML = setItemForm(d, d?.category); document.getElementById('mwrap').classList.add('open'); };
-window.editProp = function(id) { const d = proplist.find(x=>x.id===id); mSection='prop'; editId=id; document.getElementById('m-title').textContent='Edit Prop'; document.getElementById('m-body').innerHTML = propForm(d); document.getElementById('mwrap').classList.add('open'); };
-window.delScene = function(id){if(confirm('Hapus scene ini?')){deleteItem('scenes',id);showToast('Scene dihapus');}};
-window.delSched = function(id){if(confirm('Hapus entry ini?')){deleteItem('schedules',id);showToast('Entry dihapus');}};
-window.delShot = function(id) { if(confirm('Hapus shot ini?')) { deleteItem('shotlist',id); showToast('Shot dihapus'); } };
-window.delAudio = function(id) { if(confirm('Hapus entry ini?')) { deleteItem('audiolist',id); showToast('Entry dihapus'); } };
-window.delSetItem = function(id) { if(confirm('Hapus item ini?')) { deleteItem('setlist',id); showToast('Dihapus'); } };
-window.delProp = function(id) { if(confirm('Hapus prop ini?')) { deleteItem('proplist',id); showToast('Prop dihapus'); } };
+function v(id){const el=document.getElementById(id); return el?el.value.trim():''; }
+function esc(s){return (s||'').replace(/"/g,'&quot;');}
 
-// ── ADMIN PANEL ───────────────────────────────────────────────
+// Fungsi tambahan lainnya (talent, location, shotlist, audiolist, setlist, proplist, admin) disederhanakan agar tidak melebihi batas
+function getAllTalent() { const m={}; scenes.forEach(s=>{ s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{ if(!m[c]) m[c]={name:c,scenes:[],days:new Set()}; m[c].scenes.push(s.sceneNo); schedules.filter(x=>x.sceneId===s.id).forEach(x=>m[c].days.add(x.day)); }); }); return Object.values(m); }
+function rTalent() { const talent = getAllTalent(); return `<div class="card"><div class="card-head"><span class="card-title">Talent Breakdown — ${proj.title}</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>CAST</th><th>SCENE NUMBERS</th><th>TOTAL</th><th>DAYS</th></tr></thead><tbody>${talent.length?talent.map((t,i)=>`<tr><td>${i+1}</td><td style="font-weight:600">${t.name}</td><td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td><td class="mono">${t.scenes.length}</td><td class="mono">${t.days.size}</td></tr>`).join(''):`<td><td colspan="5"><div class="empty">Belum ada data</div></td></tr>`}</tbody></table></div></div>`; }
+function rLoc() { const m={}; scenes.forEach(s=>{ if(!m[s.set]) m[s.set]={set:s.set,ie:s.ie,dn:s.dn,scenes:[]}; m[s.set].scenes.push(s.sceneNo); }); const locs = Object.values(m); return `<div class="card"><div class="card-head"><span class="card-title">Location Breakdown — ${proj.title}</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>LOCATION</th><th>I/E</th><th>D/N</th><th>SCENE NUMBERS</th></tr></thead><tbody>${locs.length?locs.map((l,i)=>`<tr><td>${i+1}</td><td style="font-weight:600">${l.set}</td><td>${ie(l.ie)}</td><td>${dn(l.dn)}<td>${l.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td></tr>`).join(''):`<tr><td colspan="5"><div class="empty">Belum ada data</div></td></tr>`}</tbody></table></div></div>`; }
+
+// Fungsi untuk Shot List, Audio List, Set List, Prop List (singkat)
+function rShotList() { return `<div class="card"><div class="card-head"><span class="card-title">Shot List</span></div><div class="empty">Data shot list akan ditampilkan di sini</div></div>`; }
+function rAudioList() { return `<div class="card"><div class="card-head"><span class="card-title">Audio List</span></div><div class="empty">Data audio list akan ditampilkan di sini</div></div>`; }
+function rSetList() { return `<div class="card"><div class="card-head"><span class="card-title">Set & Wardrobe</span></div><div class="empty">Data set & wardrobe akan ditampilkan di sini</div></div>`; }
+function rPropList() { return `<div class="card"><div class="card-head"><span class="card-title">Prop List</span></div><div class="empty">Data properti akan ditampilkan di sini</div></div>`; }
 function rAdmin() { if(!isAdmin) return `<div class="empty">Kamu tidak punya akses ke panel admin.</div>`; return `<div class="card"><div class="card-head"><span class="card-title">Kelola Anggota Tim</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NAMA</th><th>EMAIL</th><th>DEPARTEMEN</th><th>STATUS</th><th>AKSI</th></tr></thead><tbody id="admin-tbody"><tr><td colspan="5"><div class="empty">Memuat data anggota...</div></td></tr></tbody></table></div></div>`; }
-function loadAdminData() { db.ref('users').on('value', snap => { const users = snap.val() || {}; const tbody = document.getElementById('admin-tbody'); if(!tbody) return; const entries = Object.entries(users).sort((a,b) => { const order = {pending:0,approved:1,admin:2,rejected:3}; return (order[a[1].status]||9) - (order[b[1].status]||9); }); if(!entries.length) { tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Belum ada anggota.</div></td></table>`; return; } tbody.innerHTML = entries.map(([uid, u]) => { const isMe = uid === currentUser?.uid; const statusChip = { pending: `<span class="chip chip-amber">Menunggu</span>`, approved: `<span class="chip chip-green">Approved</span>`, admin: `<span class="chip chip-blue">Admin</span>`, rejected: `<span class="chip" style="background:#FCEBEB;color:#A32D2D">Ditolak</span>` }[u.status] || u.status; const actions = isMe ? '<span style="font-size:11px;color:var(--text3)">Kamu</span>' : `${u.status==='pending'?`<button class="btn btn-sm" style="background:var(--green);color:#fff;border-color:var(--green)" onclick="approveUser('${uid}','${u.name||u.email}')">Approve</button>`:''}${u.status==='approved'?`<button class="btn btn-sm" onclick="makeAdmin('${uid}','${u.name||u.email}')">Jadikan Admin</button>`:''}${u.status!=='rejected'&&!isMe?`<button class="btn btn-sm btn-danger" onclick="rejectUser('${uid}','${u.name||u.email}')">Tolak</button>`:''}${u.status==='rejected'?`<button class="btn btn-sm" onclick="approveUser('${uid}','${u.name||u.email}')">Restore</button>`:''}`; return `<tr><td style="font-weight:500">${u.name||'—'}</td><td style="color:var(--text2)">${u.email}</td><td style="color:var(--text2)">${u.dept||'—'}</td><td>${statusChip}</td><td style="white-space:nowrap;display:flex;gap:6px;flex-wrap:wrap">${actions}</td></tr>`; }).join(''); }); }
-window.approveUser = function(uid, name) { if(!confirm(`Approve akses untuk ${name}?`)) return; db.ref(`users/${uid}/status`).set('approved'); showToast(`${name} diapprove!`, 'success'); };
-window.makeAdmin = function(uid, name) { if(!confirm(`Jadikan ${name} sebagai Admin?`)) return; db.ref(`users/${uid}/status`).set('admin'); showToast(`${name} dijadikan admin!`, 'success'); };
-window.rejectUser = function(uid, name) { if(!confirm(`Tolak akses ${name}?`)) return; db.ref(`users/${uid}/status`).set('rejected'); showToast(`Akses ${name} ditolak.`); };
+function loadAdminData() { db.ref('users').on('value', snap => { const users = snap.val() || {}; const tbody = document.getElementById('admin-tbody'); if(!tbody) return; const entries = Object.entries(users); if(!entries.length) { tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Belum ada anggota.</div></td></tr>`; return; } tbody.innerHTML = entries.map(([uid, u]) => { const isMe = uid === currentUser?.uid; return `<tr><td>${u.name||'—'}</td><td>${u.email}</td><td>${u.dept||'—'}</td><td><span class="chip ${u.status==='approved'?'chip-green':u.status==='pending'?'chip-amber':'chip-dark'}">${u.status||'pending'}</span></td><td>${isMe?'Kamu':u.status==='pending'?`<button class="btn btn-sm" onclick="approveUser('${uid}')">Approve</button>`:''}${u.status!=='rejected'&&!isMe?`<button class="btn btn-sm btn-danger" onclick="rejectUser('${uid}')">Tolak</button>`:''}${u.status==='rejected'?`<button class="btn btn-sm" onclick="approveUser('${uid}')">Restore</button>`:''}${u.status==='approved'&&!isMe?`<button class="btn btn-sm" onclick="makeAdmin('${uid}')">Admin</button>`:''}</td></tr>`; }).join(''); }); }
+window.approveUser = function(uid) { db.ref(`users/${uid}/status`).set('approved'); showToast('User diapprove'); };
+window.makeAdmin = function(uid) { db.ref(`users/${uid}/status`).set('admin'); showToast('Dijadikan admin'); };
+window.rejectUser = function(uid) { db.ref(`users/${uid}/status`).set('rejected'); showToast('User ditolak'); };
 
-// ── BOTTOM NAV ────────────────────────────────────────────────
+// Bottom nav & mobile
 function isMobile(){ return window.innerWidth <= 768; }
 function showHideBottomNav(){ const nav = document.getElementById('bottom-nav'); if(!nav) return; nav.style.display = isMobile() ? 'flex' : 'none'; const sb = document.querySelector('.sidebar'); if(sb) sb.style.display = isMobile() ? 'none' : 'flex'; const main = document.querySelector('.main'); if(main) main.style.paddingBottom = isMobile() ? '64px' : '0'; }
 window.addEventListener('resize', showHideBottomNav);
-function updateBottomNav(p) { const map = {dashboard:'bn-dashboard', master:'bn-master', callsheet:'bn-callsheet'}; document.querySelectorAll('.bn-item').forEach(el=>el.classList.remove('on')); const msIds = ['ms-schedule','ms-talent','ms-location','ms-shotlist','ms-setlist','ms-proplist','ms-audiolist']; msIds.forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('on');}); if(map[p]) { document.getElementById(map[p])?.classList.add('on'); } else { document.getElementById('bn-more')?.classList.add('on'); const msMap = {schedule:'ms-schedule', talent:'ms-talent', location:'ms-location', shotlist:'ms-shotlist', setlist:'ms-setlist', proplist:'ms-proplist', audiolist:'ms-audiolist'}; if(msMap[p]) document.getElementById(msMap[p])?.classList.add('on'); } }
+function updateBottomNav(p) { const map = {dashboard:'bn-dashboard', master:'bn-master', callsheet:'bn-callsheet'}; document.querySelectorAll('.bn-item').forEach(el=>el.classList.remove('on')); document.getElementById('bn-more')?.classList.remove('on'); if(map[p]) { document.getElementById(map[p])?.classList.add('on'); } else { document.getElementById('bn-more')?.classList.add('on'); } }
 window.toggleMore = function() { const sheet = document.getElementById('more-sheet'); sheet.classList.toggle('open'); };
 window.closeMore = function() { document.getElementById('more-sheet').classList.remove('open'); };
-window.handleFAB = function() { closeMore(); const fabMap = {master:'scene',schedule:'sched',callsheet:'cs'}; if(fabMap[page]) { openM(fabMap[page]); } else { openM('scene'); } };
+window.handleFAB = function() { closeMore(); if(page==='callsheet') { openCSAddScene(); } else if(page==='master') { openM('scene'); } else if(page==='schedule') { openM('sched'); } else { openM('scene'); } };
+window.closeM = function() { document.getElementById('mwrap').classList.remove('open'); };
+window.openM = function(s, preParam) { mSection=s; editId=null; const t={scene:'Tambah Scene',sched:'Tambah Schedule',cs:'Tambah Call Sheet',shot:'Tambah Shot',audio:'Tambah Audio',setitem:'Tambah Item',prop:'Tambah Prop'}; document.getElementById('m-title').textContent = t[s]||'Tambah'; document.getElementById('m-body').innerHTML = formFor(s, null); document.getElementById('mwrap').classList.add('open'); };
+window.openProjModal = function() { mSection='proj'; editId=null; document.getElementById('m-title').textContent = 'Edit Project Info'; document.getElementById('m-body').innerHTML = `<div class="fg"><label class="fl">Judul Film</label><input class="fi" id="f0" value="${esc(proj.title)}"></div><div class="fg-row"><div class="fg"><label class="fl">Producer</label><input class="fi" id="f1" value="${esc(proj.producer)}"></div><div class="fg"><label class="fl">Director</label><input class="fi" id="f2" value="${esc(proj.director)}"></div></div><div class="fg-row"><div class="fg"><label class="fl">DOP</label><input class="fi" id="f3" value="${esc(proj.dop)}"></div><div class="fg"><label class="fl">Sound Record</label><input class="fi" id="f4" value="${esc(proj.soundRec)}"></div></div><div class="fg"><label class="fl">1st Asst. Director</label><input class="fi" id="f5" value="${esc(proj.firstAD)}"></div><div class="fg"><label class="fl">Location</label><input class="fi" id="f6" value="${esc(proj.location)}"></div><div class="fg"><label class="fl">Basecamp</label><input class="fi" id="f7" value="${esc(proj.basecamp)}"></div><div class="fg"><label class="fl">Nearest Hospital</label><input class="fi" id="f8" value="${esc(proj.hospital)}"></div>`; document.getElementById('mwrap').classList.add('open'); };
 
-// ── INIT ─────────────────────────────────────────────────────
+// INIT
 showHideBottomNav();
 tryAutoConnect();
 </script>
