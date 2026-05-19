@@ -142,7 +142,18 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 .modal-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
 .modal-title{font-size:13px;font-weight:700;}
 .modal-bd{padding:18px 20px;max-height:60vh;overflow-y:auto;}
-.modal-ft{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;background:var(--surface2);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
+.modal-ft{
+  padding:12px 20px;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  background:var(--surface2);
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+  position:sticky;
+  bottom:0;
+  z-index:10;
+}
 .fg{margin-bottom:13px;}
 .fl{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0.07em;display:block;margin-bottom:5px;text-transform:uppercase;font-family:'DM Mono',monospace;}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -158,6 +169,32 @@ textarea.fi{resize:vertical;min-height:64px;}
 
 /* ── MOBILE RESPONSIVE ─────────────────────── */
 @media(max-width:768px){
+
+  .modal{
+    height:92dvh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .modal-bd{
+    flex:1;
+    overflow-y:auto;
+    padding-bottom:120px;
+  }
+
+  .modal-ft{
+    position:sticky;
+    bottom:0;
+    background:var(--surface);
+    padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .modal-ft .btn{
+    flex:1;
+    height:46px;
+    font-size:14px;
+  }
+
   body{flex-direction:column;height:100dvh;overflow:hidden;}
   .sidebar{display:none;}
   .main{height:100dvh;padding-bottom:64px;}
@@ -372,6 +409,67 @@ textarea.fi{resize:vertical;min-height:64px;}
 .lightbox-actions{display:flex;gap:10px;}
 .lightbox-replace{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:var(--radius);padding:7px 16px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .lightbox-replace:hover{background:rgba(255,255,255,0.25);}
+
+/* PDF EXPORT FIX */
+.pdf-export-mode{
+  background:white !important;
+  padding:20px !important;
+}
+
+.pdf-export-mode .card,
+.pdf-export-mode .cs-doc,
+.pdf-export-mode .sl-scene-block{
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+
+.pdf-export-mode table{
+  width:100% !important;
+  font-size:10px !important;
+}
+
+.pdf-export-mode .tbl-wrap{
+  overflow:visible !important;
+}
+
+/* TABLE UX */
+.tbl-wrap{
+  position:relative;
+}
+
+.tbl-wrap::after{
+  content:'↔ Geser tabel';
+  position:sticky;
+  right:12px;
+  bottom:8px;
+  background:rgba(0,0,0,0.7);
+  color:white;
+  padding:4px 8px;
+  border-radius:20px;
+  font-size:10px;
+  pointer-events:none;
+  opacity:.7;
+}
+
+@media(min-width:769px){
+  .tbl-wrap::after{
+    display:none;
+  }
+}
+
+/* IOS FIX */
+html,
+body{
+  overscroll-behavior:none;
+  -webkit-tap-highlight-color:transparent;
+}
+
+input,
+textarea,
+select{
+  font-size:16px !important;
+}
+
 </style>
 </head>
 <body>
@@ -824,29 +922,129 @@ function saveProj(data) {
 function saveItem(collection, data) {
   if (useFirebase) {
     setSaving();
+
     if (data.id && data.id !== '') {
       const id = data.id;
-      const d = {...data}; delete d.id;
-      db.ref(`${collection}/${id}`).update(d).then(setLive);
+      const d = {...data};
+      delete d.id;
+
+      db.ref(`${collection}/${id}`)
+        .update(d)
+        .then(() => {
+          setLive();
+          showToast('Data berhasil diupdate','success');
+        });
+
     } else {
-      db.ref(collection).push(data).then(setLive);
+      const payload = {...data};
+      delete payload.id;
+
+      db.ref(collection)
+        .push(payload)
+        .then(() => {
+          setLive();
+          showToast('Data berhasil ditambahkan','success');
+        });
     }
+
   } else {
-    const arr = collection === 'scenes' ? scenes : collection === 'schedules' ? schedules : callsheets;
-    const setter = collection === 'scenes' ? (v => scenes=v) : collection === 'schedules' ? (v => schedules=v) : (v => callsheets=v);
-    if (data.id) { const i = arr.findIndex(x=>x.id===data.id); arr[i] = data; setter([...arr]); }
-    else { data.id = 'local_'+Date.now(); arr.push(data); setter([...arr]); }
+
+    let arr;
+
+    switch(collection){
+      case 'scenes':
+        arr = scenes;
+        break;
+
+      case 'schedules':
+        arr = schedules;
+        break;
+
+      case 'callsheets':
+        arr = callsheets;
+        break;
+
+      case 'shotlist':
+        arr = shotlist;
+        break;
+
+      case 'setlist':
+        arr = setlist;
+        break;
+
+      case 'proplist':
+        arr = proplist;
+        break;
+
+      case 'audiolist':
+        arr = audiolist;
+        break;
+    }
+
+    if (!arr) return;
+
+    if (data.id) {
+      const i = arr.findIndex(x => x.id === data.id);
+      if (i !== -1) arr[i] = data;
+    } else {
+      data.id = 'local_' + Date.now();
+      arr.push(data);
+    }
+
     render();
+    showToast('Data tersimpan','success');
   }
 }
 
 function deleteItem(collection, id) {
-  if (useFirebase) { setSaving(); db.ref(`${collection}/${id}`).remove().then(setLive); }
-  else {
-    if(collection==='scenes') scenes=scenes.filter(x=>x.id!==id);
-    else if(collection==='schedules') schedules=schedules.filter(x=>x.id!==id);
-    else callsheets=callsheets.filter(x=>x.id!==id);
+
+  if (!confirm('Hapus data ini?')) return;
+
+  if (useFirebase) {
+
+    setSaving();
+
+    db.ref(`${collection}/${id}`)
+      .remove()
+      .then(() => {
+        setLive();
+        showToast('Data berhasil dihapus','success');
+      });
+
+  } else {
+
+    switch(collection){
+      case 'scenes':
+        scenes = scenes.filter(x => x.id !== id);
+        break;
+
+      case 'schedules':
+        schedules = schedules.filter(x => x.id !== id);
+        break;
+
+      case 'callsheets':
+        callsheets = callsheets.filter(x => x.id !== id);
+        break;
+
+      case 'shotlist':
+        shotlist = shotlist.filter(x => x.id !== id);
+        break;
+
+      case 'setlist':
+        setlist = setlist.filter(x => x.id !== id);
+        break;
+
+      case 'proplist':
+        proplist = proplist.filter(x => x.id !== id);
+        break;
+
+      case 'audiolist':
+        audiolist = audiolist.filter(x => x.id !== id);
+        break;
+    }
+
     render();
+    showToast('Data dihapus','success');
   }
 }
 
@@ -2557,6 +2755,67 @@ window.handleFAB = function() {
 // ── INIT ─────────────────────────────────────────────────────
 showHideBottomNav();
 tryAutoConnect();
+
+// SHIFT + SCROLL horizontal table
+document.addEventListener('wheel', function(e){
+
+  if(!e.shiftKey) return;
+
+  const wrap = e.target.closest('.tbl-wrap');
+
+  if(!wrap) return;
+
+  e.preventDefault();
+
+  wrap.scrollLeft += e.deltaY;
+
+}, { passive:false });
+
+// IMPROVED PDF EXPORT
+async function exportPDF(){
+
+  const { jsPDF } = window.jspdf;
+
+  const pdf = new jsPDF('p', 'mm', 'a4');
+
+  const content = document.getElementById('content');
+
+  content.classList.add('pdf-export-mode');
+
+  const canvas = await html2canvas(content, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    scrollY: -window.scrollY
+  });
+
+  content.classList.remove('pdf-export-mode');
+
+  const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+  const pageWidth = 210;
+  const pageHeight = 297;
+
+  const imgWidth = pageWidth;
+  const imgHeight = canvas.height * imgWidth / canvas.width;
+
+  let heightLeft = imgHeight;
+  let position = 0;
+
+  pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+  heightLeft -= pageHeight;
+
+  while (heightLeft > 0) {
+    position = heightLeft - imgHeight;
+    pdf.addPage();
+    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+  }
+
+  pdf.save(`${page}-${Date.now()}.pdf`);
+}
+
 </script>
 </body>
 </html>
