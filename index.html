@@ -834,15 +834,17 @@ function rSched() {
 window.selSch = function(d){schDay=d;render();}
 
 // CALL SHEET PAGE WITH EDIT/DELETE SCENE AND DELETE CALL SHEET
+// CALL SHEET PAGE WITH ADD SCENE BUTTON
 function rCS() {
   const days = [...new Set(callsheets.map(c=>c.day))].sort((a,b)=>a-b);
   if(!days.includes(csDay)) csDay = days[0]||1;
   const cs = callsheets.find(c=>c.day===csDay);
   const rows = schedules.filter(s=>s.day===csDay);
+  
   return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
       <div class="day-tabs">${days.map(d=>`<div class="day-tab${d===csDay?' on':''}" onclick="selCS(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada call sheet</span>':''}</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        ${cs?`<button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
+        ${cs?`<button class="btn btn-primary btn-sm" onclick="openCSAddScene()">+ Tambah Scene</button><button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
       </div>
     </div>
     ${cs?`<div class="cs-doc">
@@ -854,14 +856,49 @@ function rCS() {
       ${cs.setNotes?`<div class="cs-notes-bar">${cs.setNotes.replace(/\n/g,'<br>')}</div>`:''}
       <div class="tbl-wrap"><table class="tbl" style="border-radius:0">
         <thead><tr><th>NO</th><th>TIME</th><th>BABAK/SC</th><th>I/E</th><th>D/N</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th>SCRIPT</th><th></th></tr></thead>
-        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}</td><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`;}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada shooting entry untuk hari ini. <button class="btn btn-sm" onclick="openM('sched')">+ Tambah Entry</button></div></td></tr>`}</tbody>
+        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}</td><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`;}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada scene. Klik tombol <strong>+ Tambah Scene</strong> di atas untuk menambahkan.</div></td></tr>`}</tbody>
       </table></div>
       <div class="cs-footer">THANK YOU FOR TODAY, SEE U NEXT DAY</div>
-    </div>`:`<div class="empty" style="padding:60px">Belum ada call sheet. Klik <strong>+ Tambah Hari</strong>.</div>`}`;
+    </div>`:`<div class="empty" style="padding:60px">Belum ada call sheet. Klik <strong>+ Hari</strong> di menu atas untuk membuat call sheet baru.</div>`}`;
 }
-window.selCS = function(d){csDay=d;render();}
-window.delCallSheet = function(id) { if(confirm('Hapus call sheet ini? Semua jadwal untuk hari ini juga akan terhapus.')) { deleteItem('callsheets',id); showToast('Call sheet dihapus'); } };
-
+  // FUNGSI TAMBAH SCENE DI CALL SHEET
+window.openCSAddScene = function() {
+  mSection='sched'; 
+  editId=null;
+  document.getElementById('m-title').textContent = `Tambah Scene untuk Call Sheet Hari ${csDay}`;
+  
+  const sceneOptions = scenes.map(sc => `<option value="${sc.id}">Sc.${sc.sceneNo} — ${sc.set}</option>`).join('');
+  if(!sceneOptions) {
+    showToast('Buat scene dulu di Master Breakdown sebelum menambah ke Call Sheet', 'error');
+    closeM();
+    return;
+  }
+  
+  const today = new Date().toLocaleDateString('id-ID');
+  document.getElementById('m-body').innerHTML = `
+    <div class="fg-row">
+      <div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${csDay}"></div>
+      <div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${today}"></div>
+    </div>
+    <div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value=""></div>
+    <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${sceneOptions}</select></div>
+    <div class="fg-row">
+      <div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value=""></div>
+      <div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value=""></div>
+    </div>
+    <div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value=""></div>
+    <div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac" placeholder="Deskripsi aksi..."></textarea></div>
+    <div class="fg-row">
+      <div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value=""></div>
+      <div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value=""></div>
+    </div>
+    <div class="fg-row">
+      <div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="FREE"></div>
+      <div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value=""></div>
+    </div>
+  `;
+  document.getElementById('mwrap').classList.add('open');
+};
 function getAllTalent() {
   const m={};
   scenes.forEach(s=>{ s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{ if(!m[c]) m[c]={name:c,scenes:[],days:new Set()}; m[c].scenes.push(s.sceneNo); schedules.filter(x=>x.sceneId===s.id).forEach(x=>m[c].days.add(x.day)); }); });
