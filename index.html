@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Film Production Dashboard</title>
 <style>
-/* [STYLE SAMA SEPERTI SEBELUMNYA - DIPERSINGKAT AGAR TIDAK MELEBIHI BATAS] */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -60,7 +59,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 #toast.error{background:var(--red);}
 
 /* BUTTONS */
-.btn{padding:7px 14px;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;border:1px solid var(--border2);border-radius:var(--radius);background:var(--surface);color:var(--text);cursor:pointer;transition:all 0.13s;line-height:1;}
+.btn{padding:7px 14px;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;border:1px solid var(--border2);border-radius:var(--radius);background:var(--surface);color:var(--text);cursor:pointer;transition:all 0.13s;line-height:1;display:inline-flex;align-items:center;gap:4px;}
 .btn:hover{background:var(--surface2);}
 .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue);}
 .btn-primary:hover{background:#0C447C;border-color:#0C447C;}
@@ -130,8 +129,7 @@ textarea.fi{resize:vertical;min-height:64px;}
   .tb-right{gap:6px;flex-wrap:wrap;}
   .content{padding:14px;}
   .card-head{padding:11px 14px;gap:8px;flex-wrap:wrap;}
-  .day-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-  .day-tabs::-webkit-scrollbar{display:none;}
+  .day-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;}
   .day-tab{white-space:nowrap;padding:7px 16px;font-size:12px;}
   .cs-top{grid-template-columns:1fr;}
   .cs-col+.cs-col{border-left:none;border-top:1px solid var(--border);}
@@ -150,24 +148,24 @@ textarea.fi{resize:vertical;min-height:64px;}
 
 .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:64px;background:var(--surface);border-top:1px solid var(--border);z-index:9000;padding-bottom:env(safe-area-inset-bottom);flex-direction:column;justify-content:stretch;}
 .bn-items{display:flex;height:100%;align-items:stretch;}
-.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 4px;border:none;background:transparent;color:var(--text3);font-size:9px;font-weight:500;transition:color 0.13s;-webkit-tap-highlight-color:transparent;}
+.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 4px;border:none;background:transparent;color:var(--text3);font-size:9px;font-weight:500;transition:color 0.13s;}
 .bn-item svg{opacity:0.45;transition:opacity 0.13s;}
 .bn-item.on{color:var(--blue);}
 .bn-item.on svg{opacity:1;}
-.bn-add{flex:none;width:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:none;background:transparent;-webkit-tap-highlight-color:transparent;}
+.bn-add{flex:none;width:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:none;background:transparent;}
 .bn-add-circle{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;box-shadow:0 2px 10px rgba(24,95,165,0.4);transition:transform 0.13s;}
 .bn-add-circle:active{transform:scale(0.92);}
 .bn-add-lbl{font-size:9px;color:var(--text3);}
 .more-sheet{display:none;position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0.35);}
 .more-sheet.open{display:block;}
-.more-panel{position:absolute;bottom:64px;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 16px;max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.more-item{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;font-size:14px;color:var(--text2);-webkit-tap-highlight-color:transparent;}
+.more-panel{position:absolute;bottom:64px;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 16px;max-height:70vh;overflow-y:auto;}
+.more-item{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;font-size:14px;color:var(--text2);}
 .more-item:active{background:var(--surface2);}
 .more-item svg{opacity:0.5;flex-shrink:0;}
 .more-item.on{color:var(--blue);font-weight:500;}
 .more-item.on svg{opacity:1;}
 .more-divider{height:1px;background:var(--border);margin:6px 0;}
-.more-proj{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;font-size:14px;color:var(--blue);font-weight:500;-webkit-tap-highlight-color:transparent;}
+.more-proj{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;font-size:14px;color:var(--blue);font-weight:500;}
 
 /* AUTH SCREEN */
 #auth-screen{position:fixed;inset:0;background:var(--bg);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;}
@@ -191,48 +189,6 @@ textarea.fi{resize:vertical;min-height:64px;}
 .admin-btn{display:flex;align-items:center;gap:8px;padding:9px 18px;cursor:pointer;font-size:12.5px;color:var(--amber);border-left:2px solid transparent;transition:all 0.13s;}
 .admin-btn:hover{background:var(--amber-bg);}
 .badge-pending{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;font-family:'DM Mono',monospace;}
-
-/* SHOT LIST */
-.sl-scene-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:20px;overflow:hidden;box-shadow:var(--shadow);}
-.sl-scene-head{background:#C0392B;color:#fff;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-.sl-scene-title{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.08em;}
-.sl-scene-meta{display:flex;gap:12px;font-size:11px;opacity:0.9;font-family:'DM Mono',monospace;}
-.sl-proj-head{background:#2C2C2A;color:#D3D1C7;padding:7px 18px;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;}
-.sl-shot-row{border-top:1px solid var(--border);}
-.sl-shot-head{display:grid;grid-template-columns:44px 100px 100px 120px 120px 90px 100px 200px 1fr 1fr 80px;background:var(--surface2);font-size:9px;font-weight:700;letter-spacing:0.09em;color:var(--text3);font-family:'DM Mono',monospace;}
-.sl-shot-head>div,.sl-shot-body>div{padding:8px 10px;border-right:1px solid var(--border);}
-.sl-shot-head>div:last-child,.sl-shot-body>div:last-child{border-right:none;}
-.sl-shot-body{display:grid;grid-template-columns:44px 100px 100px 120px 120px 90px 100px 200px 1fr 1fr 80px;font-size:12px;align-items:start;}
-.sl-shot-body>div{border-right:1px solid var(--border);min-height:120px;}
-.sl-scene-notes{padding:10px 18px;background:var(--surface2);border-top:1px solid var(--border);font-size:11.5px;color:var(--text2);display:flex;gap:10px;align-items:flex-start;}
-.sl-notes-label{font-size:9px;font-weight:700;letter-spacing:0.08em;color:var(--text3);font-family:'DM Mono',monospace;min-width:80px;padding-top:2px;}
-.sl-photo-cell{padding:10px;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:120px;justify-content:center;}
-.sl-photo-wrap{position:relative;width:168px;}
-.sl-photo{width:168px;height:94.5px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid var(--border);display:block;transition:opacity 0.15s;}
-.sl-photo:hover{opacity:0.85;}
-.sl-photo-replace{display:flex;align-items:center;justify-content:center;gap:5px;font-size:10px;color:var(--blue);cursor:pointer;font-weight:500;padding:3px 0;}
-.sl-photo-replace:hover{text-decoration:underline;}
-.sl-photo-placeholder{width:168px;height:94.5px;border:1.5px dashed var(--border2);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;gap:4px;color:var(--text3);transition:all 0.13s;background:var(--surface2);}
-.sl-photo-placeholder:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
-.sl-photo-placeholder span:first-child{font-size:22px;}
-.sl-photo-placeholder span:last-child{font-size:10px;font-weight:500;}
-
-/* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:8888;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
-.lightbox.open{display:flex;}
-.lightbox img{max-width:92vw;max-height:80vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5);object-fit:contain;}
-.lightbox-close{position:absolute;top:20px;right:24px;color:#fff;font-size:32px;cursor:pointer;line-height:1;opacity:0.8;}
-.lightbox-close:hover{opacity:1;}
-.lightbox-actions{display:flex;gap:10px;}
-.lightbox-replace{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:var(--radius);padding:7px 16px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.lightbox-replace:hover{background:rgba(255,255,255,0.25);}
-
-/* AUDIO LIST */
-.photo-frame{width:180px;height:101.25px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid var(--border);display:block;}
-.photo-placeholder{width:180px;height:101.25px;border:1.5px dashed var(--border2);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:var(--text3);background:var(--surface2);transition:all 0.13s;}
-.photo-placeholder:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
-.foley-cell{background:#FFFAED;font-weight:500;color:#633806;}
-.code-cell{font-weight:700;color:#C0392B;font-family:'DM Mono',monospace;}
 </style>
 </head>
 <body>
@@ -278,16 +234,6 @@ textarea.fi{resize:vertical;min-height:64px;}
   <button class="btn" onclick="doLogout()" style="margin-top:8px">Keluar</button>
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close" onclick="closeLightbox()">×</span>
-  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
-  <div class="lightbox-actions" onclick="event.stopPropagation()">
-    <button class="lightbox-replace" onclick="triggerPhotoUpload(window._lbShotId)">🔄 Ganti Foto</button>
-    <button class="lightbox-replace" onclick="closeLightbox()">Tutup</button>
-  </div>
-</div>
-
 <!-- MAIN APP -->
 <nav class="sidebar">
   <div class="sb-brand">
@@ -308,11 +254,6 @@ textarea.fi{resize:vertical;min-height:64px;}
   <div class="sb-item" onclick="go('location')">Location Breakdown</div>
   <div class="sb-section">Kamera</div>
   <div class="sb-item" onclick="go('shotlist')">Shot List</div>
-  <div class="sb-section">Artistik</div>
-  <div class="sb-item" onclick="go('setlist')">Set & Wardrobe</div>
-  <div class="sb-item" onclick="go('proplist')">Prop List</div>
-  <div class="sb-section">Audio</div>
-  <div class="sb-item" onclick="go('audiolist')">Audio List</div>
   <div class="sb-footer">
     <div id="sb-admin-btn" style="display:none" onclick="go('admin')" class="admin-btn">Panel Admin <span class="badge-pending" id="pending-count" style="display:none">0</span></div>
     <div style="padding:8px 18px 4px;font-size:11px;color:var(--text3)" id="sb-user-name"></div>
@@ -357,11 +298,6 @@ textarea.fi{resize:vertical;min-height:64px;}
     <div class="more-divider"></div>
     <div class="more-item" id="ms-shotlist" onclick="go('shotlist');closeMore()">Shot List</div>
     <div class="more-divider"></div>
-    <div class="more-item" id="ms-setlist" onclick="go('setlist');closeMore()">Set & Wardrobe</div>
-    <div class="more-item" id="ms-proplist" onclick="go('proplist');closeMore()">Prop List</div>
-    <div class="more-divider"></div>
-    <div class="more-item" id="ms-audiolist" onclick="go('audiolist');closeMore()">Audio List</div>
-    <div class="more-divider"></div>
     <div class="more-proj" onclick="openProjModal();closeMore()">Edit Project Info</div>
   </div>
 </div>
@@ -385,7 +321,7 @@ textarea.fi{resize:vertical;min-height:64px;}
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script>
-// ── STATE ─────────────────────────────────────────────────────
+// ==================== STATE ====================
 let db = null, auth = null;
 let useFirebase = false;
 let currentUser = null;
@@ -397,15 +333,11 @@ let scenes = [];
 let schedules = [];
 let callsheets = [];
 let shotlist = [];
-let setlist = [];
-let proplist = [];
-let audiolist = [];
 
 let page = 'dashboard', csDay = 1, schDay = 1, mSection = null, editId = null;
 let _mq='',_mie='',_mdn='',_mday='';
-let _pq='',_ploc='',_pstatus='';
 
-// ── SETUP ─────────────────────────────────────────────────────
+// ==================== FIREBASE CONFIG ====================
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyBMYN3kIkHQyYza0kV3T6f2j7Ftt-8UdP4",
   authDomain: "luruh-dalam-noda.firebaseapp.com",
@@ -421,46 +353,104 @@ function tryAutoConnect() {
     useFirebase = true;
 
     auth.onAuthStateChanged(async user => {
-      if (!user) { showAuthScreen(); return; }
+      if (!user) {
+        showAuthScreen();
+        return;
+      }
       currentUser = user;
       db.ref(`users/${user.uid}`).once('value', snap => {
         const userData = snap.val();
         if (!userData) {
           db.ref(`users/${user.uid}`).set({ email: user.email, name: user.displayName || user.email.split('@')[0], dept: '', status: 'pending', createdAt: Date.now() });
+          currentUserData = {status:'pending'};
+          showPendingScreen();
+        } else if (userData.status === 'pending') {
           currentUserData = userData;
           showPendingScreen();
-        } else if (userData.status === 'pending') { currentUserData = userData; showPendingScreen();
         } else if (userData.status === 'approved' || userData.status === 'admin') {
-          currentUserData = userData; isAdmin = userData.status === 'admin';
-          hideAuthScreens(); initListeners(); setStatus('online'); updateAdminUI();
-        } else { showError('auth-err', 'Aksesmu ditolak oleh admin.'); auth.signOut(); }
+          currentUserData = userData;
+          isAdmin = userData.status === 'admin';
+          hideAuthScreens();
+          initListeners();
+          setStatus('online');
+          updateAdminUI();
+        } else {
+          showError('auth-err', 'Aksesmu ditolak oleh admin.');
+          auth.signOut();
+        }
       });
     });
-  } catch(e) { console.error('Firebase init error:', e); setStatus('offline'); showToast('Gagal konek Firebase.', 'error'); }
+  } catch(e) {
+    console.error('Firebase init error:', e);
+    setStatus('offline');
+    showToast('Gagal konek Firebase.', 'error');
+    loadDefaults();
+  }
 }
 
 function initListeners() {
-  const listen = (path, setter) => { db.ref(path).on('value', snap => { const val = snap.val(); setter(val ? Object.entries(val).map(([k,v]) => ({...v, id: k})) : []); render(); }); };
-  db.ref('proj').on('value', snap => { if(snap.val()) { proj = snap.val(); document.getElementById('sb-proj').textContent = proj.title; render(); } });
+  const listen = (path, setter) => {
+    db.ref(path).on('value', snap => {
+      const val = snap.val();
+      setter(val ? Object.entries(val).map(([k,v]) => ({...v, id: k})) : []);
+      render();
+    });
+  };
+  db.ref('proj').on('value', snap => {
+    if(snap.val()) { proj = snap.val(); document.getElementById('sb-proj').textContent = proj.title; render(); }
+  });
   listen('scenes', v => { scenes = v; });
   listen('schedules', v => { schedules = v; });
   listen('callsheets', v => { callsheets = v; });
   listen('shotlist', v => { shotlist = v; });
-  listen('setlist', v => { setlist = v; });
-  listen('proplist', v => { proplist = v; });
-  listen('audiolist', v => { audiolist = v; });
 }
 
-function saveProj(data) { if (useFirebase) { setSaving(); db.ref('proj').set(data).then(setLive); } else { proj = data; render(); } }
-function saveItem(collection, data) {
-  if (useFirebase) { setSaving(); if (data.id && data.id !== '') { const id = data.id; const d = {...data}; delete d.id; db.ref(`${collection}/${id}`).update(d).then(setLive); } else { db.ref(collection).push(data).then(setLive); } } 
-  else { let arr; let setter; if(collection==='scenes') { arr=scenes; setter=v=>scenes=v; } else if(collection==='schedules') { arr=schedules; setter=v=>schedules=v; } else if(collection==='callsheets') { arr=callsheets; setter=v=>callsheets=v; } else if(collection==='shotlist') { arr=shotlist; setter=v=>shotlist=v; } else if(collection==='setlist') { arr=setlist; setter=v=>setlist=v; } else if(collection==='proplist') { arr=proplist; setter=v=>proplist=v; } else if(collection==='audiolist') { arr=audiolist; setter=v=>audiolist=v; } else return;
-    if (data.id) { const i = arr.findIndex(x=>x.id===data.id); arr[i] = data; setter([...arr]); } else { data.id = 'local_'+Date.now(); arr.push(data); setter([...arr]); } render(); }
+function saveProj(data) {
+  if (useFirebase) { setSaving(); db.ref('proj').set(data).then(setLive); }
+  else { proj = data; render(); }
 }
-function deleteItem(collection, id) { if (useFirebase) { setSaving(); db.ref(`${collection}/${id}`).remove().then(setLive); } else { if(collection==='scenes') scenes=scenes.filter(x=>x.id!==id); else if(collection==='schedules') schedules=schedules.filter(x=>x.id!==id); else if(collection==='callsheets') callsheets=callsheets.filter(x=>x.id!==id); else if(collection==='shotlist') shotlist=shotlist.filter(x=>x.id!==id); else if(collection==='setlist') setlist=setlist.filter(x=>x.id!==id); else if(collection==='proplist') proplist=proplist.filter(x=>x.id!==id); else if(collection==='audiolist') audiolist=audiolist.filter(x=>x.id!==id); render(); } }
+
+function saveItem(collection, data) {
+  if (useFirebase) {
+    setSaving();
+    if (data.id && data.id !== '') {
+      const id = data.id;
+      const d = {...data}; delete d.id;
+      db.ref(`${collection}/${id}`).update(d).then(setLive);
+    } else {
+      db.ref(collection).push(data).then(setLive);
+    }
+  } else {
+    if(collection==='scenes') { if(data.id) { const i = scenes.findIndex(x=>x.id===data.id); scenes[i] = data; } else { data.id = 'local_'+Date.now(); scenes.push(data); } render(); }
+    else if(collection==='schedules') { if(data.id) { const i = schedules.findIndex(x=>x.id===data.id); schedules[i] = data; } else { data.id = 'local_'+Date.now(); schedules.push(data); } render(); }
+    else if(collection==='callsheets') { if(data.id) { const i = callsheets.findIndex(x=>x.id===data.id); callsheets[i] = data; } else { data.id = 'local_'+Date.now(); callsheets.push(data); } render(); }
+    else if(collection==='shotlist') { if(data.id) { const i = shotlist.findIndex(x=>x.id===data.id); shotlist[i] = data; } else { data.id = 'local_'+Date.now(); shotlist.push(data); } render(); }
+  }
+}
+
+function deleteItem(collection, id) {
+  if (useFirebase) { setSaving(); db.ref(`${collection}/${id}`).remove().then(setLive); }
+  else {
+    if(collection==='scenes') scenes=scenes.filter(x=>x.id!==id);
+    else if(collection==='schedules') schedules=schedules.filter(x=>x.id!==id);
+    else if(collection==='callsheets') callsheets=callsheets.filter(x=>x.id!==id);
+    else if(collection==='shotlist') shotlist=shotlist.filter(x=>x.id!==id);
+    render();
+  }
+}
+
+function loadDefaults() {
+  scenes = [{id:'s1',sceneNo:1,ie:'E',dn:'D',pages:'1/4',set:'TERAS RUMAH MICHAEL',desc:'Michael duduk di teras sehabis lari pagi.',char:'Michael',makeup:'Keringat',wardrobe:'Baju olahraga',prop:'Botol minum',sfx:'',audio:'',notes:'',day:1}];
+  schedules = [{id:'sch1',day:1,date:'01/07/2025',time:'08.00–09.00',sceneId:'s1',shot:'8',page:'1 5/8',loc:'TERAS RUMAH',action:'Michael duduk di teras',talent:'MICHAEL',extras:'',cont:'FREE',notes:''}];
+  callsheets = [{id:'cs1',day:1,label:'DAY 1 OFF 10',date:'TUESDAY, 01 JULY 2025',crewCall:'07.00 WIB',preCall:'06.30 WIB',breakfast:'07.00 WIB',camRoll:'08.30 WIB',lunch:'12.00 WIB',wrap:'',weather:'30° Hi, 24° Low',weatherNote:'CHANCE OF RAIN 20%',setNotes:'1. Dilarang menggeser barang tanpa seizin tuan rumah.\n2. Jagalah kebersihan.'}];
+  render();
+}
 
 function setStatus(s) {
-  const dot = document.getElementById('sb-dot'); const txt = document.getElementById('sb-status-text'); const sdot = document.getElementById('sync-dot'); const stxt = document.getElementById('sync-text');
+  const dot = document.getElementById('sb-dot');
+  const txt = document.getElementById('sb-status-text');
+  const sdot = document.getElementById('sync-dot');
+  const stxt = document.getElementById('sync-text');
   if(dot) dot.className = 'sb-dot ' + s;
   if(sdot) sdot.className = 'sync-dot ' + (s==='online'?'live':s==='saving'?'saving':'');
   if(s==='online'){if(txt)txt.textContent='Real-time aktif';if(stxt)stxt.textContent='Live';}
@@ -472,28 +462,81 @@ function setLive(){setTimeout(()=>setStatus('online'),600);}
 function showToast(msg, type='') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'show ' + type; setTimeout(() => t.className = '', 2800); }
 window.showToast = showToast;
 
-// ── AUTH UI ───────────────────────────────────────────────────
+// ==================== AUTH UI ====================
 let authMode = 'login';
-window.switchAuthTab = function(mode) { authMode = mode; document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('on', (i===0&&mode==='login')||(i===1&&mode==='register'))); document.getElementById('auth-title').textContent = mode === 'login' ? 'Masuk ke Dashboard' : 'Daftar Akun Baru'; document.getElementById('auth-sub').textContent = mode === 'login' ? 'Login dengan email yang sudah disetujui admin.' : 'Daftar dulu, admin akan review dan approve aksesmu.'; document.getElementById('auth-btn').textContent = mode === 'login' ? 'Masuk' : 'Kirim Permintaan'; document.getElementById('auth-name').style.display = mode === 'register' ? 'block' : 'none'; document.getElementById('auth-dept-wrap').style.display = mode === 'register' ? 'block' : 'none'; hideMsg(); };
-window.doAuth = async function() { const email = document.getElementById('auth-email').value.trim(); const pass = document.getElementById('auth-pass').value.trim(); const name = document.getElementById('auth-name').value.trim(); const dept = document.getElementById('auth-dept').value.trim(); if (!email || !pass) { showError('auth-err','Isi email dan password dulu.'); return; } const btn = document.getElementById('auth-btn'); btn.textContent = '...'; btn.disabled = true; try { if (authMode === 'login') { await auth.signInWithEmailAndPassword(email, pass); } else { if (!name) { showError('auth-err','Isi nama lengkap dulu.'); btn.textContent='Kirim Permintaan'; btn.disabled=false; return; } const cred = await auth.createUserWithEmailAndPassword(email, pass); await cred.user.updateProfile({ displayName: name }); await db.ref(`users/${cred.user.uid}`).set({ email, name, dept, status: 'pending', createdAt: Date.now() }); showAuthScreen(); showMsg('auth-ok', `Permintaan dikirim! Tunggu persetujuan admin.`); } } catch(e) { const msgs = { 'auth/user-not-found':'Email tidak ditemukan.', 'auth/wrong-password':'Password salah.', 'auth/email-already-in-use':'Email sudah terdaftar.', 'auth/weak-password':'Password minimal 6 karakter.', 'auth/invalid-email':'Format email tidak valid.', 'auth/invalid-credential':'Email atau password salah.' }; showError('auth-err', msgs[e.code] || e.message); } btn.textContent = authMode==='login'?'Masuk':'Kirim Permintaan'; btn.disabled = false; };
+
+window.switchAuthTab = function(mode) {
+  authMode = mode;
+  document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('on', (i===0&&mode==='login')||(i===1&&mode==='register')));
+  document.getElementById('auth-title').textContent = mode === 'login' ? 'Masuk ke Dashboard' : 'Daftar Akun Baru';
+  document.getElementById('auth-sub').textContent = mode === 'login' ? 'Login dengan email yang sudah disetujui admin.' : 'Daftar dulu, admin akan review dan approve aksesmu.';
+  document.getElementById('auth-btn').textContent = mode === 'login' ? 'Masuk' : 'Kirim Permintaan';
+  document.getElementById('auth-name').style.display = mode === 'register' ? 'block' : 'none';
+  document.getElementById('auth-dept-wrap').style.display = mode === 'register' ? 'block' : 'none';
+  hideMsg();
+};
+
+window.doAuth = async function() {
+  const email = document.getElementById('auth-email').value.trim();
+  const pass = document.getElementById('auth-pass').value.trim();
+  const name = document.getElementById('auth-name').value.trim();
+  const dept = document.getElementById('auth-dept').value.trim();
+  if (!email || !pass) { showError('auth-err','Isi email dan password dulu.'); return; }
+  const btn = document.getElementById('auth-btn');
+  btn.textContent = '...'; btn.disabled = true;
+  try {
+    if (authMode === 'login') {
+      await auth.signInWithEmailAndPassword(email, pass);
+    } else {
+      if (!name) { showError('auth-err','Isi nama lengkap dulu.'); btn.textContent='Kirim Permintaan'; btn.disabled=false; return; }
+      const cred = await auth.createUserWithEmailAndPassword(email, pass);
+      await cred.user.updateProfile({ displayName: name });
+      await db.ref(`users/${cred.user.uid}`).set({ email, name, dept, status: 'pending', createdAt: Date.now() });
+      showAuthScreen();
+      showMsg('auth-ok', `Permintaan dikirim! Tunggu persetujuan admin.`);
+    }
+  } catch(e) {
+    const msgs = { 'auth/user-not-found':'Email tidak ditemukan.', 'auth/wrong-password':'Password salah.', 'auth/email-already-in-use':'Email sudah terdaftar.', 'auth/weak-password':'Password minimal 6 karakter.', 'auth/invalid-email':'Format email tidak valid.', 'auth/invalid-credential':'Email atau password salah.' };
+    showError('auth-err', msgs[e.code] || e.message);
+  }
+  btn.textContent = authMode==='login'?'Masuk':'Kirim Permintaan';
+  btn.disabled = false;
+};
+
 window.doLogout = function() { if(auth) auth.signOut(); showAuthScreen(); };
 function showAuthScreen() { document.getElementById('auth-screen').classList.remove('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
 function showPendingScreen() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.add('show'); }
 function hideAuthScreens() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
-function showError(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
-function showMsg(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
-function hideMsg() { ['auth-err','auth-ok'].forEach(id=>document.getElementById(id).classList.remove('show')); }
-function updateAdminUI() { const adminBtn = document.getElementById('sb-admin-btn'); const nameEl = document.getElementById('sb-user-name'); if(adminBtn) adminBtn.style.display = isAdmin ? 'flex' : 'none'; if(nameEl && currentUserData) nameEl.textContent = currentUserData.name || currentUser?.email || ''; if(isAdmin) watchPendingUsers(); }
-function watchPendingUsers() { db.ref('users').on('value', snap => { const users = snap.val() || {}; const pending = Object.values(users).filter(u => u.status === 'pending').length; const badge = document.getElementById('pending-count'); if(badge) { badge.textContent = pending; badge.style.display = pending > 0 ? 'inline' : 'none'; } }); }
+function showError(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),3000); }
+function showMsg(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),3000); }
+function hideMsg() { ['auth-err','auth-ok'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('show');}); }
 
-// ── NAVIGATION ────────────────────────────────────────────────
+function updateAdminUI() {
+  const adminBtn = document.getElementById('sb-admin-btn');
+  const nameEl = document.getElementById('sb-user-name');
+  if(adminBtn) adminBtn.style.display = isAdmin ? 'flex' : 'none';
+  if(nameEl && currentUserData) nameEl.textContent = currentUserData.name || currentUser?.email || '';
+  if(isAdmin) watchPendingUsers();
+}
+
+function watchPendingUsers() {
+  db.ref('users').on('value', snap => {
+    const users = snap.val() || {};
+    const pending = Object.values(users).filter(u => u.status === 'pending').length;
+    const badge = document.getElementById('pending-count');
+    if(badge) { badge.textContent = pending; badge.style.display = pending > 0 ? 'inline' : 'none'; }
+  });
+}
+
+// ==================== NAVIGATION ====================
 window.go = function(p) {
   page = p;
   document.querySelectorAll('.sb-item').forEach(n=>n.classList.remove('on'));
-  const idx = {dashboard:0,master:1,schedule:2,callsheet:3,talent:4,location:5,shotlist:6,setlist:7,proplist:8,audiolist:9,admin:10};
-  document.querySelectorAll('.sb-item')[idx[p]]?.classList.add('on');
-  const labels = {dashboard:'Dashboard',master:'Master Breakdown',schedule:'Shooting Schedule',callsheet:'Call Sheet',talent:'Talent Breakdown',location:'Location Breakdown',shotlist:'Shot List',setlist:'Set & Wardrobe',proplist:'Prop List',audiolist:'Audio List',admin:'Panel Admin'};
-  const subs = {dashboard:'Ringkasan produksi',master:'Semua scene dan elemen produksi',schedule:'Jadwal syuting per hari',callsheet:'Call sheet harian crew',talent:'Daftar talent — otomatis dari Master Breakdown',location:'Pemetaan lokasi — otomatis dari Master Breakdown',shotlist:'Shot list departemen kamera',setlist:'Set shooting dan wardrobe per karakter',proplist:'Daftar properti per lokasi',audiolist:'Audio list departemen suara',admin:'Kelola akses anggota tim'};
+  const idx = {dashboard:0,master:1,schedule:2,callsheet:3,talent:4,location:5,shotlist:6,admin:7};
+  const items = document.querySelectorAll('.sb-item');
+  if(items[idx[p]]) items[idx[p]].classList.add('on');
+  const labels = {dashboard:'Dashboard',master:'Master Breakdown',schedule:'Shooting Schedule',callsheet:'Call Sheet',talent:'Talent Breakdown',location:'Location Breakdown',shotlist:'Shot List',admin:'Panel Admin'};
+  const subs = {dashboard:'Ringkasan produksi',master:'Semua scene dan elemen produksi',schedule:'Jadwal syuting per hari',callsheet:'Call sheet harian crew',talent:'Daftar talent',location:'Pemetaan lokasi',shotlist:'Shot list kamera',admin:'Kelola akses anggota tim'};
   document.getElementById('tb-page').textContent = labels[p]||p;
   document.getElementById('tb-crumb').textContent = subs[p]||'';
   const acts = {
@@ -501,21 +544,17 @@ window.go = function(p) {
     schedule:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('sched')">+ Entry</button>`,
     callsheet:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div>`,
     shotlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('shot')">+ Tambah Shot</button>`,
-    audiolist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('audio')">+ Tambah Entry</button>`,
-    setlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('setitem')">+ Tambah</button>`,
-    proplist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('prop')">+ Tambah Prop</button>`,
   };
   document.getElementById('tb-actions').innerHTML = acts[p] || `<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div>`;
   updateBottomNav(p);
   render();
 };
 
-// ── CHIPS ─────────────────────────────────────────────────────
+// ==================== CHIPS ====================
 function ie(v){return `<span class="chip ${v==='I'?'chip-blue':'chip-teal'}">${v==='I'?'INT':'EXT'}</span>`;}
 function dn(v){return `<span class="chip ${v==='D'?'chip-amber':'chip-dark'}">${v==='D'?'DAY':'NIGHT'}</span>`;}
-function statusChip(s) { const map = {siap:'chip-green',proses:'chip-amber',cari:'chip-dark',done:'chip-green'}; const label = {siap:'Siap',proses:'Proses',cari:'Dicari',done:'Done'}; if(!s) return '—'; return `<span class="chip ${map[s]||'chip-gray'}">${label[s]||s}</span>`; }
 
-// ── RENDER FUNCTIONS ──────────────────────────────────────────
+// ==================== RENDER ====================
 function render() {
   document.getElementById('sb-proj').textContent = proj.title;
   const c = document.getElementById('content');
@@ -526,35 +565,45 @@ function render() {
   else if(page==='talent') c.innerHTML = rTalent();
   else if(page==='location') c.innerHTML = rLoc();
   else if(page==='shotlist') c.innerHTML = rShotList();
-  else if(page==='audiolist') c.innerHTML = rAudioList();
-  else if(page==='setlist') c.innerHTML = rSetList();
-  else if(page==='proplist') c.innerHTML = rPropList();
   else if(page==='admin') { c.innerHTML = rAdmin(); if(isAdmin) loadAdminData(); }
 }
 
 function rDash() {
   const locs = [...new Set(scenes.map(s=>s.set))];
   const talent = getAllTalent();
-  return `<div class="proj-banner"><div><div style="font-size:15px;font-weight:700">${proj.title}</div><div style="font-size:11.5px;color:var(--text3);margin-top:2px">Sutradara: ${proj.director||'—'} &nbsp;·&nbsp; Produser: ${proj.producer||'—'} &nbsp;·&nbsp; DOP: ${proj.dop||'—'}</div></div><button class="btn btn-sm" onclick="openProjModal()">Edit Info</button></div>
+  return `<div class="proj-banner"><div><div style="font-size:15px;font-weight:700">${proj.title}</div><div style="font-size:11.5px;color:var(--text3);margin-top:2px">Sutradara: ${proj.director||'—'} &nbsp;·&nbsp; Produser: ${proj.producer||'—'}</div></div><button class="btn btn-sm" onclick="openProjModal()">Edit Info</button></div>
     <div class="stat-grid">${[['Total Scene',scenes.length],['Hari Syuting',[...new Set(schedules.map(s=>s.day))].length],['Talent',talent.length],['Lokasi',locs.length],['Call Sheet',callsheets.length]].map(([l,n])=>`<div class="stat"><div class="stat-accent"></div><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('')}</div>
-    <div class="card"><div class="card-head"><span class="card-title">Master Breakdown — Preview</span><button class="btn btn-ghost btn-sm" onclick="go('master')">Lihat semua →</button></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th></tr></thead><tbody>${scenes.slice(0,5).map(s=>`<tr><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td></tr>`).join('')}${!scenes.length?`<tr><td colspan="7"><div class="empty">Belum ada scene.</div></td></tr>`:''}</tbody></table></div></div>`;
+    <div class="card"><div class="card-head"><span class="card-title">Master Breakdown — Preview</span><button class="btn btn-ghost btn-sm" onclick="go('master')">Lihat semua →</button></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>SC</th><th>I/E</th><th>D/N</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th></tr></thead><tbody>${scenes.slice(0,5).map(s=>`<tr><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td>${s.set}<td><td style="color:var(--text2);max-width:180px">${s.desc}</td><td>${s.char}</td></tr>`).join('')}${!scenes.length?`<tr><td colspan="7"><div class="empty">Belum ada scene.</div></td></tr>`:''}</tbody></table></div></div>`;
 }
 
 function rMaster() {
-  return `<div class="card"><div class="card-head"><span class="card-title">Master Breakdown — ${proj.title}</span><div class="filter-row"><input class="inp" placeholder="Cari scene..." oninput="fM(this.value)" style="width:180px"><select class="inp" onchange="fMie(this.value)" style="width:90px"><option value="">I/E</option><option>I</option><option>E</option></select><select class="inp" onchange="fMdn(this.value)" style="width:90px"><option value="">D/N</option><option>D</option><option>N</option></select><select class="inp" onchange="fMday(this.value)" style="width:120px"><option value="">Semua Day</option>${[...new Set(scenes.map(s=>s.day).filter(Boolean))].sort((a,b)=>a-b).map(d=>`<option value="${d}">Shoot Day ${d}</option>`).join('')}</select></div></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>MAKEUP</th><th>WARDROBE</th><th>MAIN PROP</th><th>SFX</th><th>AUDIO</th><th>SPECIAL NOTES</th><th></th></tr></thead><tbody id="mtb">${mRows(scenes)}</tbody></table></div></div>`;
+  return `<div class="card"><div class="card-head"><span class="card-title">Master Breakdown — ${proj.title}</span><div class="filter-row"><input class="inp" placeholder="Cari scene..." oninput="fM(this.value)" style="width:180px"><select class="inp" onchange="fMie(this.value)" style="width:90px"><option value="">I/E</option><option>I</option><option>E</option></select><select class="inp" onchange="fMdn(this.value)" style="width:90px"><option value="">D/N</option><option>D</option><option>N</option></select></div></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>WARDROBE</th><th>MAIN PROP</th><th>NOTES</th><th></th></tr></thead><tbody id="mtb">${mRows(scenes)}</tbody></table></div></div>`;
 }
-function mRows(arr) { if(!arr.length) return `<tr><td colspan="16"><div class="empty">Belum ada scene. Klik <strong>+ Tambah Scene</strong>.</div></td></tr>`; return arr.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td><span class="chip chip-blue" style="font-size:10px">Day ${s.day||'—'}</span></td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td><td>${s.makeup||'—'}</td><td>${s.wardrobe||'—'}</td><td>${s.prop||'—'}</td><td>${s.sfx||'—'}</td><td>${s.audio||'—'}</td><td>${s.notes||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editScene('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delScene('${s.id}')">Hapus</button></td></tr>`).join(''); }
-window.fM = function(q){_mq=q;applyMF();} window.fMie = function(v){_mie=v;applyMF();} window.fMdn = function(v){_mdn=v;applyMF();} window.fMday = function(v){_mday=v;applyMF();}
-function applyMF() { const q = _mq.toLowerCase().trim(); const f = scenes.filter(s => (!q || String(s.sceneNo) === q || s.set.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q)) && (!_mie || s.ie === _mie) && (!_mdn || s.dn === _mdn) && (!_mday || String(s.day) === String(_mday))); const el = document.getElementById('mtb'); if(el) el.innerHTML = mRows(f); }
+
+function mRows(arr) {
+  if(!arr.length) return `<tr><td colspan="13"><div class="empty">Belum ada scene.</div></td></tr>`;
+  return arr.map((s,i)=>`<tr><td class="mono">${i+1}</td><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td><span class="chip chip-blue">Day ${s.day||'—'}</span></td><td style="font-weight:600">${s.set}</td><td style="color:var(--text2)">${s.desc}</td><td style="font-weight:500">${s.char}<td><td style="color:var(--text2)">${s.wardrobe||'—'}</td><td style="color:var(--text2)">${s.prop||'—'}</td><td style="color:var(--text2)">${s.notes||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editScene('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delScene('${s.id}')">Hapus</button></td></tr>`).join('');
+}
+
+window.fM = function(q){_mq=q;applyMF();}
+window.fMie = function(v){_mie=v;applyMF();}
+window.fMdn = function(v){_mdn=v;applyMF();}
+function applyMF() {
+  const q = _mq.toLowerCase().trim();
+  const f = scenes.filter(s => (!q || String(s.sceneNo) === q || s.set.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q)) && (!_mie || s.ie === _mie) && (!_mdn || s.dn === _mdn));
+  const el = document.getElementById('mtb');
+  if(el) el.innerHTML = mRows(f);
+}
 
 function rSched() {
   const days = [...new Set(schedules.map(s=>s.day))].sort((a,b)=>a-b);
   if(!days.includes(schDay)) schDay = days[0]||1;
   const rows = schedules.filter(s=>s.day===schDay);
-  const cs = callsheets.find(c=>c.day===schDay);
-  return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;"><div class="day-tabs">${days.map(d=>`<div class="day-tab${d===schDay?' on':''}" onclick="selSch(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada hari syuting</span>':''}</div><span style="font-size:11px;color:var(--text3)" class="mono">${cs?.date||''}</span></div>
-    <div class="card"><div class="card-head"><span class="card-title">Shooting Schedule — Hari ${schDay}</span><span style="font-size:11px;color:var(--text3)">${rows.length} entry</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ESTIMATE TIME</th><th>SCENE</th><th>SHOT</th><th>PAGE</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>EXTRAS</th><th>CONT</th><th>NOTES</th><th></th></tr></thead><tbody>${rows.length?rows.map(e=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td class="mono">${e.shot}</td><td class="mono">${e.page}</td><td style="white-space:nowrap">${e.loc}</td><td style="max-width:180px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}<td><td style="color:var(--text2)">${e.extras||'—'}</td><td><span class="chip chip-green">${e.cont||'FREE'}</span></td><td style="color:var(--text2)">${e.notes||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada entry untuk hari ini.</div></td></tr>`}</tbody></table></div></div>`;
+  return `<div class="day-tabs">${days.map(d=>`<div class="day-tab${d===schDay?' on':''}" onclick="selSch(${d})">Hari ${d}</div>`).join('')}</div>
+    <div class="card"><div class="card-head"><span class="card-title">Shooting Schedule — Hari ${schDay}</span></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>TIME</th><th>SCENE</th><th>SHOT</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>NOTES</th><th></th></tr></thead><tbody>${rows.length?rows.map(e=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td class="mono">${e.shot}</td><td style="white-space:nowrap">${e.loc}<td><td style="max-width:180px">${e.action}</td><td style="font-weight:600">${e.talent}<td><td style="color:var(--text2)">${e.notes||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`}).join(''):`<tr><td colspan="8"><div class="empty">Belum ada entry.</div></td></tr>`}</tbody></table></div></div>`;
 }
 window.selSch = function(d){schDay=d;render();}
 
@@ -566,124 +615,145 @@ function rCS() {
   const rows = schedules.filter(s=>s.day===csDay);
   
   return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
-      <div class="day-tabs">${days.map(d=>`<div class="day-tab${d===csDay?' on':''}" onclick="selCS(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada call sheet</span>':''}</div>
+      <div class="day-tabs">${days.map(d=>`<div class="day-tab${d===csDay?' on':''}" onclick="selCS(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span>Belum ada call sheet</span>':''}</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        ${cs?`<button class="btn btn-primary btn-sm" onclick="openCSAddScene()"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 14 14" style="margin-right:4px"><path d="M7 1v12M1 7h12"/></svg>+ Tambah Scene</button><button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
+        ${cs?`<button class="btn btn-primary btn-sm" onclick="openCSAddScene()">+ Tambah Scene</button><button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
       </div>
     </div>
     ${cs?`<div class="cs-doc">
       <div class="cs-top">
-        <div class="cs-col"><div class="mono" style="font-size:9px;font-weight:600;letter-spacing:0.14em;color:var(--text3);margin-bottom:12px">DOCUMENTARY FILM PRODUCTION</div>${[['PRODUCER',proj.producer||'—'],['DIRECTOR',proj.director||'—'],['DOP',proj.dop||'—'],['SOUND RECORD',proj.soundRec||'—'],['1ST ASST. DIR',proj.firstAD||'—']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v">${v}</span></div>`).join('')}</div>
-        <div class="cs-col" style="display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font-size:14px;font-weight:700;letter-spacing:0.06em;font-family:'DM Mono',monospace">CALL SHEET</span><span style="font-size:10px;color:var(--text3);margin-top:2px;letter-spacing:0.04em">Crew Call On Location</span><div class="cs-big">${cs.crewCall}</div><div style="font-size:10px;color:var(--text3);letter-spacing:0.06em;margin-bottom:3px;font-family:'DM Mono',monospace">LOCATION & BASECAMP</div><div style="font-size:12.5px;font-weight:600;text-align:center">${proj.location||'—'}</div><div style="font-size:11px;color:var(--text2);margin-top:3px;text-align:center">${proj.basecamp||'—'}</div><div style="font-size:10px;color:var(--text3);margin-top:10px;font-family:'DM Mono',monospace">NEAREST HOSPITAL</div><div style="font-size:11px;text-align:center;margin-top:2px">${proj.hospital||'—'}</div></div>
-        <div class="cs-col"><div class="mono" style="font-size:10px;color:var(--text3);letter-spacing:0.08em">${cs.label}</div><div style="font-size:13px;font-weight:700;margin-top:2px;margin-bottom:12px">${cs.date}</div>${[['PRE CALL PRODUCTION',cs.preCall],['BREAKFAST',cs.breakfast],['1ST CAM ROLL',cs.camRoll],['LUNCH',cs.lunch],['WRAP',cs.wrap||'TBD']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v mono">${v}</span></div>`).join('')}<div class="weather-box"><div style="font-size:18px;font-weight:700;font-family:'DM Mono',monospace">${cs.weather}</div><div style="font-size:10px;color:var(--text3);margin-top:3px">${cs.weatherNote}</div></div></div>
+        <div class="cs-col"><div class="mono" style="font-size:9px;font-weight:600;margin-bottom:12px">DOCUMENTARY FILM PRODUCTION</div>${[['PRODUCER',proj.producer||'—'],['DIRECTOR',proj.director||'—'],['DOP',proj.dop||'—'],['SOUND RECORD',proj.soundRec||'—'],['1ST ASST. DIR',proj.firstAD||'—']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v">${v}</span></div>`).join('')}</div>
+        <div class="cs-col" style="text-align:center"><div class="cs-title-big" style="font-size:14px;font-weight:700">CALL SHEET</div><div class="cs-big">${cs.crewCall}</div><div>LOCATION: ${proj.location||'—'}</div><div>BASECAMP: ${proj.basecamp||'—'}</div><div>HOSPITAL: ${proj.hospital||'—'}</div></div>
+        <div class="cs-col"><div class="mono" style="font-size:10px">${cs.label}</div><div style="font-weight:700">${cs.date}</div>${[['PRE CALL',cs.preCall],['BREAKFAST',cs.breakfast],['1ST CAM ROLL',cs.camRoll],['LUNCH',cs.lunch],['WRAP',cs.wrap||'TBD']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v">${v}</span></div>`).join('')}<div class="weather-box">${cs.weather}<br><small>${cs.weatherNote}</small></div></div>
       </div>
       ${cs.setNotes?`<div class="cs-notes-bar">${cs.setNotes.replace(/\n/g,'<br>')}</div>`:''}
-      <div class="tbl-wrap"><table class="tbl" style="border-radius:0">
-        <thead><tr><th>NO</th><th>TIME</th><th>BABAK/SC</th><th>I/E</th><th>D/N</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th>SCRIPT</th><th></th></tr></thead>
-        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}<td><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`;}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada scene. Klik tombol <strong>+ Tambah Scene</strong> di atas untuk menambahkan jadwal syuting ke Call Sheet ini.</div></td></tr>`}</tbody>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>NO</th><th>TIME</th><th>SCENE</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th></th></tr></thead>
+        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono">${i+1}</td><td class="mono">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}<tr><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px">${e.action}</td><td style="font-weight:600">${e.talent}</td><td><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`}).join(''):`<tr><td colspan="8"><div class="empty">Belum ada scene. Klik <strong>+ Tambah Scene</strong>.</div></td></tr>`}</tbody>
       </table></div>
       <div class="cs-footer">THANK YOU FOR TODAY, SEE U NEXT DAY</div>
-    </div>`:`<div class="empty" style="padding:60px">Belum ada call sheet. Klik <strong>+ Hari</strong> di menu atas untuk membuat call sheet baru.</div>`}`;
+    </div>`:`<div class="empty">Belum ada call sheet. Klik <strong>+ Hari</strong> di menu atas.</div>`}`;
 }
+
 window.selCS = function(d){csDay=d;render();}
-window.delCallSheet = function(id) { if(confirm('Hapus call sheet ini? Semua jadwal untuk hari ini juga akan terhapus.')) { deleteItem('callsheets',id); showToast('Call sheet dihapus'); } };
-// Fungsi untuk membuka modal tambah scene dengan day yang sudah dipilih
+window.delCallSheet = function(id) { if(confirm('Hapus call sheet ini?')) { deleteItem('callsheets',id); showToast('Call sheet dihapus'); } };
 window.openCSAddScene = function() {
   mSection='sched'; editId=null;
-  document.getElementById('m-title').textContent = `Tambah Scene untuk Call Sheet Hari ${csDay}`;
-  // Ambil form schedule dengan preset day = csDay
+  document.getElementById('m-title').textContent = `Tambah Scene untuk Hari ${csDay}`;
   const opts = scenes.map(sc=>`<option value="${sc.id}">Sc.${sc.sceneNo} — ${sc.set}</option>`).join('');
   document.getElementById('m-body').innerHTML = `
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${csDay}"></div>
-      <div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${new Date().toLocaleDateString('id-ID')}"></div>
-    </div>
-    <div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value=""></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Hari</label><input class="fi" id="f-dy" type="number" min="1" value="${csDay}"></div><div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${new Date().toLocaleDateString('id-ID')}"></div></div>
+    <div class="fg"><label class="fl">Waktu</label><input class="fi" id="f-tm" placeholder="08.00–09.00"></div>
     <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value=""></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value=""></div></div>
-    <div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value=""></div>
-    <div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac" placeholder="Deskripsi aksi..."></textarea></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value=""></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value=""></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="FREE"></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value=""></div></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh"></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg"></div></div>
+    <div class="fg"><label class="fl">Location</label><input class="fi" id="f-lc"></div>
+    <div class="fg"><label class="fl">Action</label><textarea class="fi" id="f-ac"></textarea></div>
+    <div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl"></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex"></div></div>
+    <div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt"></div>
   `;
   document.getElementById('mwrap').classList.add('open');
 };
 
-// CRUD functions
-function editScene(id) { const d=scenes.find(x=>x.id===id); mSection='scene'; editId=id; document.getElementById('m-title').textContent='Edit Scene'; document.getElementById('m-body').innerHTML=formFor('scene',d); document.getElementById('mwrap').classList.add('open'); }
-function editSched(id) { const d=schedules.find(x=>x.id===id); mSection='sched'; editId=id; document.getElementById('m-title').textContent='Edit Schedule Entry'; document.getElementById('m-body').innerHTML=formFor('sched',d); document.getElementById('mwrap').classList.add('open'); }
-function editCS(id) { const d=callsheets.find(x=>x.id===id); mSection='cs'; editId=id; document.getElementById('m-title').textContent='Edit Call Sheet'; document.getElementById('m-body').innerHTML=formFor('cs',d); document.getElementById('mwrap').classList.add('open'); }
-function delScene(id){if(confirm('Hapus scene ini?')){deleteItem('scenes',id);showToast('Scene dihapus');}}
-function delSched(id){if(confirm('Hapus entry ini?')){deleteItem('schedules',id);showToast('Entry dihapus');}}
-
-// Form generator functions (disamakan dengan yang sebelumnya)
-function formFor(s, d) {
-  if(s==='scene') return `<div class="fg-row3"><div class="fg"><label class="fl">Scene No.</label><input class="fi" id="f-sc" value="${d?.sceneNo||''}"></div><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Pages</label><input class="fi" id="f-pg" value="${esc(d?.pages||'')}"></div><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div></div>
-    <div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div>
-    <div class="fg"><label class="fl">Description</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Character (pisah koma)</label><input class="fi" id="f-ch" value="${esc(d?.char||'')}"></div><div class="fg"><label class="fl">Makeup</label><input class="fi" id="f-mk" value="${esc(d?.makeup||'')}"></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobe||'')}"></div><div class="fg"><label class="fl">Main Prop</label><input class="fi" id="f-pr" value="${esc(d?.prop||'')}"></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Special Effect</label><input class="fi" id="f-sfx" value="${esc(d?.sfx||'')}"></div><div class="fg"><label class="fl">Audio</label><input class="fi" id="f-au" value="${esc(d?.audio||'')}"></div></div>
-    <div class="fg"><label class="fl">Special Notes</label><textarea class="fi" id="f-nt">${d?.notes||''}</textarea></div>`;
-  if(s==='sched') { const opts = scenes.map(sc=>`<option value="${sc.id}"${d?.sceneId===sc.id?' selected':''}>Sc.${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||csDay||1}"></div><div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div></div>
-    <div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value="${esc(d?.time||'')}"></div>
-    <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value="${esc(d?.shot||'')}"></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value="${esc(d?.page||'')}"></div></div>
-    <div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value="${esc(d?.loc||'')}"></div>
-    <div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac">${d?.action||''}</textarea></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value="${esc(d?.talent||'')}"></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value="${esc(d?.extras||'')}"></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="${esc(d?.cont||'FREE')}"></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value="${esc(d?.notes||'')}"></div></div>`; }
-  if(s==='cs') return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day No.</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div><div class="fg"><label class="fl">Label (mis. DAY 1 OFF 10)</label><input class="fi" id="f-lb" value="${esc(d?.label||'')}"></div></div>
-    <div class="fg"><label class="fl">Tanggal (mis. TUESDAY, 01 JULY 2025)</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Crew Call Time</label><input class="fi" id="f-cc" value="${esc(d?.crewCall||'07.00 WIB')}"></div><div class="fg"><label class="fl">Pre Call Production</label><input class="fi" id="f-pc" value="${esc(d?.preCall||'06.30 WIB')}"></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Breakfast</label><input class="fi" id="f-bf" value="${esc(d?.breakfast||'07.00 WIB')}"></div><div class="fg"><label class="fl">1st Cam Roll</label><input class="fi" id="f-cr" value="${esc(d?.camRoll||'08.30 WIB')}"></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Lunch</label><input class="fi" id="f-ln" value="${esc(d?.lunch||'12.00 WIB')}"></div><div class="fg"><label class="fl">Wrap</label><input class="fi" id="f-wr" value="${esc(d?.wrap||'')}"></div></div>
-    <div class="fg-row"><div class="fg"><label class="fl">Weather</label><input class="fi" id="f-wt" value="${esc(d?.weather||'')}"></div><div class="fg"><label class="fl">Weather Note</label><input class="fi" id="f-wn" value="${esc(d?.weatherNote||'')}"></div></div>
-    <div class="fg"><label class="fl">Set Notes</label><textarea class="fi" id="f-sn" style="min-height:90px">${d?.setNotes||''}</textarea></div>`;
-  return '';
+function getAllTalent() {
+  const m={};
+  scenes.forEach(s=>{
+    s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{
+      if(!m[c]) m[c]={name:c,scenes:[]};
+      m[c].scenes.push(s.sceneNo);
+    });
+  });
+  return Object.values(m);
 }
 
-// Simpan semua data
-window.saveM = function() {
-  if(mSection==='proj') { const data={title:v('f0'),producer:v('f1'),director:v('f2'),dop:v('f3'),soundRec:v('f4'),firstAD:v('f5'),location:v('f6'),basecamp:v('f7'),hospital:v('f8')}; proj = data; saveProj(data); showToast('Project info disimpan', 'success'); }
-  else if(mSection==='scene') { const data={sceneNo:parseInt(v('f-sc'))||scenes.length+1,ie:v('f-ie'),dn:v('f-dn'),pages:v('f-pg'),day:parseInt(v('f-dy'))||1,set:v('f-set'),desc:v('f-desc'),char:v('f-ch'),makeup:v('f-mk'),wardrobe:v('f-wd'),prop:v('f-pr'),sfx:v('f-sfx'),audio:v('f-au'),notes:v('f-nt')}; if(editId) data.id = editId; saveItem('scenes', data); showToast(editId?'Scene diperbarui':'Scene ditambahkan', 'success'); }
-  else if(mSection==='sched') { const selEl = document.getElementById('f-sid'); const data={day:parseInt(v('f-dy'))||1,date:v('f-dt'),time:v('f-tm'),sceneId:selEl?selEl.value:'',shot:v('f-sh'),page:v('f-pg'),loc:v('f-lc'),action:v('f-ac'),talent:v('f-tl'),extras:v('f-ex'),cont:v('f-ct'),notes:v('f-nt')}; if(editId) data.id = editId; else schDay = parseInt(v('f-dy'))||1; saveItem('schedules', data); showToast('Schedule disimpan', 'success'); if(page==='callsheet') csDay = parseInt(v('f-dy'))||1; }
-  else if(mSection==='cs') { const data={day:parseInt(v('f-dy'))||1,label:v('f-lb'),date:v('f-dt'),crewCall:v('f-cc'),preCall:v('f-pc'),breakfast:v('f-bf'),camRoll:v('f-cr'),lunch:v('f-ln'),wrap:v('f-wr'),weather:v('f-wt'),weatherNote:v('f-wn'),setNotes:v('f-sn')}; if(editId) data.id = editId; else csDay = parseInt(v('f-dy'))||1; saveItem('callsheets', data); showToast('Call sheet disimpan', 'success'); }
-  closeM(); if(!useFirebase) render();
-};
-function v(id){const el=document.getElementById(id); return el?el.value.trim():''; }
-function esc(s){return (s||'').replace(/"/g,'&quot;');}
+function rTalent() {
+  const talent = getAllTalent();
+  return `<div class="card"><div class="card-head"><span class="card-title">Talent Breakdown</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>CAST</th><th>SCENE NUMBERS</th><th>TOTAL</th></tr></thead><tbody>${talent.length?talent.map((t,i)=>`<tr><td class="mono">${i+1}</td><td style="font-weight:600">${t.name}</td><td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td><td class="mono">${t.scenes.length}</td></tr>`).join(''):`<tr><td colspan="4"><div class="empty">Belum ada data</div></td></table>`}</tbody></table></div></div>`;
+}
 
-// Fungsi tambahan lainnya (talent, location, shotlist, audiolist, setlist, proplist, admin) disederhanakan agar tidak melebihi batas
-function getAllTalent() { const m={}; scenes.forEach(s=>{ s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{ if(!m[c]) m[c]={name:c,scenes:[],days:new Set()}; m[c].scenes.push(s.sceneNo); schedules.filter(x=>x.sceneId===s.id).forEach(x=>m[c].days.add(x.day)); }); }); return Object.values(m); }
-function rTalent() { const talent = getAllTalent(); return `<div class="card"><div class="card-head"><span class="card-title">Talent Breakdown — ${proj.title}</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>CAST</th><th>SCENE NUMBERS</th><th>TOTAL</th><th>DAYS</th></tr></thead><tbody>${talent.length?talent.map((t,i)=>`<tr><td>${i+1}</td><td style="font-weight:600">${t.name}</td><td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td><td class="mono">${t.scenes.length}</td><td class="mono">${t.days.size}</td></tr>`).join(''):`<td><td colspan="5"><div class="empty">Belum ada data</div></td></tr>`}</tbody></table></div></div>`; }
-function rLoc() { const m={}; scenes.forEach(s=>{ if(!m[s.set]) m[s.set]={set:s.set,ie:s.ie,dn:s.dn,scenes:[]}; m[s.set].scenes.push(s.sceneNo); }); const locs = Object.values(m); return `<div class="card"><div class="card-head"><span class="card-title">Location Breakdown — ${proj.title}</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>LOCATION</th><th>I/E</th><th>D/N</th><th>SCENE NUMBERS</th></tr></thead><tbody>${locs.length?locs.map((l,i)=>`<tr><td>${i+1}</td><td style="font-weight:600">${l.set}</td><td>${ie(l.ie)}</td><td>${dn(l.dn)}<td>${l.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td></tr>`).join(''):`<tr><td colspan="5"><div class="empty">Belum ada data</div></td></tr>`}</tbody></table></div></div>`; }
+function rLoc() {
+  const m={};
+  scenes.forEach(s=>{ if(!m[s.set]) m[s.set]={set:s.set,scenes:[]}; m[s.set].scenes.push(s.sceneNo); });
+  const locs = Object.values(m);
+  return `<div class="card"><div class="card-head"><span class="card-title">Location Breakdown</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>LOCATION</th><th>SCENE NUMBERS</th></tr></thead><tbody>${locs.length?locs.map((l,i)=>`<tr><td class="mono">${i+1}</td><td style="font-weight:600">${l.set}<td>${l.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td></tr>`).join(''):`<tr><td colspan="3"><div class="empty">Belum ada data</div></td></tr>`}</tbody></tr></div></div>`;
+}
 
-// Fungsi untuk Shot List, Audio List, Set List, Prop List (singkat)
-function rShotList() { return `<div class="card"><div class="card-head"><span class="card-title">Shot List</span></div><div class="empty">Data shot list akan ditampilkan di sini</div></div>`; }
-function rAudioList() { return `<div class="card"><div class="card-head"><span class="card-title">Audio List</span></div><div class="empty">Data audio list akan ditampilkan di sini</div></div>`; }
-function rSetList() { return `<div class="card"><div class="card-head"><span class="card-title">Set & Wardrobe</span></div><div class="empty">Data set & wardrobe akan ditampilkan di sini</div></div>`; }
-function rPropList() { return `<div class="card"><div class="card-head"><span class="card-title">Prop List</span></div><div class="empty">Data properti akan ditampilkan di sini</div></div>`; }
-function rAdmin() { if(!isAdmin) return `<div class="empty">Kamu tidak punya akses ke panel admin.</div>`; return `<div class="card"><div class="card-head"><span class="card-title">Kelola Anggota Tim</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NAMA</th><th>EMAIL</th><th>DEPARTEMEN</th><th>STATUS</th><th>AKSI</th></tr></thead><tbody id="admin-tbody"><tr><td colspan="5"><div class="empty">Memuat data anggota...</div></td></tr></tbody></table></div></div>`; }
-function loadAdminData() { db.ref('users').on('value', snap => { const users = snap.val() || {}; const tbody = document.getElementById('admin-tbody'); if(!tbody) return; const entries = Object.entries(users); if(!entries.length) { tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Belum ada anggota.</div></td></tr>`; return; } tbody.innerHTML = entries.map(([uid, u]) => { const isMe = uid === currentUser?.uid; return `<tr><td>${u.name||'—'}</td><td>${u.email}</td><td>${u.dept||'—'}</td><td><span class="chip ${u.status==='approved'?'chip-green':u.status==='pending'?'chip-amber':'chip-dark'}">${u.status||'pending'}</span></td><td>${isMe?'Kamu':u.status==='pending'?`<button class="btn btn-sm" onclick="approveUser('${uid}')">Approve</button>`:''}${u.status!=='rejected'&&!isMe?`<button class="btn btn-sm btn-danger" onclick="rejectUser('${uid}')">Tolak</button>`:''}${u.status==='rejected'?`<button class="btn btn-sm" onclick="approveUser('${uid}')">Restore</button>`:''}${u.status==='approved'&&!isMe?`<button class="btn btn-sm" onclick="makeAdmin('${uid}')">Admin</button>`:''}</td></tr>`; }).join(''); }); }
+function rShotList() {
+  return `<div class="card"><div class="card-head"><span class="card-title">Shot List</span></div><div class="empty">Fitur Shot List akan segera hadir</div></div>`;
+}
+
+function rAdmin() {
+  if(!isAdmin) return `<div class="empty">Kamu tidak punya akses ke panel admin.</div>`;
+  return `<div class="card"><div class="card-head"><span class="card-title">Kelola Anggota Tim</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NAMA</th><th>EMAIL</th><th>STATUS</th><th>AKSI</th></tr></thead><tbody id="admin-tbody"><tr><td colspan="4"><div class="empty">Memuat data...</div></td></tr></tbody></table></div></div>`;
+}
+
+function loadAdminData() {
+  db.ref('users').on('value', snap => {
+    const users = snap.val() || {};
+    const tbody = document.getElementById('admin-tbody');
+    if(!tbody) return;
+    const entries = Object.entries(users);
+    if(!entries.length) { tbody.innerHTML = `<tr><td colspan="4"><div class="empty">Belum ada anggota.</div></td></tr>`; return; }
+    tbody.innerHTML = entries.map(([uid, u]) => {
+      const isMe = uid === currentUser?.uid;
+      return `<tr><td>${u.name||'—'}</td><td>${u.email}<td><span class="chip ${u.status==='approved'?'chip-green':u.status==='pending'?'chip-amber':'chip-dark'}">${u.status||'pending'}</span><td>${isMe?'Kamu':u.status==='pending'?`<button class="btn btn-sm" onclick="approveUser('${uid}')">Approve</button>`:''}${u.status==='approved'&&!isMe?`<button class="btn btn-sm" onclick="makeAdmin('${uid}')">Admin</button>`:''}${u.status!=='rejected'&&!isMe?`<button class="btn btn-sm btn-danger" onclick="rejectUser('${uid}')">Tolak</button>`:''}${u.status==='rejected'?`<button class="btn btn-sm" onclick="approveUser('${uid}')">Restore</button>`:''}</td></tr>`;
+    }).join('');
+  });
+}
 window.approveUser = function(uid) { db.ref(`users/${uid}/status`).set('approved'); showToast('User diapprove'); };
 window.makeAdmin = function(uid) { db.ref(`users/${uid}/status`).set('admin'); showToast('Dijadikan admin'); };
 window.rejectUser = function(uid) { db.ref(`users/${uid}/status`).set('rejected'); showToast('User ditolak'); };
 
-// Bottom nav & mobile
+// ==================== MODAL ====================
+function esc(s){return (s||'').replace(/"/g,'&quot;');}
+window.openProjModal = function() {
+  mSection='proj'; editId=null;
+  document.getElementById('m-title').textContent = 'Edit Project Info';
+  document.getElementById('m-body').innerHTML = `<div class="fg"><label class="fl">Judul Film</label><input class="fi" id="f0" value="${esc(proj.title)}"></div><div class="fg-row"><div class="fg"><label class="fl">Producer</label><input class="fi" id="f1" value="${esc(proj.producer)}"></div><div class="fg"><label class="fl">Director</label><input class="fi" id="f2" value="${esc(proj.director)}"></div></div><div class="fg-row"><div class="fg"><label class="fl">DOP</label><input class="fi" id="f3" value="${esc(proj.dop)}"></div><div class="fg"><label class="fl">Sound Record</label><input class="fi" id="f4" value="${esc(proj.soundRec)}"></div></div><div class="fg"><label class="fl">1st AD</label><input class="fi" id="f5" value="${esc(proj.firstAD)}"></div><div class="fg"><label class="fl">Location</label><input class="fi" id="f6" value="${esc(proj.location)}"></div><div class="fg"><label class="fl">Basecamp</label><input class="fi" id="f7" value="${esc(proj.basecamp)}"></div><div class="fg"><label class="fl">Hospital</label><input class="fi" id="f8" value="${esc(proj.hospital)}"></div>`;
+  document.getElementById('mwrap').classList.add('open');
+};
+
+window.openM = function(s, preParam) {
+  mSection=s; editId=null;
+  const titles = {scene:'Tambah Scene',sched:'Tambah Schedule',cs:'Tambah Call Sheet',shot:'Tambah Shot'};
+  document.getElementById('m-title').textContent = titles[s]||'Tambah';
+  if(s==='scene') document.getElementById('m-body').innerHTML = sceneForm();
+  else if(s==='sched') document.getElementById('m-body').innerHTML = schedForm();
+  else if(s==='cs') document.getElementById('m-body').innerHTML = csForm();
+  else if(s==='shot') document.getElementById('m-body').innerHTML = shotForm();
+  document.getElementById('mwrap').classList.add('open');
+};
+
+function sceneForm(d) { return `<div class="fg-row3"><div class="fg"><label class="fl">Scene No.</label><input class="fi" id="f-sc"></div><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option>I</option><option>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option>D</option><option>N</option></select></div></div><div class="fg-row"><div class="fg"><label class="fl">Pages</label><input class="fi" id="f-pg"></div><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="1"></div></div><div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set"></div><div class="fg"><label class="fl">Description</label><textarea class="fi" id="f-desc"></textarea></div><div class="fg-row"><div class="fg"><label class="fl">Character</label><input class="fi" id="f-ch"></div><div class="fg"><label class="fl">Makeup</label><input class="fi" id="f-mk"></div></div><div class="fg-row"><div class="fg"><label class="fl">Wardrobe</label><input class="fi" id="f-wd"></div><div class="fg"><label class="fl">Main Prop</label><input class="fi" id="f-pr"></div></div><div class="fg"><label class="fl">Notes</label><textarea class="fi" id="f-nt"></textarea></div>`; }
+function schedForm() { const opts = scenes.map(sc=>`<option value="${sc.id}">Sc.${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${csDay}"></div><div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${new Date().toLocaleDateString('id-ID')}"></div></div><div class="fg"><label class="fl">Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00"></div><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div><div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh"></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg"></div></div><div class="fg"><label class="fl">Location</label><input class="fi" id="f-lc"></div><div class="fg"><label class="fl">Action</label><textarea class="fi" id="f-ac"></textarea></div><div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl"></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex"></div></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt"></div>`; }
+function csForm() { return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="1"></div><div class="fg"><label class="fl">Label</label><input class="fi" id="f-lb" placeholder="DAY 1 OFF 10"></div></div><div class="fg"><label class="fl">Date</label><input class="fi" id="f-dt" value="TUESDAY, 01 JULY 2025"></div><div class="fg-row"><div class="fg"><label class="fl">Crew Call</label><input class="fi" id="f-cc" value="07.00 WIB"></div><div class="fg"><label class="fl">Pre Call</label><input class="fi" id="f-pc" value="06.30 WIB"></div></div><div class="fg-row"><div class="fg"><label class="fl">Breakfast</label><input class="fi" id="f-bf" value="07.00 WIB"></div><div class="fg"><label class="fl">Cam Roll</label><input class="fi" id="f-cr" value="08.30 WIB"></div></div><div class="fg-row"><div class="fg"><label class="fl">Lunch</label><input class="fi" id="f-ln" value="12.00 WIB"></div><div class="fg"><label class="fl">Wrap</label><input class="fi" id="f-wr"></div></div><div class="fg-row"><div class="fg"><label class="fl">Weather</label><input class="fi" id="f-wt"></div><div class="fg"><label class="fl">Weather Note</label><input class="fi" id="f-wn"></div></div><div class="fg"><label class="fl">Set Notes</label><textarea class="fi" id="f-sn"></textarea></div>`; }
+function shotForm() { return `<div class="fg"><label class="fl">Fitur Shot List</label><div class="empty">Akan segera hadir</div></div>`; }
+
+window.closeM = function() { document.getElementById('mwrap').classList.remove('open'); };
+window.saveM = function() {
+  if(mSection==='proj') { const data={title:v('f0'),producer:v('f1'),director:v('f2'),dop:v('f3'),soundRec:v('f4'),firstAD:v('f5'),location:v('f6'),basecamp:v('f7'),hospital:v('f8')}; proj = data; saveProj(data); showToast('Project info disimpan'); }
+  else if(mSection==='scene') { const data={sceneNo:parseInt(v('f-sc'))||scenes.length+1,ie:v('f-ie'),dn:v('f-dn'),pages:v('f-pg'),day:parseInt(v('f-dy'))||1,set:v('f-set'),desc:v('f-desc'),char:v('f-ch'),makeup:v('f-mk'),wardrobe:v('f-wd'),prop:v('f-pr'),notes:v('f-nt')}; if(editId) data.id = editId; saveItem('scenes', data); showToast(editId?'Scene diperbarui':'Scene ditambahkan'); }
+  else if(mSection==='sched') { const selEl = document.getElementById('f-sid'); const data={day:parseInt(v('f-dy'))||1,date:v('f-dt'),time:v('f-tm'),sceneId:selEl?selEl.value:'',shot:v('f-sh'),page:v('f-pg'),loc:v('f-lc'),action:v('f-ac'),talent:v('f-tl'),extras:v('f-ex'),notes:v('f-nt')}; if(editId) data.id = editId; else schDay = parseInt(v('f-dy'))||1; if(page==='callsheet') csDay = parseInt(v('f-dy'))||1; saveItem('schedules', data); showToast('Schedule disimpan'); }
+  else if(mSection==='cs') { const data={day:parseInt(v('f-dy'))||1,label:v('f-lb'),date:v('f-dt'),crewCall:v('f-cc'),preCall:v('f-pc'),breakfast:v('f-bf'),camRoll:v('f-cr'),lunch:v('f-ln'),wrap:v('f-wr'),weather:v('f-wt'),weatherNote:v('f-wn'),setNotes:v('f-sn')}; if(editId) data.id = editId; else csDay = parseInt(v('f-dy'))||1; saveItem('callsheets', data); showToast('Call sheet disimpan'); }
+  closeM(); if(!useFirebase) render();
+};
+function v(id){const el=document.getElementById(id); return el?el.value.trim():'';}
+
+window.editScene = function(id) { const d=scenes.find(x=>x.id===id); mSection='scene'; editId=id; document.getElementById('m-title').textContent='Edit Scene'; document.getElementById('m-body').innerHTML = sceneForm(d); document.getElementById('mwrap').classList.add('open'); };
+window.editSched = function(id) { const d=schedules.find(x=>x.id===id); mSection='sched'; editId=id; document.getElementById('m-title').textContent='Edit Schedule'; document.getElementById('m-body').innerHTML = schedForm(); const f=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';}; f('f-dy',d?.day); f('f-dt',d?.date); f('f-tm',d?.time); f('f-sid',d?.sceneId); f('f-sh',d?.shot); f('f-pg',d?.page); f('f-lc',d?.loc); f('f-ac',d?.action); f('f-tl',d?.talent); f('f-ex',d?.extras); f('f-nt',d?.notes); document.getElementById('mwrap').classList.add('open'); };
+window.editCS = function(id) { const d=callsheets.find(x=>x.id===id); mSection='cs'; editId=id; document.getElementById('m-title').textContent='Edit Call Sheet'; document.getElementById('m-body').innerHTML = csForm(); const f=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';}; f('f-dy',d?.day); f('f-lb',d?.label); f('f-dt',d?.date); f('f-cc',d?.crewCall); f('f-pc',d?.preCall); f('f-bf',d?.breakfast); f('f-cr',d?.camRoll); f('f-ln',d?.lunch); f('f-wr',d?.wrap); f('f-wt',d?.weather); f('f-wn',d?.weatherNote); f('f-sn',d?.setNotes); document.getElementById('mwrap').classList.add('open'); };
+window.delScene = function(id){if(confirm('Hapus scene ini?')){deleteItem('scenes',id);showToast('Scene dihapus');}};
+window.delSched = function(id){if(confirm('Hapus entry ini?')){deleteItem('schedules',id);showToast('Entry dihapus');}};
+
+// ==================== BOTTOM NAV ====================
 function isMobile(){ return window.innerWidth <= 768; }
 function showHideBottomNav(){ const nav = document.getElementById('bottom-nav'); if(!nav) return; nav.style.display = isMobile() ? 'flex' : 'none'; const sb = document.querySelector('.sidebar'); if(sb) sb.style.display = isMobile() ? 'none' : 'flex'; const main = document.querySelector('.main'); if(main) main.style.paddingBottom = isMobile() ? '64px' : '0'; }
 window.addEventListener('resize', showHideBottomNav);
-function updateBottomNav(p) { const map = {dashboard:'bn-dashboard', master:'bn-master', callsheet:'bn-callsheet'}; document.querySelectorAll('.bn-item').forEach(el=>el.classList.remove('on')); document.getElementById('bn-more')?.classList.remove('on'); if(map[p]) { document.getElementById(map[p])?.classList.add('on'); } else { document.getElementById('bn-more')?.classList.add('on'); } }
+function updateBottomNav(p) { const map = {dashboard:'bn-dashboard', master:'bn-master', callsheet:'bn-callsheet'}; document.querySelectorAll('.bn-item').forEach(el=>el.classList.remove('on')); if(map[p]) { document.getElementById(map[p])?.classList.add('on'); } else { document.getElementById('bn-more')?.classList.add('on'); } }
 window.toggleMore = function() { const sheet = document.getElementById('more-sheet'); sheet.classList.toggle('open'); };
 window.closeMore = function() { document.getElementById('more-sheet').classList.remove('open'); };
 window.handleFAB = function() { closeMore(); if(page==='callsheet') { openCSAddScene(); } else if(page==='master') { openM('scene'); } else if(page==='schedule') { openM('sched'); } else { openM('scene'); } };
-window.closeM = function() { document.getElementById('mwrap').classList.remove('open'); };
-window.openM = function(s, preParam) { mSection=s; editId=null; const t={scene:'Tambah Scene',sched:'Tambah Schedule',cs:'Tambah Call Sheet',shot:'Tambah Shot',audio:'Tambah Audio',setitem:'Tambah Item',prop:'Tambah Prop'}; document.getElementById('m-title').textContent = t[s]||'Tambah'; document.getElementById('m-body').innerHTML = formFor(s, null); document.getElementById('mwrap').classList.add('open'); };
-window.openProjModal = function() { mSection='proj'; editId=null; document.getElementById('m-title').textContent = 'Edit Project Info'; document.getElementById('m-body').innerHTML = `<div class="fg"><label class="fl">Judul Film</label><input class="fi" id="f0" value="${esc(proj.title)}"></div><div class="fg-row"><div class="fg"><label class="fl">Producer</label><input class="fi" id="f1" value="${esc(proj.producer)}"></div><div class="fg"><label class="fl">Director</label><input class="fi" id="f2" value="${esc(proj.director)}"></div></div><div class="fg-row"><div class="fg"><label class="fl">DOP</label><input class="fi" id="f3" value="${esc(proj.dop)}"></div><div class="fg"><label class="fl">Sound Record</label><input class="fi" id="f4" value="${esc(proj.soundRec)}"></div></div><div class="fg"><label class="fl">1st Asst. Director</label><input class="fi" id="f5" value="${esc(proj.firstAD)}"></div><div class="fg"><label class="fl">Location</label><input class="fi" id="f6" value="${esc(proj.location)}"></div><div class="fg"><label class="fl">Basecamp</label><input class="fi" id="f7" value="${esc(proj.basecamp)}"></div><div class="fg"><label class="fl">Nearest Hospital</label><input class="fi" id="f8" value="${esc(proj.hospital)}"></div>`; document.getElementById('mwrap').classList.add('open'); };
 
-// INIT
+// ==================== INIT ====================
 showHideBottomNav();
 tryAutoConnect();
 </script>
