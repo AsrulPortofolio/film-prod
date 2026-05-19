@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Film Production Dashboard</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
@@ -49,7 +49,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 .tb-page{font-size:13px;font-weight:600;}
 .tb-sep{color:var(--border2);font-size:16px;}
 .tb-crumb{font-size:11.5px;color:var(--text3);}
-.tb-right{display:flex;gap:8px;align-items:center;}
+.tb-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
 .content{flex:1;overflow-y:auto;padding:20px 22px;}
 
 /* TOAST */
@@ -134,15 +134,15 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;background:var(--
 /* PROJ BANNER */
 .proj-banner{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius-lg);padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:var(--shadow);}
 
-/* MODAL */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(26,25,23,0.45);z-index:7777;align-items:flex-start;justify-content:center;padding:60px 20px 40px;overflow-y:auto;}
+/* MODAL - FIXED FOR MOBILE */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(26,25,23,0.45);z-index:7777;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
 .modal-bg.open{display:flex;}
-.modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);width:520px;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:slideUp 0.2s ease;}
+.modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);width:560px;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:slideUp 0.2s ease;margin:auto;}
 @keyframes slideUp{from{transform:translateY(12px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.modal-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.modal-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--surface);z-index:1;}
 .modal-title{font-size:13px;font-weight:700;}
-.modal-bd{padding:18px 20px;max-height:60vh;overflow-y:auto;}
-.modal-ft{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;background:var(--surface2);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
+.modal-bd{padding:18px 20px;max-height:55vh;overflow-y:auto;}
+.modal-ft{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;background:var(--surface2);border-radius:0 0 var(--radius-lg) var(--radius-lg);position:sticky;bottom:0;z-index:1;}
 .fg{margin-bottom:13px;}
 .fl{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0.07em;display:block;margin-bottom:5px;text-transform:uppercase;font-family:'DM Mono',monospace;}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -156,7 +156,7 @@ textarea.fi{resize:vertical;min-height:64px;}
 .spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--blue);border-radius:50%;animation:spin 0.8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* ── MOBILE RESPONSIVE ─────────────────────── */
+/* MOBILE RESPONSIVE */
 @media(max-width:768px){
   body{flex-direction:column;height:100dvh;overflow:hidden;}
   .sidebar{display:none;}
@@ -164,16 +164,16 @@ textarea.fi{resize:vertical;min-height:64px;}
   .topbar{height:48px;padding:0 14px;}
   .tb-sep,.tb-crumb{display:none;}
   .tb-page{font-size:14px;}
-  .tb-right{gap:6px;}
+  .tb-right{gap:6px;flex-wrap:wrap;}
   .sync-badge{padding:2px 6px;font-size:9px;}
   .content{padding:14px;}
   .stat-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px;}
   .stat{padding:12px 14px;}
   .stat-n{font-size:22px;}
   .stat-l{font-size:10px;}
-  .card-head{padding:11px 14px;gap:8px;}
+  .card-head{padding:11px 14px;gap:8px;flex-wrap:wrap;}
   .card-title{font-size:12px;}
-  .filter-row{gap:6px;}
+  .filter-row{gap:6px;flex-wrap:wrap;}
   .inp{font-size:16px;padding:10px 12px;-webkit-appearance:none;}
   .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .tbl th{padding:8px 10px;font-size:9px;}
@@ -187,10 +187,10 @@ textarea.fi{resize:vertical;min-height:64px;}
   .cs-top{grid-template-columns:1fr;}
   .cs-col+.cs-col{border-left:none;border-top:1px solid var(--border);}
   .cs-big{font-size:22px;margin:8px -14px;}
-  .proj-banner{padding:12px 14px;}
+  .proj-banner{padding:12px 14px;flex-direction:column;text-align:center;}
   .modal-bg{padding:0;align-items:flex-end;}
-  .modal{width:100%;max-width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;max-height:92dvh;}
-  .modal-bd{max-height:65dvh;}
+  .modal{width:100%;max-width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;max-height:95dvh;margin:0;}
+  .modal-bd{max-height:60dvh;}
   .fg-row{grid-template-columns:1fr;}
   .fg-row3{grid-template-columns:1fr 1fr;}
   .fi{font-size:16px;padding:10px 12px;}
@@ -198,70 +198,35 @@ textarea.fi{resize:vertical;min-height:64px;}
   #toast{bottom:76px;right:14px;left:14px;text-align:center;}
   .bottom-nav{display:flex !important;}
   .bottom-nav .bn-items{display:flex;}
+  .modal-ft{padding:14px 20px;}
+  .modal-ft .btn{padding:12px 20px;}
 }
 
-/* ── BOTTOM NAV ────────────────────────────── */
-.bottom-nav{
-  display:none;position:fixed;bottom:0;left:0;right:0;
-  height:64px;background:var(--surface);border-top:1px solid var(--border);
-  z-index:9000;padding-bottom:env(safe-area-inset-bottom);
-  flex-direction:column;justify-content:stretch;
-}
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:64px;background:var(--surface);border-top:1px solid var(--border);z-index:9000;padding-bottom:env(safe-area-inset-bottom);flex-direction:column;justify-content:stretch;}
 .bn-items{display:flex;height:100%;align-items:stretch;}
-.bn-item{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;cursor:pointer;padding:6px 4px;border:none;background:transparent;
-  color:var(--text3);font-size:9px;font-weight:500;font-family:'DM Sans',sans-serif;
-  transition:color 0.13s;-webkit-tap-highlight-color:transparent;
-}
+.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 4px;border:none;background:transparent;color:var(--text3);font-size:9px;font-weight:500;font-family:'DM Sans',sans-serif;transition:color 0.13s;-webkit-tap-highlight-color:transparent;}
 .bn-item svg{opacity:0.45;transition:opacity 0.13s;}
 .bn-item.on{color:var(--blue);}
 .bn-item.on svg{opacity:1;}
-.bn-add{
-  flex:none;width:56px;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:2px;cursor:pointer;
-  border:none;background:transparent;-webkit-tap-highlight-color:transparent;
-}
-.bn-add-circle{
-  width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;
-  box-shadow:0 2px 10px rgba(24,95,165,0.4);transition:transform 0.13s;
-}
+.bn-add{flex:none;width:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:none;background:transparent;-webkit-tap-highlight-color:transparent;}
+.bn-add-circle{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;box-shadow:0 2px 10px rgba(24,95,165,0.4);transition:transform 0.13s;}
 .bn-add-circle:active{transform:scale(0.92);}
 .bn-add-lbl{font-size:9px;color:var(--text3);font-family:'DM Sans',sans-serif;}
 .more-sheet{display:none;position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0.35);}
 .more-sheet.open{display:block;}
-.more-panel{
-  position:absolute;bottom:64px;left:0;right:0;
-  background:var(--surface);border-top:1px solid var(--border);
-  padding:8px 0 16px;
-  max-height:75vh;overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
-.more-item{
-  display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;
-  font-size:14px;color:var(--text2);-webkit-tap-highlight-color:transparent;
-}
+.more-panel{position:absolute;bottom:64px;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 16px;max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.more-item{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;font-size:14px;color:var(--text2);-webkit-tap-highlight-color:transparent;}
 .more-item:active{background:var(--surface2);}
 .more-item svg{opacity:0.5;flex-shrink:0;}
 .more-item.on{color:var(--blue);font-weight:500;}
 .more-item.on svg{opacity:1;}
 .more-divider{height:1px;background:var(--border);margin:6px 0;}
-.more-proj{
-  display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;
-  font-size:14px;color:var(--blue);font-weight:500;-webkit-tap-highlight-color:transparent;
-}
+.more-proj{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;font-size:14px;color:var(--blue);font-weight:500;-webkit-tap-highlight-color:transparent;}
 
-/* ── AUTH SCREEN ─────────────────────────────── */
-#auth-screen{
-  position:fixed;inset:0;background:var(--bg);z-index:99999;
-  display:flex;align-items:center;justify-content:center;padding:20px;
-}
+/* AUTH SCREEN */
+#auth-screen{position:fixed;inset:0;background:var(--bg);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;}
 #auth-screen.hidden{display:none;}
-.auth-box{
-  background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);
-  padding:32px;width:400px;max-width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.1);
-}
+.auth-box{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:32px;width:400px;max-width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.1);}
 .auth-logo{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.16em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;}
 .auth-title{font-size:20px;font-weight:700;margin-bottom:4px;}
 .auth-sub{font-size:13px;color:var(--text2);margin-bottom:24px;line-height:1.6;}
@@ -273,97 +238,44 @@ textarea.fi{resize:vertical;min-height:64px;}
 .auth-ok{background:var(--green-bg);color:var(--green);border:1px solid #9FE1CB;border-radius:var(--radius);padding:10px 12px;font-size:12px;margin-bottom:14px;display:none;}
 .auth-ok.show{display:block;}
 
-/* ── PENDING SCREEN ──────────────────────────── */
-#pending-screen{
-  position:fixed;inset:0;background:var(--bg);z-index:99998;
-  display:none;align-items:center;justify-content:center;padding:20px;
-  flex-direction:column;gap:16px;text-align:center;
-}
+/* PENDING SCREEN */
+#pending-screen{position:fixed;inset:0;background:var(--bg);z-index:99998;display:none;align-items:center;justify-content:center;padding:20px;flex-direction:column;gap:16px;text-align:center;}
 #pending-screen.show{display:flex;}
 .pending-icon{font-size:48px;margin-bottom:8px;}
 .pending-title{font-size:18px;font-weight:700;}
 .pending-sub{font-size:13px;color:var(--text2);max-width:320px;line-height:1.6;}
 
-/* ── ADMIN PANEL ─────────────────────────────── */
-.admin-btn{
-  display:flex;align-items:center;gap:8px;padding:9px 18px;cursor:pointer;
-  font-size:12.5px;color:var(--amber);border-left:2px solid transparent;transition:all 0.13s;
-}
+/* ADMIN PANEL */
+.admin-btn{display:flex;align-items:center;gap:8px;padding:9px 18px;cursor:pointer;font-size:12.5px;color:var(--amber);border-left:2px solid transparent;transition:all 0.13s;}
 .admin-btn:hover{background:var(--amber-bg);}
-.badge-pending{
-  background:var(--red);color:#fff;font-size:9px;font-weight:700;
-  padding:1px 5px;border-radius:10px;font-family:'DM Mono',monospace;
-}
+.badge-pending{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;font-family:'DM Mono',monospace;}
 
-/* ── SHOT LIST ───────────────────────────────── */
-.sl-scene-block{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
-  margin-bottom:20px;overflow:hidden;box-shadow:var(--shadow);
-}
-.sl-scene-head{
-  background:#C0392B;color:#fff;padding:10px 18px;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
-}
+/* SHOT LIST */
+.sl-scene-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:20px;overflow:hidden;box-shadow:var(--shadow);}
+.sl-scene-head{background:#C0392B;color:#fff;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 .sl-scene-title{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.08em;}
 .sl-scene-meta{display:flex;gap:12px;font-size:11px;opacity:0.9;font-family:'DM Mono',monospace;}
-.sl-proj-head{
-  background:#2C2C2A;color:#D3D1C7;padding:7px 18px;
-  font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;
-}
+.sl-proj-head{background:#2C2C2A;color:#D3D1C7;padding:7px 18px;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;}
 .sl-shot-row{border-top:1px solid var(--border);}
-.sl-shot-head{
-  display:grid;
-  grid-template-columns:44px 100px 100px 120px 120px 90px 100px 200px 1fr 1fr 80px;
-  background:var(--surface2);
-  font-size:9px;font-weight:700;letter-spacing:0.09em;color:var(--text3);
-  font-family:'DM Mono',monospace;
-}
-.sl-shot-head>div,.sl-shot-body>div{
-  padding:8px 10px;border-right:1px solid var(--border);
-}
+.sl-shot-head{display:grid;grid-template-columns:44px 100px 100px 120px 120px 90px 100px 200px 1fr 1fr 80px;background:var(--surface2);font-size:9px;font-weight:700;letter-spacing:0.09em;color:var(--text3);font-family:'DM Mono',monospace;}
+.sl-shot-head>div,.sl-shot-body>div{padding:8px 10px;border-right:1px solid var(--border);}
 .sl-shot-head>div:last-child,.sl-shot-body>div:last-child{border-right:none;}
-.sl-shot-body{
-  display:grid;
-  grid-template-columns:44px 100px 100px 120px 120px 90px 100px 200px 1fr 1fr 80px;
-  font-size:12px;align-items:start;
-}
+.sl-shot-body{display:grid;grid-template-columns:44px 100px 100px 120px 120px 90px 100px 200px 1fr 1fr 80px;font-size:12px;align-items:start;}
 .sl-shot-body>div{border-right:1px solid var(--border);min-height:120px;}
-.sl-scene-notes{
-  padding:10px 18px;background:var(--surface2);border-top:1px solid var(--border);
-  font-size:11.5px;color:var(--text2);display:flex;gap:10px;align-items:flex-start;
-}
+.sl-scene-notes{padding:10px 18px;background:var(--surface2);border-top:1px solid var(--border);font-size:11.5px;color:var(--text2);display:flex;gap:10px;align-items:flex-start;}
 .sl-notes-label{font-size:9px;font-weight:700;letter-spacing:0.08em;color:var(--text3);font-family:'DM Mono',monospace;min-width:80px;padding-top:2px;}
-
-/* Photo cell */
-.sl-photo-cell{
-  padding:10px;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:120px;justify-content:center;
-}
+.sl-photo-cell{padding:10px;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:120px;justify-content:center;}
 .sl-photo-wrap{position:relative;width:168px;}
-.sl-photo{
-  width:168px;height:94.5px; /* 16:9 */
-  object-fit:cover;border-radius:5px;cursor:pointer;
-  border:1px solid var(--border);display:block;
-  transition:opacity 0.15s;
-}
+.sl-photo{width:168px;height:94.5px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid var(--border);display:block;transition:opacity 0.15s;}
 .sl-photo:hover{opacity:0.85;}
-.sl-photo-replace{
-  display:flex;align-items:center;justify-content:center;gap:5px;
-  font-size:10px;color:var(--blue);cursor:pointer;font-weight:500;
-  padding:3px 0;
-}
+.sl-photo-replace{display:flex;align-items:center;justify-content:center;gap:5px;font-size:10px;color:var(--blue);cursor:pointer;font-weight:500;padding:3px 0;}
 .sl-photo-replace:hover{text-decoration:underline;}
-.sl-photo-placeholder{
-  width:168px;height:94.5px; /* 16:9 */
-  border:1.5px dashed var(--border2);border-radius:5px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;
-  gap:4px;color:var(--text3);transition:all 0.13s;background:var(--surface2);
-}
+.sl-photo-placeholder{width:168px;height:94.5px;border:1.5px dashed var(--border2);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;gap:4px;color:var(--text3);transition:all 0.13s;background:var(--surface2);}
 .sl-photo-placeholder:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
 .sl-photo-placeholder span:first-child{font-size:22px;}
 .sl-photo-placeholder span:last-child{font-size:10px;font-weight:500;}
-.sl-filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
 
-/* photo lightbox */
+/* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:8888;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
 .lightbox.open{display:flex;}
 .lightbox img{max-width:92vw;max-height:80vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5);object-fit:contain;}
@@ -372,6 +284,19 @@ textarea.fi{resize:vertical;min-height:64px;}
 .lightbox-actions{display:flex;gap:10px;}
 .lightbox-replace{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:var(--radius);padding:7px 16px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .lightbox-replace:hover{background:rgba(255,255,255,0.25);}
+
+/* AUDIO LIST */
+.audio-scene-header{background:#1A1917;color:#fff;padding:0;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;border-radius:var(--radius) var(--radius) 0 0;}
+.audio-scene-number{background:#F5D060;color:#1A1917;min-width:72px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:28px;font-weight:700;padding:12px 16px;letter-spacing:0.04em;}
+.audio-scene-info{padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;}
+.audio-scene-label{font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.1em;color:#aaa;text-transform:uppercase;}
+.audio-scene-set{font-size:13px;font-weight:600;letter-spacing:0.04em;}
+.audio-scene-badge{background:rgba(255,255,255,0.12);color:#fff;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;}
+.photo-frame{width:180px;height:101.25px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid var(--border);display:block;}
+.photo-placeholder{width:180px;height:101.25px;border:1.5px dashed var(--border2);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:var(--text3);background:var(--surface2);transition:all 0.13s;}
+.photo-placeholder:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
+.foley-cell{background:#FFFAED;font-weight:500;color:#633806;}
+.code-cell{font-weight:700;color:#C0392B;font-family:'DM Mono',monospace;}
 </style>
 </head>
 <body>
@@ -606,8 +531,6 @@ textarea.fi{resize:vertical;min-height:64px;}
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 // ── STATE ─────────────────────────────────────────────────────
 let db = null, auth = null;
@@ -621,27 +544,20 @@ let scenes = [];
 let schedules = [];
 let callsheets = [];
 let shotlist = [];
-let setlist = [];  // {id, no, location, ie, items:[{desc, type, qty, status, note}]}
-let proplist = []; // {id, no, desc, scene, character, type, qty, status, unitRate, note}
-let audiolist = []; // {id, sceneNo, shotNo, ie, dn, char, dev, frame, dia, foley, ambRoom, code, photoURL}
+let setlist = [];
+let proplist = [];
+let audiolist = [];
 
 let page = 'dashboard', csDay = 1, schDay = 1, mSection = null, editId = null;
 let _mq='',_mie='',_mdn='',_mday='';
+let _pq='',_ploc='',_pstatus='';
 
 // ── SETUP ─────────────────────────────────────────────────────
-// Config Firebase sudah tertanam — tidak perlu setup manual
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyBMYN3kIkHQyYza0kV3T6f2j7Ftt-8UdP4",
   authDomain: "luruh-dalam-noda.firebaseapp.com",
   databaseURL: "https://luruh-dalam-noda-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "luruh-dalam-noda"
-};
-
-window.connectFirebase = function() {};
-window.skipSetup = function() {
-  const ss=document.getElementById('setup-screen'); if(ss) ss.classList.add('hidden');
-  setStatus('offline');
-  loadDefaults();
 };
 
 function tryAutoConnect() {
@@ -657,18 +573,10 @@ function tryAutoConnect() {
         return;
       }
       currentUser = user;
-      // Check user status in DB
       db.ref(`users/${user.uid}`).once('value', snap => {
         const userData = snap.val();
         if (!userData) {
-          // First time — save pending user
-          const data = {
-            email: user.email,
-            name: user.displayName || user.email.split('@')[0],
-            dept: '',
-            status: 'pending',
-            createdAt: Date.now()
-          };
+          const data = { email: user.email, name: user.displayName || user.email.split('@')[0], dept: '', status: 'pending', createdAt: Date.now() };
           db.ref(`users/${user.uid}`).set(data);
           currentUserData = data;
           showPendingScreen();
@@ -683,7 +591,6 @@ function tryAutoConnect() {
           setStatus('online');
           updateAdminUI();
         } else {
-          // rejected
           showError('auth-err', 'Aksesmu ditolak oleh admin.');
           auth.signOut();
         }
@@ -725,44 +632,22 @@ window.doAuth = async function() {
       if (!name) { showError('auth-err','Isi nama lengkap dulu.'); btn.textContent='Kirim Permintaan'; btn.disabled=false; return; }
       const cred = await auth.createUserWithEmailAndPassword(email, pass);
       await cred.user.updateProfile({ displayName: name });
-      await db.ref(`users/${cred.user.uid}`).set({
-        email, name, dept, status: 'pending', createdAt: Date.now()
-      });
+      await db.ref(`users/${cred.user.uid}`).set({ email, name, dept, status: 'pending', createdAt: Date.now() });
       showAuthScreen();
       showMsg('auth-ok', `Permintaan dikirim! Tunggu persetujuan admin.`);
     }
   } catch(e) {
-    const msgs = {
-      'auth/user-not-found':'Email tidak ditemukan.',
-      'auth/wrong-password':'Password salah.',
-      'auth/email-already-in-use':'Email sudah terdaftar.',
-      'auth/weak-password':'Password minimal 6 karakter.',
-      'auth/invalid-email':'Format email tidak valid.',
-      'auth/invalid-credential':'Email atau password salah.',
-    };
+    const msgs = { 'auth/user-not-found':'Email tidak ditemukan.', 'auth/wrong-password':'Password salah.', 'auth/email-already-in-use':'Email sudah terdaftar.', 'auth/weak-password':'Password minimal 6 karakter.', 'auth/invalid-email':'Format email tidak valid.', 'auth/invalid-credential':'Email atau password salah.' };
     showError('auth-err', msgs[e.code] || e.message);
   }
   btn.textContent = authMode==='login'?'Masuk':'Kirim Permintaan';
   btn.disabled = false;
 };
 
-window.doLogout = function() {
-  if(auth) auth.signOut();
-  showAuthScreen();
-};
-
-function showAuthScreen() {
-  document.getElementById('auth-screen').classList.remove('hidden');
-  document.getElementById('pending-screen').classList.remove('show');
-}
-function showPendingScreen() {
-  document.getElementById('auth-screen').classList.add('hidden');
-  document.getElementById('pending-screen').classList.add('show');
-}
-function hideAuthScreens() {
-  document.getElementById('auth-screen').classList.add('hidden');
-  document.getElementById('pending-screen').classList.remove('show');
-}
+window.doLogout = function() { if(auth) auth.signOut(); showAuthScreen(); };
+function showAuthScreen() { document.getElementById('auth-screen').classList.remove('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
+function showPendingScreen() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.add('show'); }
+function hideAuthScreens() { document.getElementById('auth-screen').classList.add('hidden'); document.getElementById('pending-screen').classList.remove('show'); }
 function showError(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
 function showMsg(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
 function hideMsg() { ['auth-err','auth-ok'].forEach(id=>document.getElementById(id).classList.remove('show')); }
@@ -780,10 +665,7 @@ function watchPendingUsers() {
     const users = snap.val() || {};
     const pending = Object.values(users).filter(u => u.status === 'pending').length;
     const badge = document.getElementById('pending-count');
-    if(badge) {
-      badge.textContent = pending;
-      badge.style.display = pending > 0 ? 'inline' : 'none';
-    }
+    if(badge) { badge.textContent = pending; badge.style.display = pending > 0 ? 'inline' : 'none'; }
   });
 }
 
@@ -794,18 +676,12 @@ function loadDefaults() {
   render();
 }
 
-// ── FIREBASE LISTENERS (real-time) ────────────────────────────
+// ── FIREBASE LISTENERS ────────────────────────────────────────────
 function initListeners() {
   const listen = (path, setter) => {
-    db.ref(path).on('value', snap => {
-      const val = snap.val();
-      setter(val ? Object.entries(val).map(([k,v]) => ({...v, id: k})) : []);
-      render();
-    });
+    db.ref(path).on('value', snap => { const val = snap.val(); setter(val ? Object.entries(val).map(([k,v]) => ({...v, id: k})) : []); render(); });
   };
-  db.ref('proj').on('value', snap => {
-    if(snap.val()) { proj = snap.val(); document.getElementById('sb-proj').textContent = proj.title; render(); }
-  });
+  db.ref('proj').on('value', snap => { if(snap.val()) { proj = snap.val(); document.getElementById('sb-proj').textContent = proj.title; render(); } });
   listen('scenes', v => { scenes = v; });
   listen('schedules', v => { schedules = v; });
   listen('callsheets', v => { callsheets = v; });
@@ -815,85 +691,70 @@ function initListeners() {
   listen('audiolist', v => { audiolist = v; });
 }
 
-// ── WRITE HELPERS ─────────────────────────────────────────────
-function saveProj(data) {
-  if (useFirebase) { setSaving(); db.ref('proj').set(data).then(setLive); }
-  else { proj = data; render(); }
-}
-
+function saveProj(data) { if (useFirebase) { setSaving(); db.ref('proj').set(data).then(setLive); } else { proj = data; render(); } }
 function saveItem(collection, data) {
-  if (useFirebase) {
-    setSaving();
-    if (data.id && data.id !== '') {
-      const id = data.id;
-      const d = {...data}; delete d.id;
-      db.ref(`${collection}/${id}`).update(d).then(setLive);
-    } else {
-      db.ref(collection).push(data).then(setLive);
-    }
-  } else {
-    const arr = collection === 'scenes' ? scenes : collection === 'schedules' ? schedules : callsheets;
-    const setter = collection === 'scenes' ? (v => scenes=v) : collection === 'schedules' ? (v => schedules=v) : (v => callsheets=v);
+  if (useFirebase) { setSaving(); if (data.id && data.id !== '') { const id = data.id; const d = {...data}; delete d.id; db.ref(`${collection}/${id}`).update(d).then(setLive); } else { db.ref(collection).push(data).then(setLive); } } 
+  else { 
+    let arr; let setter;
+    if(collection==='scenes') { arr=scenes; setter=v=>scenes=v; }
+    else if(collection==='schedules') { arr=schedules; setter=v=>schedules=v; }
+    else if(collection==='callsheets') { arr=callsheets; setter=v=>callsheets=v; }
+    else if(collection==='shotlist') { arr=shotlist; setter=v=>shotlist=v; }
+    else if(collection==='setlist') { arr=setlist; setter=v=>setlist=v; }
+    else if(collection==='proplist') { arr=proplist; setter=v=>proplist=v; }
+    else if(collection==='audiolist') { arr=audiolist; setter=v=>audiolist=v; }
+    else return;
     if (data.id) { const i = arr.findIndex(x=>x.id===data.id); arr[i] = data; setter([...arr]); }
     else { data.id = 'local_'+Date.now(); arr.push(data); setter([...arr]); }
-    render();
+    render(); 
   }
 }
-
-function deleteItem(collection, id) {
+function deleteItem(collection, id) { 
   if (useFirebase) { setSaving(); db.ref(`${collection}/${id}`).remove().then(setLive); }
   else {
     if(collection==='scenes') scenes=scenes.filter(x=>x.id!==id);
     else if(collection==='schedules') schedules=schedules.filter(x=>x.id!==id);
-    else callsheets=callsheets.filter(x=>x.id!==id);
+    else if(collection==='callsheets') callsheets=callsheets.filter(x=>x.id!==id);
+    else if(collection==='shotlist') shotlist=shotlist.filter(x=>x.id!==id);
+    else if(collection==='setlist') setlist=setlist.filter(x=>x.id!==id);
+    else if(collection==='proplist') proplist=proplist.filter(x=>x.id!==id);
+    else if(collection==='audiolist') audiolist=audiolist.filter(x=>x.id!==id);
     render();
   }
 }
 
-// ── STATUS ────────────────────────────────────────────────────
 function setStatus(s) {
-  const dot = document.getElementById('sb-dot');
-  const txt = document.getElementById('sb-status-text');
-  const sdot = document.getElementById('sync-dot');
-  const stxt = document.getElementById('sync-text');
-  dot.className = 'sb-dot ' + s;
-  sdot.className = 'sync-dot ' + (s==='online'?'live':s==='saving'?'saving':'');
-  if(s==='online'){txt.textContent='Real-time aktif';stxt.textContent='Live';}
-  else if(s==='saving'){txt.textContent='Menyimpan...';stxt.textContent='Saving...';}
-  else{txt.textContent='Offline (lokal)';stxt.textContent='Offline';}
+  const dot = document.getElementById('sb-dot'); const txt = document.getElementById('sb-status-text'); const sdot = document.getElementById('sync-dot'); const stxt = document.getElementById('sync-text');
+  if(dot) dot.className = 'sb-dot ' + s;
+  if(sdot) sdot.className = 'sync-dot ' + (s==='online'?'live':s==='saving'?'saving':'');
+  if(s==='online'){if(txt)txt.textContent='Real-time aktif';if(stxt)stxt.textContent='Live';}
+  else if(s==='saving'){if(txt)txt.textContent='Menyimpan...';if(stxt)stxt.textContent='Saving...';}
+  else{if(txt)txt.textContent='Offline (lokal)';if(stxt)stxt.textContent='Offline';}
 }
 function setSaving(){setStatus('saving');}
 function setLive(){setTimeout(()=>setStatus('online'),600);}
-function setOffline(){setStatus('offline');}
 
-// ── TOAST ─────────────────────────────────────────────────────
-function showToast(msg, type='') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = 'show ' + type;
-  setTimeout(() => t.className = '', 2800);
-}
+function showToast(msg, type='') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'show ' + type; setTimeout(() => t.className = '', 2800); }
 window.showToast = showToast;
 
 // ── NAVIGATION ────────────────────────────────────────────────
 window.go = function(p) {
   page = p;
   document.querySelectorAll('.sb-item').forEach(n=>n.classList.remove('on'));
-  const idx = {dashboard:0,master:1,schedule:2,callsheet:3,talent:4,location:5};
+  const idx = {dashboard:0,master:1,schedule:2,callsheet:3,talent:4,location:5,shotlist:6,setlist:7,proplist:8,audiolist:9,admin:10};
   document.querySelectorAll('.sb-item')[idx[p]]?.classList.add('on');
   const labels = {dashboard:'Dashboard',master:'Master Breakdown',schedule:'Shooting Schedule',callsheet:'Call Sheet',talent:'Talent Breakdown',location:'Location Breakdown',shotlist:'Shot List',setlist:'Set & Wardrobe',proplist:'Prop List',audiolist:'Audio List',admin:'Panel Admin'};
   const subs = {dashboard:'Ringkasan produksi',master:'Semua scene dan elemen produksi',schedule:'Jadwal syuting per hari',callsheet:'Call sheet harian crew',talent:'Daftar talent — otomatis dari Master Breakdown',location:'Pemetaan lokasi — otomatis dari Master Breakdown',shotlist:'Shot list departemen kamera',setlist:'Set shooting dan wardrobe per karakter',proplist:'Daftar properti per lokasi',audiolist:'Audio list departemen suara',admin:'Kelola akses anggota tim'};
   document.getElementById('tb-page').textContent = labels[p]||p;
   document.getElementById('tb-crumb').textContent = subs[p]||'';
   const acts = {
-    master:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('scene')">+ Scene</button>`,
-    schedule:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('sched')">+ Entry</button>`,
-    callsheet:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('cs')">+ Hari</button>`,
-    shotlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('shot')">+ Tambah Shot</button>`,
-    talent:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button>`,
-    location:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button>`,
-        audiolist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('audio')">+ Tambah Entry</button>`,
-    setlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('setitem')">+ Tambah Set/WD</button>`,
-    proplist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-sm" onclick="printPage()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><rect x="2" y="1" width="10" height="4" rx="1"/><path d="M2 5H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v2h12v-2h1a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><rect x="2" y="9" width="10" height="4" rx="0.5"/></svg>Print</button><button class="btn btn-sm" style="color:#A32D2D;border-color:#F5B4B4" onclick="exportPDF()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 14 14" style="margin-right:4px;vertical-align:middle"><path d="M8 1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5L8 1z"/><polyline points="8 1 8 5 12 5"/><line x1="5" y1="8" x2="9" y2="8"/><line x1="5" y1="10" x2="7" y2="10"/></svg>PDF</button><button class="btn btn-primary btn-sm" onclick="openM('prop')">+ Tambah Prop</button>`,
+    master:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('scene')">+ Scene</button>`,
+    schedule:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('sched')">+ Entry</button>`,
+    callsheet:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('cs')">+ Hari</button>`,
+    shotlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('shot')">+ Tambah Shot</button>`,
+    audiolist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('audio')">+ Tambah Entry</button>`,
+    setlist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('setitem')">+ Tambah</button>`,
+    proplist:`<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div><button class="btn btn-primary btn-sm" onclick="openM('prop')">+ Tambah Prop</button>`,
   };
   document.getElementById('tb-actions').innerHTML = acts[p] || `<div class="sync-badge"><div class="sync-dot ${useFirebase?'live':''}" id="sync-dot"></div><span id="sync-text">${useFirebase?'Live':'Offline'}</span></div>`;
   updateBottomNav(p);
@@ -903,6 +764,7 @@ window.go = function(p) {
 // ── CHIPS ─────────────────────────────────────────────────────
 function ie(v){return `<span class="chip ${v==='I'?'chip-blue':'chip-teal'}">${v==='I'?'INT':'EXT'}</span>`;}
 function dn(v){return `<span class="chip ${v==='D'?'chip-amber':'chip-dark'}">${v==='D'?'DAY':'NIGHT'}</span>`;}
+function statusChip(s) { const map = {siap:'chip-green',proses:'chip-amber',cari:'chip-dark',done:'chip-green'}; const label = {siap:'Siap',proses:'Proses',cari:'Dicari',done:'Done'}; if(!s) return '—'; return `<span class="chip ${map[s]||'chip-gray'}">${label[s]||s}</span>`; }
 
 // ── RENDER ────────────────────────────────────────────────────
 function render() {
@@ -924,75 +786,28 @@ function render() {
 function rDash() {
   const locs = [...new Set(scenes.map(s=>s.set))];
   const talent = getAllTalent();
-  const colors = ['#185FA5','#1D7A4E','#92580A','#534AB7','#A32D2D'];
   return `
     <div class="proj-banner">
-      <div>
-        <div style="font-size:15px;font-weight:700">${proj.title}</div>
-        <div style="font-size:11.5px;color:var(--text3);margin-top:2px">Sutradara: ${proj.director||'—'} &nbsp;·&nbsp; Produser: ${proj.producer||'—'} &nbsp;·&nbsp; DOP: ${proj.dop||'—'}</div>
-      </div>
+      <div><div style="font-size:15px;font-weight:700">${proj.title}</div><div style="font-size:11.5px;color:var(--text3);margin-top:2px">Sutradara: ${proj.director||'—'} &nbsp;·&nbsp; Produser: ${proj.producer||'—'} &nbsp;·&nbsp; DOP: ${proj.dop||'—'}</div></div>
       <button class="btn btn-sm" onclick="openProjModal()">Edit Info</button>
     </div>
     <div class="stat-grid">
-      ${[['Total Scene',scenes.length,colors[0]],['Hari Syuting',[...new Set(schedules.map(s=>s.day))].length,colors[1]],['Talent',talent.length,colors[2]],['Lokasi',locs.length,colors[3]],['Call Sheet',callsheets.length,colors[4]]].map(([l,n,c])=>`
-      <div class="stat"><div class="stat-accent" style="background:${c}"></div><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('')}
+      ${[['Total Scene',scenes.length],['Hari Syuting',[...new Set(schedules.map(s=>s.day))].length],['Talent',talent.length],['Lokasi',locs.length],['Call Sheet',callsheets.length]].map(([l,n])=>`<div class="stat"><div class="stat-accent"></div><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('')}
     </div>
-    <div class="card">
-      <div class="card-head"><span class="card-title">Master Breakdown — Preview</span><button class="btn btn-ghost btn-sm" onclick="go('master')">Lihat semua →</button></div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>WARDROBE</th><th>MAIN PROP</th></tr></thead>
-        <tbody>${scenes.slice(0,5).map(s=>`<tr>
-          <td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td>
-          <td class="mono">${s.pages}</td><td style="font-weight:600;white-space:nowrap">${s.set}</td>
-          <td style="color:var(--text2);max-width:180px">${s.desc}</td><td>${s.char}</td>
-          <td style="color:var(--text2)">${s.wardrobe||'—'}</td><td style="color:var(--text2)">${s.prop||'—'}</td>
-        </tr>`).join('')}${!scenes.length?`<tr><td colspan="9"><div class="empty">Belum ada scene.</div></td></tr>`:''}</tbody>
-      </table></div>
-    </div>`;
+    <div class="card"><div class="card-head"><span class="card-title">Master Breakdown — Preview</span><button class="btn btn-ghost btn-sm" onclick="go('master')">Lihat semua →</button></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th></tr></thead>
+    <tbody>${scenes.slice(0,5).map(s=>`<tr><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td></tr>`).join('')}${!scenes.length?`<tr><td colspan="7"><div class="empty">Belum ada scene.</div></tr></tr>`:''}</tbody></table></div></div>`;
 }
 
 function rMaster() {
-  return `<div class="card">
-    <div class="card-head"><span class="card-title">Master Breakdown — ${proj.title}</span>
-      <div class="filter-row">
-        <input class="inp" placeholder="Cari scene..." oninput="fM(this.value)" style="width:180px">
-        <select class="inp" onchange="fMie(this.value)" style="width:90px"><option value="">I/E</option><option>I</option><option>E</option></select>
-        <select class="inp" onchange="fMdn(this.value)" style="width:90px"><option value="">D/N</option><option>D</option><option>N</option></select>
-        <select class="inp" onchange="fMday(this.value)" style="width:120px">
-          <option value="">Semua Day</option>
-          ${[...new Set(scenes.map(s=>s.day).filter(Boolean))].sort((a,b)=>a-b).map(d=>`<option value="${d}">Shoot Day ${d}</option>`).join('')}
-        </select>
-      </div>
-    </div>
-    <div class="tbl-wrap"><table class="tbl">
-      <thead><tr><th>NO</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>MAKEUP</th><th>WARDROBE</th><th>MAIN PROP</th><th>SFX</th><th>AUDIO</th><th>SPECIAL NOTES</th><th></th></tr></thead>
-      <tbody id="mtb">${mRows(scenes)}</tbody>
-    </table></div>
-  </div>`;
+  return `<div class="card"><div class="card-head"><span class="card-title">Master Breakdown — ${proj.title}</span><div class="filter-row"><input class="inp" placeholder="Cari scene..." oninput="fM(this.value)" style="width:180px"><select class="inp" onchange="fMie(this.value)" style="width:90px"><option value="">I/E</option><option>I</option><option>E</option></select><select class="inp" onchange="fMdn(this.value)" style="width:90px"><option value="">D/N</option><option>D</option><option>N</option></select><select class="inp" onchange="fMday(this.value)" style="width:120px"><option value="">Semua Day</option>${[...new Set(scenes.map(s=>s.day).filter(Boolean))].sort((a,b)=>a-b).map(d=>`<option value="${d}">Shoot Day ${d}</option>`).join('')}</select></div></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>MAKEUP</th><th>WARDROBE</th><th>MAIN PROP</th><th>SFX</th><th>AUDIO</th><th>SPECIAL NOTES</th><th></th></tr></thead>
+    <tbody id="mtb">${mRows(scenes)}</tbody></table></div></div>`;
 }
 
 function mRows(arr) {
   if(!arr.length) return `<tr><td colspan="16"><div class="empty">Belum ada scene. Klik <strong>+ Tambah Scene</strong>.</div></td></tr>`;
-  return arr.map((s,i)=>`<tr>
-    <td style="color:var(--text3)" class="mono">${i+1}</td>
-    <td class="mono" style="font-weight:600">${s.sceneNo}</td>
-    <td>${ie(s.ie)}</td><td>${dn(s.dn)}</td>
-    <td class="mono">${s.pages}</td>
-    <td><span class="chip chip-blue" style="font-size:10px">Day ${s.day||'—'}</span></td>
-    <td style="font-weight:600;white-space:nowrap">${s.set}</td>
-    <td style="color:var(--text2);max-width:160px">${s.desc}</td>
-    <td style="font-weight:500">${s.char}</td>
-    <td style="color:var(--text2)">${s.makeup||'—'}</td>
-    <td style="color:var(--text2)">${s.wardrobe||'—'}</td>
-    <td style="color:var(--text2)">${s.prop||'—'}</td>
-    <td style="color:var(--text2)">${s.sfx||'—'}</td>
-    <td style="color:var(--text2)">${s.audio||'—'}</td>
-    <td style="color:var(--text2);max-width:100px">${s.notes||'—'}</td>
-    <td style="white-space:nowrap">
-      <button class="btn btn-ghost btn-sm" onclick="editScene('${s.id}')">Edit</button>
-      <button class="btn btn-danger btn-sm" onclick="delScene('${s.id}')">Hapus</button>
-    </td>
-  </tr>`).join('');
+  return arr.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600">${s.sceneNo}</td><td>${ie(s.ie)}</td><td>${dn(s.dn)}</td><td class="mono">${s.pages}</td><td><span class="chip chip-blue" style="font-size:10px">Day ${s.day||'—'}</span></td><td>${s.set}</td><td>${s.desc}</td><td>${s.char}</td><td>${s.makeup||'—'}</td><td>${s.wardrobe||'—'}</td><td>${s.prop||'—'}</td><td>${s.sfx||'—'}</td><td>${s.audio||'—'}</td><td>${s.notes||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editScene('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delScene('${s.id}')">Hapus</button></td></tr>`).join('');
 }
 
 window.fM = function(q){_mq=q;applyMF();}
@@ -1001,18 +816,7 @@ window.fMdn = function(v){_mdn=v;applyMF();}
 window.fMday = function(v){_mday=v;applyMF();}
 function applyMF() {
   const q = _mq.toLowerCase().trim();
-  const f = scenes.filter(s => {
-    // Scene number: exact match if query is a number
-    const sceneMatch = !q || (
-      String(s.sceneNo) === q ||
-      s.set.toLowerCase().includes(q) ||
-      (s.desc||'').toLowerCase().includes(q)
-    );
-    return sceneMatch &&
-      (!_mie || s.ie === _mie) &&
-      (!_mdn || s.dn === _mdn) &&
-      (!_mday || String(s.day) === String(_mday));
-  });
+  const f = scenes.filter(s => (!q || String(s.sceneNo) === q || s.set.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q)) && (!_mie || s.ie === _mie) && (!_mdn || s.dn === _mdn) && (!_mday || String(s.day) === String(_mday)));
   const el = document.getElementById('mtb');
   if(el) el.innerHTML = mRows(f);
 }
@@ -1022,121 +826,53 @@ function rSched() {
   if(!days.includes(schDay)) schDay = days[0]||1;
   const rows = schedules.filter(s=>s.day===schDay);
   const cs = callsheets.find(c=>c.day===schDay);
-  return `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
-      <div class="day-tabs">${days.map(d=>`<div class="day-tab${d===schDay?' on':''}" onclick="selSch(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada hari syuting</span>':''}</div>
-      <span style="font-size:11px;color:var(--text3)" class="mono">${cs?.date||''}</span>
-    </div>
-    <div class="card">
-      <div class="card-head"><span class="card-title">Shooting Schedule — Hari ${schDay}</span><span style="font-size:11px;color:var(--text3)">${rows.length} entry</span></div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>ESTIMATE TIME</th><th>SCENE</th><th>SHOT</th><th>PAGE</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>EXTRAS</th><th>CONT</th><th>NOTES</th><th></th></tr></thead>
-        <tbody>${rows.length?rows.map(e=>{
-          const sc=scenes.find(s=>s.id===e.sceneId);
-          return `<tr>
-            <td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td>
-            <td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td>
-            <td class="mono">${e.shot}</td><td class="mono">${e.page}</td>
-            <td style="white-space:nowrap">${e.loc}</td>
-            <td style="max-width:180px;color:var(--text2)">${e.action}</td>
-            <td style="font-weight:600">${e.talent}</td>
-            <td style="color:var(--text2)">${e.extras||'—'}</td>
-            <td><span class="chip chip-green">${e.cont||'FREE'}</span></td>
-            <td style="color:var(--text2)">${e.notes||'—'}</td>
-            <td style="white-space:nowrap">
-              <button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button>
-              <button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button>
-            </td>
-          </tr>`;
-        }).join(''):`<tr><td colspan="11"><div class="empty">Belum ada entry untuk hari ini.</div></td></tr>`}</tbody>
-      </table></div>
-    </div>`;
+  return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;"><div class="day-tabs">${days.map(d=>`<div class="day-tab${d===schDay?' on':''}" onclick="selSch(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada hari syuting</span>':''}</div><span style="font-size:11px;color:var(--text3)" class="mono">${cs?.date||''}</span></div>
+    <div class="card"><div class="card-head"><span class="card-title">Shooting Schedule — Hari ${schDay}</span><span style="font-size:11px;color:var(--text3)">${rows.length} entry</span></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>ESTIMATE TIME</th><th>SCENE</th><th>SHOT</th><th>PAGE</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>EXTRAS</th><th>CONT</th><th>NOTES</th><th></th></tr></thead>
+    <tbody>${rows.length?rows.map(e=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td class="mono">${e.shot}</td><td class="mono">${e.page}</td><td style="white-space:nowrap">${e.loc}</td><td style="max-width:180px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="color:var(--text2)">${e.extras||'—'}</td><td><span class="chip chip-green">${e.cont||'FREE'}</span></td><td style="color:var(--text2)">${e.notes||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada entry untuk hari ini.</div></td></tr>`}</tbody></table></div></div>`;
 }
 window.selSch = function(d){schDay=d;render();}
 
+// CALL SHEET PAGE WITH EDIT/DELETE SCENE AND DELETE CALL SHEET
 function rCS() {
   const days = [...new Set(callsheets.map(c=>c.day))].sort((a,b)=>a-b);
   if(!days.includes(csDay)) csDay = days[0]||1;
   const cs = callsheets.find(c=>c.day===csDay);
   const rows = schedules.filter(s=>s.day===csDay);
-  return `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+  return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
       <div class="day-tabs">${days.map(d=>`<div class="day-tab${d===csDay?' on':''}" onclick="selCS(${d})">Hari ${d}</div>`).join('')}${!days.length?'<span style="font-size:12px;color:var(--text3)">Belum ada call sheet</span>':''}</div>
-      ${cs?`<button class="btn btn-sm" onclick="editCS('${cs.id}')">Edit Call Sheet</button>`:''}
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        ${cs?`<button class="btn btn-sm" onclick="editCS('${cs.id}')">✎ Edit Call Sheet</button><button class="btn btn-danger btn-sm" onclick="delCallSheet('${cs.id}')">🗑 Hapus Call Sheet</button>`:''}
+      </div>
     </div>
     ${cs?`<div class="cs-doc">
       <div class="cs-top">
-        <div class="cs-col">
-          <div class="mono" style="font-size:9px;font-weight:600;letter-spacing:0.14em;color:var(--text3);margin-bottom:12px">DOCUMENTARY FILM PRODUCTION</div>
-          ${[['PRODUCER',proj.producer||'—'],['DIRECTOR',proj.director||'—'],['DOP',proj.dop||'—'],['SOUND RECORD',proj.soundRec||'—'],['1ST ASST. DIR',proj.firstAD||'—']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v">${v}</span></div>`).join('')}
-        </div>
-        <div class="cs-col" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <span style="font-size:14px;font-weight:700;letter-spacing:0.06em;font-family:'DM Mono',monospace">CALL SHEET</span>
-          <span style="font-size:10px;color:var(--text3);margin-top:2px;letter-spacing:0.04em">Crew Call On Location</span>
-          <div class="cs-big">${cs.crewCall}</div>
-          <div style="font-size:10px;color:var(--text3);letter-spacing:0.06em;margin-bottom:3px;font-family:'DM Mono',monospace">LOCATION & BASECAMP</div>
-          <div style="font-size:12.5px;font-weight:600;text-align:center">${proj.location||'—'}</div>
-          <div style="font-size:11px;color:var(--text2);margin-top:3px;text-align:center">${proj.basecamp||'—'}</div>
-          <div style="font-size:10px;color:var(--text3);margin-top:10px;font-family:'DM Mono',monospace">NEAREST HOSPITAL</div>
-          <div style="font-size:11px;text-align:center;margin-top:2px">${proj.hospital||'—'}</div>
-        </div>
-        <div class="cs-col">
-          <div class="mono" style="font-size:10px;color:var(--text3);letter-spacing:0.08em">${cs.label}</div>
-          <div style="font-size:13px;font-weight:700;margin-top:2px;margin-bottom:12px">${cs.date}</div>
-          ${[['PRE CALL PRODUCTION',cs.preCall],['BREAKFAST',cs.breakfast],['1ST CAM ROLL',cs.camRoll],['LUNCH',cs.lunch],['WRAP',cs.wrap||'TBD']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v mono">${v}</span></div>`).join('')}
-          <div class="weather-box"><div style="font-size:18px;font-weight:700;font-family:'DM Mono',monospace">${cs.weather}</div><div style="font-size:10px;color:var(--text3);margin-top:3px">${cs.weatherNote}</div></div>
-        </div>
+        <div class="cs-col"><div class="mono" style="font-size:9px;font-weight:600;letter-spacing:0.14em;color:var(--text3);margin-bottom:12px">DOCUMENTARY FILM PRODUCTION</div>${[['PRODUCER',proj.producer||'—'],['DIRECTOR',proj.director||'—'],['DOP',proj.dop||'—'],['SOUND RECORD',proj.soundRec||'—'],['1ST ASST. DIR',proj.firstAD||'—']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v">${v}</span></div>`).join('')}</div>
+        <div class="cs-col" style="display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font-size:14px;font-weight:700;letter-spacing:0.06em;font-family:'DM Mono',monospace">CALL SHEET</span><span style="font-size:10px;color:var(--text3);margin-top:2px;letter-spacing:0.04em">Crew Call On Location</span><div class="cs-big">${cs.crewCall}</div><div style="font-size:10px;color:var(--text3);letter-spacing:0.06em;margin-bottom:3px;font-family:'DM Mono',monospace">LOCATION & BASECAMP</div><div style="font-size:12.5px;font-weight:600;text-align:center">${proj.location||'—'}</div><div style="font-size:11px;color:var(--text2);margin-top:3px;text-align:center">${proj.basecamp||'—'}</div><div style="font-size:10px;color:var(--text3);margin-top:10px;font-family:'DM Mono',monospace">NEAREST HOSPITAL</div><div style="font-size:11px;text-align:center;margin-top:2px">${proj.hospital||'—'}</div></div>
+        <div class="cs-col"><div class="mono" style="font-size:10px;color:var(--text3);letter-spacing:0.08em">${cs.label}</div><div style="font-size:13px;font-weight:700;margin-top:2px;margin-bottom:12px">${cs.date}</div>${[['PRE CALL PRODUCTION',cs.preCall],['BREAKFAST',cs.breakfast],['1ST CAM ROLL',cs.camRoll],['LUNCH',cs.lunch],['WRAP',cs.wrap||'TBD']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v mono">${v}</span></div>`).join('')}<div class="weather-box"><div style="font-size:18px;font-weight:700;font-family:'DM Mono',monospace">${cs.weather}</div><div style="font-size:10px;color:var(--text3);margin-top:3px">${cs.weatherNote}</div></div></div>
       </div>
       ${cs.setNotes?`<div class="cs-notes-bar">${cs.setNotes.replace(/\n/g,'<br>')}</div>`:''}
       <div class="tbl-wrap"><table class="tbl" style="border-radius:0">
-        <thead><tr><th>NO</th><th>TIME</th><th>BABAK/SC</th><th>I/E</th><th>D/N</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th>SCRIPT</th></tr></thead>
-        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr>
-          <td style="color:var(--text3)" class="mono">${i+1}</td>
-          <td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td>
-          <td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td>
-          <td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}</td>
-          <td>${e.loc}</td><td class="mono">${e.shot}</td>
-          <td style="max-width:160px;color:var(--text2)">${e.action}</td>
-          <td style="font-weight:600">${e.talent}</td>
-          <td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td>
-        </tr>`;}).join(''):`<tr><td colspan="10"><div class="empty">Belum ada shooting entry untuk hari ini.</div></td></tr>`}</tbody>
+        <thead><tr><th>NO</th><th>TIME</th><th>BABAK/SC</th><th>I/E</th><th>D/N</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th>SCRIPT</th><th></th></tr></thead>
+        <tbody>${rows.length?rows.map((e,i)=>{const sc=scenes.find(s=>s.id===e.sceneId);return `<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td class="mono" style="font-weight:600;white-space:nowrap">${e.time}</td><td class="mono" style="font-weight:600">${sc?.sceneNo||'?'}</td><td>${ie(sc?.ie||'E')}</td><td>${dn(sc?.dn||'D')}</td><td>${e.loc}</td><td class="mono">${e.shot}</td><td style="max-width:160px;color:var(--text2)">${e.action}</td><td style="font-weight:600">${e.talent}</td><td style="max-width:140px;color:var(--text2);font-size:11px">${sc?.desc||'—'}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editSched('${e.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSched('${e.id}')">Hapus</button></td></tr>`;}).join(''):`<tr><td colspan="11"><div class="empty">Belum ada shooting entry untuk hari ini. <button class="btn btn-sm" onclick="openM('sched')">+ Tambah Entry</button></div></td></tr>`}</tbody>
       </table></div>
       <div class="cs-footer">THANK YOU FOR TODAY, SEE U NEXT DAY</div>
     </div>`:`<div class="empty" style="padding:60px">Belum ada call sheet. Klik <strong>+ Tambah Hari</strong>.</div>`}`;
 }
 window.selCS = function(d){csDay=d;render();}
+window.delCallSheet = function(id) { if(confirm('Hapus call sheet ini? Semua jadwal untuk hari ini juga akan terhapus.')) { deleteItem('callsheets',id); showToast('Call sheet dihapus'); } };
 
 function getAllTalent() {
   const m={};
-  scenes.forEach(s=>{
-    s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{
-      if(!m[c]) m[c]={name:c,scenes:[],days:new Set()};
-      m[c].scenes.push(s.sceneNo);
-      schedules.filter(x=>x.sceneId===s.id).forEach(x=>m[c].days.add(x.day));
-    });
-  });
+  scenes.forEach(s=>{ s.char.split(',').map(c=>c.trim()).filter(Boolean).forEach(c=>{ if(!m[c]) m[c]={name:c,scenes:[],days:new Set()}; m[c].scenes.push(s.sceneNo); schedules.filter(x=>x.sceneId===s.id).forEach(x=>m[c].days.add(x.day)); }); });
   return Object.values(m);
 }
 
 function rTalent() {
   const talent = getAllTalent();
-  return `<div class="card">
-    <div class="card-head"><span class="card-title">Talent Breakdown — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">Otomatis dari Master Breakdown</span></div>
-    <div class="tbl-wrap"><table class="tbl">
-      <thead><tr><th>NO</th><th>CAST (CHARACTER)</th><th>D/DN</th><th>SCENE NUMBERS</th><th>T. SCENE</th><th>T. DAY</th><th>NOTES</th></tr></thead>
-      <tbody>
-        <tr class="group-row"><td colspan="7">MAIN CAST</td></tr>
-        ${talent.length?talent.map((t,i)=>`<tr>
-          <td class="mono" style="color:var(--text3)">${i+1}</td>
-          <td style="font-weight:600">${t.name}</td><td>—</td>
-          <td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td>
-          <td class="mono" style="font-weight:600">${t.scenes.length}</td>
-          <td class="mono" style="font-weight:600">${t.days.size}</td>
-          <td style="color:var(--text3)">—</td>
-        </tr>`).join(''):`<tr><td colspan="7"><div class="empty">Input scene di Master Breakdown untuk melihat data talent.</div></td></tr>`}
-      </tbody>
-    </table></div>
-  </div>
+  return `<div class="card"><div class="card-head"><span class="card-title">Talent Breakdown — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">Otomatis dari Master Breakdown</span></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>CAST (CHARACTER)</th><th>D/DN</th><th>SCENE NUMBERS</th><th>T. SCENE</th><th>T. DAY</th><th>NOTES</th></tr></thead>
+    <tbody><tr class="group-row"><td colspan="7">MAIN CAST</tr>${talent.length?talent.map((t,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td style="font-weight:600">${t.name}</td><td>—</td><td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td><td class="mono" style="font-weight:600">${t.scenes.length}</td><td class="mono" style="font-weight:600">${t.days.size}</td><td style="color:var(--text3)">—</td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">Input scene di Master Breakdown untuk melihat data talent.</div></td></tr>`}</tbody>｜｜DSML｜｜</div></div>
   <p style="font-size:11px;color:var(--text3);margin-top:8px">* Kolom CHARACTER di Master Breakdown dipisah dengan koma untuk beberapa talent.</p>`;
 }
 
@@ -1144,1415 +880,115 @@ function rLoc() {
   const m={};
   scenes.forEach(s=>{ if(!m[s.set]) m[s.set]={set:s.set,ie:s.ie,dn:s.dn,scenes:[]}; m[s.set].scenes.push(s.sceneNo); });
   const locs = Object.values(m);
-  return `<div class="card">
-    <div class="card-head"><span class="card-title">Location Breakdown — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">Otomatis dari Master Breakdown</span></div>
-    <div class="tbl-wrap"><table class="tbl">
-      <thead><tr><th>NO</th><th>LOCATION / SET</th><th>I/E</th><th>D/N</th><th colspan="20">SCENE NUMBERS</th></tr></thead>
-      <tbody>${locs.length?locs.map((l,i)=>`<tr>
-        <td class="mono" style="color:var(--text3)">${i+1}</td>
-        <td style="font-weight:600;white-space:nowrap">${l.set}</td>
-        <td>${ie(l.ie)}</td><td>${dn(l.dn)}</td>
-        ${l.scenes.map(n=>`<td class="mono" style="font-weight:600;text-align:center">${n}</td>`).join('')}
-      </tr>`).join(''):`<tr><td colspan="24"><div class="empty">Input scene di Master Breakdown untuk melihat data lokasi.</div></td></tr>`}</tbody>
-    </table></div>
-  </div>`;
-}
-
-// ── MODAL ─────────────────────────────────────────────────────
-function esc(s){return (s||'').replace(/"/g,'&quot;');}
-
-window.openProjModal = function() {
-  mSection='proj'; editId=null;
-  document.getElementById('m-title').textContent = 'Edit Project Info';
-  document.getElementById('m-body').innerHTML = `
-    <div class="fg"><label class="fl">Judul Film</label><input class="fi" id="f0" value="${esc(proj.title)}"></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Producer</label><input class="fi" id="f1" value="${esc(proj.producer)}"></div>
-      <div class="fg"><label class="fl">Director</label><input class="fi" id="f2" value="${esc(proj.director)}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">DOP</label><input class="fi" id="f3" value="${esc(proj.dop)}"></div>
-      <div class="fg"><label class="fl">Sound Record</label><input class="fi" id="f4" value="${esc(proj.soundRec)}"></div>
-    </div>
-    <div class="fg"><label class="fl">1st Asst. Director</label><input class="fi" id="f5" value="${esc(proj.firstAD)}"></div>
-    <div class="fg"><label class="fl">Location & Basecamp</label><input class="fi" id="f6" value="${esc(proj.location)}"></div>
-    <div class="fg"><label class="fl">Alamat Basecamp</label><input class="fi" id="f7" value="${esc(proj.basecamp)}"></div>
-    <div class="fg"><label class="fl">Nearest Hospital</label><input class="fi" id="f8" value="${esc(proj.hospital)}"></div>
-  `;
-  document.getElementById('mwrap').classList.add('open');
-};
-
-window.openM = function(s, preParam) {
-  mSection=s; editId=null;
-  const t={scene:'Tambah Scene — Master Breakdown',sched:'Tambah Shooting Schedule',cs:'Tambah Call Sheet Hari',shot:'Tambah Shot',audio:'Tambah Audio Entry',setitem:'Tambah Set / Wardrobe / Warna',prop:'Tambah Prop'};
-  document.getElementById('m-title').textContent = t[s]||'Tambah';
-  if(s==='shot') document.getElementById('m-body').innerHTML = shotForm(null, preParam);
-  else if(s==='audio') document.getElementById('m-body').innerHTML = audioForm(null, preParam);
-  else if(s==='setitem') document.getElementById('m-body').innerHTML = setItemForm(null, preParam||'set');
-  else if(s==='prop') document.getElementById('m-body').innerHTML = propForm(null);
-  else document.getElementById('m-body').innerHTML = formFor(s, null);
-  document.getElementById('mwrap').classList.add('open');
-};
-
-window.editScene = function(id) { const d=scenes.find(x=>x.id===id); mSection='scene'; editId=id; document.getElementById('m-title').textContent='Edit Scene'; document.getElementById('m-body').innerHTML=formFor('scene',d); document.getElementById('mwrap').classList.add('open'); };
-window.editSched = function(id) { const d=schedules.find(x=>x.id===id); mSection='sched'; editId=id; document.getElementById('m-title').textContent='Edit Schedule Entry'; document.getElementById('m-body').innerHTML=formFor('sched',d); document.getElementById('mwrap').classList.add('open'); };
-window.editCS = function(id) { const d=callsheets.find(x=>x.id===id); mSection='cs'; editId=id; document.getElementById('m-title').textContent='Edit Call Sheet'; document.getElementById('m-body').innerHTML=formFor('cs',d); document.getElementById('mwrap').classList.add('open'); };
-
-function shotForm(d, preSceneNo) {
-  const sceneOpts = scenes.map(sc=>`<option value="${sc.sceneNo}" ${(d?.sceneNo==sc.sceneNo||preSceneNo==sc.sceneNo)?'selected':''}>${sc.sceneNo} — ${sc.set}</option>`).join('');
-  return `
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-scn">${sceneOpts||'<option>— Belum ada scene —</option>'}</select></div>
-      <div class="fg"><label class="fl">Shot #</label><input class="fi" id="f-shn" type="number" min="1" value="${d?.shotNo||''}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div>
-      <div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div>
-    </div>
-    <div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Shot Size</label>
-        <select class="fi" id="f-ss">
-          ${['','ELS','LS','FS','MS','MCU','CU','BCU','ECU'].map(v=>`<option${d?.shotSize===v?' selected':''}>${v}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg"><label class="fl">Camera Angle</label>
-        <select class="fi" id="f-ang">
-          ${['','Eye Level','High','Low','Bird Eye','Worm Eye','Dutch'].map(v=>`<option${d?.angle===v?' selected':''}>${v}</option>`).join('')}
-        </select>
-      </div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Camera Movement</label>
-        <select class="fi" id="f-mov">
-          ${['','Still','Pan','Tilt','Dolly','Zoom','Tracking','Handheld','Steadicam','Point Of Interest','Crane'].map(v=>`<option${d?.movement===v?' selected':''}>${v}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg"><label class="fl">Equipment</label><input class="fi" id="f-eq" placeholder="Tripod / Drone / Gimbal..." value="${esc(d?.equipment||'')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Audio</label>
-        <select class="fi" id="f-au">
-          ${['','Sync','MOS','Wildtrack','Ambience','VO'].map(v=>`<option${d?.audio===v?' selected':''}>${v}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg"><label class="fl">Subject / Object</label><input class="fi" id="f-sub" value="${esc(d?.subject||'')}"></div>
-    </div>
-    <div class="fg"><label class="fl">Deskripsi</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div>
-    <div class="fg"><label class="fl">Catatan</label><input class="fi" id="f-notes" value="${esc(d?.notes||'')}"></div>
-    <div class="fg"><label class="fl">Scene Notes</label><input class="fi" id="f-sn" placeholder="Catatan keseluruhan untuk scene ini..." value="${esc(d?.sceneNotes||'')}"></div>
-  `;
-}
-
-function formFor(s, d) {
-  if(s==='scene') return `
-    <div class="fg-row3">
-      <div class="fg"><label class="fl">Scene No.</label><input class="fi" id="f-sc" value="${d?.sceneNo||''}"></div>
-      <div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div>
-      <div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Pages</label><input class="fi" id="f-pg" value="${esc(d?.pages||'')}"></div>
-      <div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div>
-    </div>
-    <div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div>
-    <div class="fg"><label class="fl">Description</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Character (pisah koma)</label><input class="fi" id="f-ch" value="${esc(d?.char||'')}"></div>
-      <div class="fg"><label class="fl">Makeup</label><input class="fi" id="f-mk" value="${esc(d?.makeup||'')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobe||'')}"></div>
-      <div class="fg"><label class="fl">Main Prop</label><input class="fi" id="f-pr" value="${esc(d?.prop||'')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Special Effect</label><input class="fi" id="f-sfx" value="${esc(d?.sfx||'')}"></div>
-      <div class="fg"><label class="fl">Audio</label><input class="fi" id="f-au" value="${esc(d?.audio||'')}"></div>
-    </div>
-    <div class="fg"><label class="fl">Special Notes</label><textarea class="fi" id="f-nt">${d?.notes||''}</textarea></div>`;
-  if(s==='sched') {
-    const opts = scenes.map(sc=>`<option value="${sc.id}"${d?.sceneId===sc.id?' selected':''}>Sc.${sc.sceneNo} — ${sc.set}</option>`).join('');
-    return `
-      <div class="fg-row">
-        <div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div>
-        <div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div>
-      </div>
-      <div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value="${esc(d?.time||'')}"></div>
-      <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div>
-      <div class="fg-row">
-        <div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value="${esc(d?.shot||'')}"></div>
-        <div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value="${esc(d?.page||'')}"></div>
-      </div>
-      <div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value="${esc(d?.loc||'')}"></div>
-      <div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac">${d?.action||''}</textarea></div>
-      <div class="fg-row">
-        <div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value="${esc(d?.talent||'')}"></div>
-        <div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value="${esc(d?.extras||'')}"></div>
-      </div>
-      <div class="fg-row">
-        <div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="${esc(d?.cont||'FREE')}"></div>
-        <div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value="${esc(d?.notes||'')}"></div>
-      </div>`;
-  }
-  if(s==='cs') return `
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Shooting Day No.</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div>
-      <div class="fg"><label class="fl">Label (mis. DAY 1 OFF 10)</label><input class="fi" id="f-lb" value="${esc(d?.label||'')}"></div>
-    </div>
-    <div class="fg"><label class="fl">Tanggal (mis. TUESDAY, 01 JULY 2025)</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Crew Call Time</label><input class="fi" id="f-cc" value="${esc(d?.crewCall||'07.00 WIB')}"></div>
-      <div class="fg"><label class="fl">Pre Call Production</label><input class="fi" id="f-pc" value="${esc(d?.preCall||'06.30 WIB')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Breakfast</label><input class="fi" id="f-bf" value="${esc(d?.breakfast||'07.00 WIB')}"></div>
-      <div class="fg"><label class="fl">1st Cam Roll</label><input class="fi" id="f-cr" value="${esc(d?.camRoll||'08.30 WIB')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Lunch</label><input class="fi" id="f-ln" value="${esc(d?.lunch||'12.00 WIB')}"></div>
-      <div class="fg"><label class="fl">Wrap</label><input class="fi" id="f-wr" value="${esc(d?.wrap||'')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Weather</label><input class="fi" id="f-wt" value="${esc(d?.weather||'')}"></div>
-      <div class="fg"><label class="fl">Weather Note</label><input class="fi" id="f-wn" value="${esc(d?.weatherNote||'')}"></div>
-    </div>
-    <div class="fg"><label class="fl">Set Notes</label><textarea class="fi" id="f-sn" style="min-height:90px">${d?.setNotes||''}</textarea></div>`;
-}
-
-function v(id){const el=document.getElementById(id);return el?el.value.trim():'';}
-
-window.closeM = function() { document.getElementById('mwrap').classList.remove('open'); };
-
-window.saveM = function() {
-  if(mSection==='proj') {
-    const data={title:v('f0'),producer:v('f1'),director:v('f2'),dop:v('f3'),soundRec:v('f4'),firstAD:v('f5'),location:v('f6'),basecamp:v('f7'),hospital:v('f8')};
-    proj = data;
-    saveProj(data);
-    showToast('Project info disimpan', 'success');
-  } else if(mSection==='scene') {
-    const data={sceneNo:parseInt(v('f-sc'))||scenes.length+1,ie:v('f-ie'),dn:v('f-dn'),pages:v('f-pg'),day:parseInt(v('f-dy'))||1,set:v('f-set'),desc:v('f-desc'),char:v('f-ch'),makeup:v('f-mk'),wardrobe:v('f-wd'),prop:v('f-pr'),sfx:v('f-sfx'),audio:v('f-au'),notes:v('f-nt')};
-    if(editId) data.id = editId;
-    saveItem('scenes', data);
-    showToast(editId?'Scene diperbarui':'Scene ditambahkan', 'success');
-  } else if(mSection==='sched') {
-    const selEl = document.getElementById('f-sid');
-    const data={day:parseInt(v('f-dy'))||1,date:v('f-dt'),time:v('f-tm'),sceneId:selEl?selEl.value:'',shot:v('f-sh'),page:v('f-pg'),loc:v('f-lc'),action:v('f-ac'),talent:v('f-tl'),extras:v('f-ex'),cont:v('f-ct'),notes:v('f-nt')};
-    if(editId) data.id = editId; else schDay = parseInt(v('f-dy'))||1;
-    saveItem('schedules', data);
-    showToast('Schedule disimpan', 'success');
-  } else if(mSection==='cs') {
-    const data={day:parseInt(v('f-dy'))||1,label:v('f-lb'),date:v('f-dt'),crewCall:v('f-cc'),preCall:v('f-pc'),breakfast:v('f-bf'),camRoll:v('f-cr'),lunch:v('f-ln'),wrap:v('f-wr'),weather:v('f-wt'),weatherNote:v('f-wn'),setNotes:v('f-sn')};
-    if(editId) data.id = editId; else csDay = parseInt(v('f-dy'))||1;
-    saveItem('callsheets', data);
-    showToast('Call sheet disimpan', 'success');
-  } else if(mSection==='shot') {
-    const scnEl = document.getElementById('f-scn');
-    const sceneNo = scnEl ? parseInt(scnEl.value) : null;
-    const sc = scenes.find(s=>s.sceneNo==sceneNo);
-    const data={
-      sceneNo, sceneId: sc?.id||null,
-      ie:v('f-ie'), dn:v('f-dn'), set:v('f-set'),
-      shotNo:parseInt(v('f-shn'))||1,
-      shotSize:v('f-ss'), angle:v('f-ang'), movement:v('f-mov'),
-      equipment:v('f-eq'), audio:v('f-au'), subject:v('f-sub'),
-      desc:v('f-desc'), notes:v('f-notes'), sceneNotes:v('f-sn'),
-      photoURL: editId ? (shotlist.find(x=>x.id===editId)?.photoURL||null) : null
-    };
-    if(editId) data.id = editId;
-    saveItem('shotlist', data);
-    showToast(editId?'Shot diperbarui':'Shot ditambahkan','success');
-  } else if(mSection==='audio') {
-    const scnEl = document.getElementById('f-scn');
-    const sceneNo = scnEl ? parseInt(scnEl.value) : null;
-    const data = {
-      sceneNo, ie:v('f-ie'), dn:v('f-dn'), char:v('f-char'),
-      dev:v('f-dev'), dia:v('f-dia'), foley:v('f-foley'),
-      ambRoom:v('f-amb'), code:v('f-code'),
-      shotNo: parseInt(v('f-shn'))||1,
-      photoURL: editId ? (audiolist.find(x=>x.id===editId)?.photoURL||null) : null
-    };
-    if(editId) data.id = editId;
-    saveItem('audiolist', data);
-    showToast(editId?'Entry diperbarui':'Entry ditambahkan','success');
-  } else if(mSection==='setitem') {
-    const cat = v('f-cat');
-    let data = {category: cat};
-    if(cat==='set') { data={...data, location:v('f-loc'), ie:v('f-ie'), status:v('f-status'), note:v('f-note')}; }
-    else if(cat==='wardrobe') { data={...data, character:v('f-char'), wardrobeDesc:v('f-wd'), color:v('f-color'), colorHex:document.getElementById('f-hex')?.value||'', status:v('f-status'), note:v('f-note')}; }
-    else if(cat==='color') { data={...data, color:v('f-color'), colorHex:document.getElementById('f-hex')?.value||''}; }
-    if(editId) data.id = editId;
-    saveItem('setlist', data);
-    showToast(editId?'Item diperbarui':'Item ditambahkan','success');
-  } else if(mSection==='prop') {
-    const data={desc:v('f-desc'), location:v('f-loc'), scene:v('f-scene'), type:v('f-type'), qty:parseInt(v('f-qty'))||1, status:v('f-status'), unitRate:v('f-ur'), rateProp:v('f-rp'), note:v('f-note')};
-    if(editId) data.id = editId;
-    saveItem('proplist', data);
-    showToast(editId?'Prop diperbarui':'Prop ditambahkan','success');
-  }
-  closeM();
-  if(!useFirebase) render();
-};
-
-window.delScene = function(id){if(confirm('Hapus scene ini?')){deleteItem('scenes',id);showToast('Scene dihapus');}};
-window.delSched = function(id){if(confirm('Hapus entry ini?')){deleteItem('schedules',id);showToast('Entry dihapus');}};
-
-document.getElementById('mwrap').addEventListener('click', function(e){if(e.target===this)closeM();});
-
-// ── AUDIO LIST ────────────────────────────────────────────────
-function rAudioList() {
-  // Group by scene, enrich with master breakdown data
-  const sceneGroups = {};
-  audiolist.forEach(a => {
-    const key = a.sceneNo || 'unknown';
-    if(!sceneGroups[key]) sceneGroups[key] = { shots: [], meta: a };
-    sceneGroups[key].shots.push(a);
-  });
-  const groupKeys = Object.keys(sceneGroups).sort((a,b) => Number(a)-Number(b));
-
-  return `
-    <div style="background:#1A1917;color:#D3D1C7;padding:10px 20px;font-size:12px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;border-radius:var(--radius);margin-bottom:16px;">
-      AUDIO LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; SOUND DIRECTOR : ${proj.soundRec||'—'}
-    </div>
-    ${!groupKeys.length ? `
-      <div class="card"><div class="empty" style="padding:60px">
-        Belum ada entry audio. Klik <strong>+ Tambah Entry</strong>.
-      </div></div>
-    ` : groupKeys.map(key => {
-      const group = sceneGroups[key];
-      const meta = group.meta;
-      const shots = group.shots.sort((a,b) => Number(a.shotNo)-Number(b.shotNo));
-      // Enrich from master breakdown
-      const masterScene = scenes.find(s=>String(s.sceneNo)===String(key));
-      const setName = masterScene?.set || meta.set || '—';
-      const ieVal = meta.ie || masterScene?.ie || '—';
-      const dnVal = meta.dn || masterScene?.dn || '—';
-
-      return `
-      <div class="sl-scene-block">
-        <!-- Scene Header -->
-        <div style="background:#1A1917;color:#fff;padding:0;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;">
-          <!-- Scene Number Box -->
-          <div style="background:#F5D060;color:#1A1917;min-width:72px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:28px;font-weight:700;padding:12px 16px;letter-spacing:0.04em;">
-            ${meta.sceneNo||key}
-          </div>
-          <!-- Scene Info -->
-          <div style="padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;">
-            <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.1em;color:#aaa;text-transform:uppercase;">Scene</div>
-            <div style="font-size:13px;font-weight:600;letter-spacing:0.04em;">${setName}</div>
-            <div style="display:flex;gap:10px;margin-top:2px;">
-              <span style="background:${ieVal==='I'?'#185FA5':'#0F6E56'};color:#fff;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace">${ieVal==='I'?'INT':ieVal==='E'?'EXT':ieVal}</span>
-              <span style="background:${dnVal==='D'?'#92580A':'#2C2C2A'};color:#fff;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace">${dnVal==='D'?'DAY':dnVal==='N'?'NIGHT':dnVal}</span>
-            </div>
-          </div>
-          <!-- Add Shot Button -->
-          <div style="padding:12px 16px;display:flex;align-items:center;">
-            <button class="btn btn-sm" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.25)" onclick="openM('audio','${key}')">+ Shot</button>
-          </div>
-        </div>
-        <!-- Shot Table -->
-        <div style="overflow-x:auto">
-          <table class="tbl">
-            <thead><tr>
-              <th style="min-width:50px">SHOT</th>
-              <th style="min-width:70px">I/E</th>
-              <th style="min-width:70px">D/N</th>
-              <th style="min-width:120px">CHARACTER</th>
-              <th style="min-width:130px">DEVICE</th>
-              <th style="min-width:200px">FRAME / PHOTOBOARD</th>
-              <th style="min-width:180px">DIALOG</th>
-              <th style="min-width:150px;background:#F5D060;color:#1A1917">FOLEY</th>
-              <th style="min-width:140px">AMB / ROOM</th>
-              <th style="min-width:130px;background:#C0392B;color:#fff">CODE</th>
-              <th style="min-width:70px"></th>
-            </tr></thead>
-            <tbody>
-              ${shots.map(a=>`<tr>
-                <td class="mono" style="font-weight:700;text-align:center;font-size:16px">${a.shotNo||'—'}</td>
-                <td>${a.ie ? `<span class="chip ${a.ie==='I'?'chip-blue':'chip-teal'}">${a.ie==='I'?'INT':'EXT'}</span>` : '—'}</td>
-                <td>${a.dn ? `<span class="chip ${a.dn==='D'?'chip-amber':'chip-dark'}">${a.dn==='D'?'DAY':'NIGHT'}</span>` : '—'}</td>
-                <td style="font-weight:500">${a.char||'—'}</td>
-                <td style="color:var(--text2);font-size:11px;line-height:1.5">${a.dev||'—'}</td>
-                <td style="padding:8px;vertical-align:middle">
-                  ${a.photoURL
-                    ? `<div>
-                        <img src="${a.photoURL}" style="width:180px;height:101.25px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid var(--border);display:block" onclick="openLightbox('${a.photoURL}','${a.id}')">
-                        <div style="font-size:10px;color:var(--blue);cursor:pointer;margin-top:4px;text-align:center;font-weight:500" onclick="triggerAudioPhoto('${a.id}')">🔄 Ganti Foto</div>
-                      </div>`
-                    : `<div style="width:180px;height:101.25px;border:1.5px dashed var(--border2);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:var(--text3);background:var(--surface2);transition:all 0.13s" onclick="triggerAudioPhoto('${a.id}')" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'">
-                         <span style="font-size:24px">📷</span>
-                         <span style="font-size:10px;font-weight:500">Upload Photoboard</span>
-                       </div>`
-                  }
-                  <input type="file" id="aphoto-${a.id}" accept="image/*" style="display:none" onchange="uploadAudioPhoto('${a.id}',this)">
-                </td>
-                <td style="color:var(--text2);font-size:12px;line-height:1.6">${a.dia||'—'}</td>
-                <td style="background:#FFFAED;font-weight:500;font-size:12px;color:#633806">${a.foley||'—'}</td>
-                <td style="color:var(--text2);font-size:12px">${a.ambRoom||'—'}</td>
-                <td style="font-weight:700;font-size:11px;color:#C0392B;font-family:'DM Mono',monospace">${a.code||'—'}</td>
-                <td style="white-space:nowrap;padding:8px;vertical-align:top">
-                  <button class="btn btn-ghost btn-sm" onclick="editAudio('${a.id}')">✎</button>
-                  <button class="btn btn-danger btn-sm" onclick="delAudio('${a.id}')">✕</button>
-                </td>
-              </tr>`).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>`;
-    }).join('')}
-  `;
-}
-
-// Audio photo upload
-window.triggerAudioPhoto = function(id) {
-  document.getElementById(`aphoto-${id}`)?.click();
-};
-window.uploadAudioPhoto = async function(id, input) {
-  const file = input.files[0];
-  if(!file) return;
-  if(file.size > 10*1024*1024) { showToast('Foto max 10MB!','error'); return; }
-  showToast('Mengupload frame...');
-  try {
-    const compressed = await compressImage(file, 1200, 0.8);
-    const formData = new FormData();
-    formData.append('file', compressed);
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-    formData.append('folder', 'film_prod_audio');
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, { method:'POST', body:formData });
-    if(!res.ok) throw new Error('Upload gagal');
-    const data = await res.json();
-    await db.ref(`audiolist/${id}/photoURL`).set(data.secure_url);
-    showToast('Frame berhasil diupload!', 'success');
-  } catch(e) {
-    showToast('Gagal upload: '+e.message, 'error');
-  }
-};
-
-window.editAudio = function(id) {
-  const d = audiolist.find(x=>x.id===id);
-  mSection='audio'; editId=id;
-  document.getElementById('m-title').textContent='Edit Audio Entry';
-  document.getElementById('m-body').innerHTML = audioForm(d);
-  document.getElementById('mwrap').classList.add('open');
-};
-window.delAudio = function(id) {
-  if(confirm('Hapus entry ini?')) { deleteItem('audiolist',id); showToast('Entry dihapus'); }
-};
-
-function audioForm(d, preScene) {
-  const sceneOpts = scenes.map(sc=>`<option value="${sc.sceneNo}" ${(d?.sceneNo==sc.sceneNo||preScene==sc.sceneNo)?'selected':''}>${sc.sceneNo} — ${sc.set}</option>`).join('');
-  return `
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Scene</label><select class="fi" id="f-scn">${sceneOpts||'<option>— Belum ada scene —</option>'}</select></div>
-      <div class="fg"><label class="fl">Shot #</label><input class="fi" id="f-shn" type="number" min="1" value="${d?.shotNo||''}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option value="">—</option><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div>
-      <div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option value="">—</option><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div>
-    </div>
-    <div class="fg"><label class="fl">Character (CHAR)</label><input class="fi" id="f-char" placeholder="ARIF, KARSO, ..." value="${esc(d?.char||'')}"></div>
-    <div class="fg"><label class="fl">DEV (Peralatan Mic)</label><input class="fi" id="f-dev" placeholder="BOOM 2* SENHEISSER" value="${esc(d?.dev||'')}"></div>
-    <div class="fg"><label class="fl">DIA (Dialog)</label><textarea class="fi" id="f-dia" placeholder="Tulis dialog atau deskripsi aksi...">${d?.dia||''}</textarea></div>
-    <div class="fg"><label class="fl">FOLEY</label><input class="fi" id="f-foley" placeholder="Benturan badan, Step, Suara pintu..." value="${esc(d?.foley||'')}"></div>
-    <div class="fg"><label class="fl">AMB / ROOM TONE</label><input class="fi" id="f-amb" placeholder="Room ruang kerja, AMB sawah..." value="${esc(d?.ambRoom||'')}"></div>
-    <div class="fg"><label class="fl">CODE (Sub-judul Scene)</label><input class="fi" id="f-code" placeholder="OPENING, ENDING, RUMAH MAKAN..." value="${esc(d?.code||'')}"></div>
-  `;
-}
-
-function printAudioList() {
-  const sceneGroups = {};
-  audiolist.forEach(a => {
-    const key = a.sceneNo || '?';
-    if(!sceneGroups[key]) sceneGroups[key] = { shots:[], meta:a };
-    sceneGroups[key].shots.push(a);
-  });
-  const keys = Object.keys(sceneGroups).sort((a,b)=>Number(a)-Number(b));
-  if(!keys.length) return '<p style="text-align:center;padding:40px;color:#999">Belum ada data audio list</p>';
-
-  return keys.map(key => {
-    const g = sceneGroups[key];
-    const shots = g.shots.sort((a,b)=>Number(a.shotNo)-Number(b.shotNo));
-    return `
-      <div style="margin-bottom:16px;border:1px solid #ccc;border-radius:4px;overflow:hidden;break-inside:avoid">
-        <div style="background:#1A1917;color:#D3D1C7;padding:7px 12px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em">
-          <span>SCENE ${g.meta.sceneNo||key}</span>
-          <span>I/E: ${g.meta.ie||'—'} &nbsp;|&nbsp; D/N: ${g.meta.dn||'—'}</span>
-        </div>
-        <table>
-          <thead><tr>
-            <th>SHOT</th><th>I/E</th><th>D/N</th><th>CHAR</th><th>DEV</th><th>FRAME</th>
-            <th style="background:#F5D060;color:#333">FOLEY</th>
-            <th>AMB/ROOM</th>
-            <th style="background:#C0392B;color:#fff">CODE</th>
-            <th>DIA</th>
-          </tr></thead>
-          <tbody>
-            ${shots.map(a=>`<tr>
-              <td class="mono" style="font-weight:700;text-align:center">${a.shotNo||'—'}</td>
-              <td>${a.ie||'—'}</td>
-              <td>${a.dn||'—'}</td>
-              <td style="font-weight:500">${a.char||'—'}</td>
-              <td style="font-size:9px">${a.dev||'—'}</td>
-              <td style="padding:4px">${a.photoURL?`<img src="${a.photoURL}" style="width:100px;height:56.25px;object-fit:cover;border-radius:2px">`:''}</td>
-              <td style="font-weight:600;background:#FFFAED">${a.foley||'—'}</td>
-              <td>${a.ambRoom||'—'}</td>
-              <td style="font-weight:700;color:#C0392B">${a.code||'—'}</td>
-              <td style="max-width:140px">${a.dia||'—'}</td>
-            </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>`;
-  }).join('');
-}
-
-// ── SET & WARDROBE LIST ───────────────────────────────────────
-function rSetList() {
-  // Group by location
-  const locations = [...new Set(setlist.map(s=>s.location).filter(Boolean))];
-  const wardrobeItems = setlist.filter(s=>s.category==='wardrobe');
-  const dominantColors = setlist.filter(s=>s.category==='color');
-  const setItems = setlist.filter(s=>s.category==='set');
-
-  return `
-    <div class="card">
-      <div class="card-head">
-        <span class="card-title">Set Shooting — ${proj.title}</span>
-        <button class="btn btn-primary btn-sm" onclick="openM('setitem','set')">+ Tambah Set</button>
-      </div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>NO</th><th>SET / LOKASI</th><th>I/E</th><th>STATUS</th><th>CATATAN</th><th></th></tr></thead>
-        <tbody>${setItems.length ? setItems.map((s,i)=>`<tr>
-          <td class="mono" style="color:var(--text3)">${i+1}</td>
-          <td style="font-weight:600">${s.location||'—'}</td>
-          <td>${s.ie ? `<span class="chip ${s.ie==='I'?'chip-blue':'chip-teal'}">${s.ie==='I'?'INT':'EXT'}</span>` : '—'}</td>
-          <td>${statusChip(s.status)}</td>
-          <td style="color:var(--text2)">${s.note||'—'}</td>
-          <td style="white-space:nowrap">
-            <button class="btn btn-ghost btn-sm" onclick="editSetItem('${s.id}')">Edit</button>
-            <button class="btn btn-danger btn-sm" onclick="delSetItem('${s.id}')">Hapus</button>
-          </td>
-        </tr>`).join('') : `<tr><td colspan="6"><div class="empty">Belum ada data set. Klik + Tambah Set.</div></td></tr>`}
-        </tbody>
-      </table></div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <span class="card-title">Main Wardrobe per Karakter</span>
-        <button class="btn btn-primary btn-sm" onclick="openM('setitem','wardrobe')">+ Tambah Wardrobe</button>
-      </div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>NO</th><th>KARAKTER</th><th>WARDROBE</th><th>WARNA</th><th>STATUS</th><th>CATATAN</th><th></th></tr></thead>
-        <tbody>${wardrobeItems.length ? wardrobeItems.map((s,i)=>`<tr>
-          <td class="mono" style="color:var(--text3)">${i+1}</td>
-          <td style="font-weight:600">${s.character||'—'}</td>
-          <td>${s.wardrobeDesc||'—'}</td>
-          <td>${s.color ? `<span style="display:inline-flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:${s.colorHex||'#ccc'};border:1px solid #ccc;display:inline-block"></span>${s.color}</span>` : '—'}</td>
-          <td>${statusChip(s.status)}</td>
-          <td style="color:var(--text2)">${s.note||'—'}</td>
-          <td style="white-space:nowrap">
-            <button class="btn btn-ghost btn-sm" onclick="editSetItem('${s.id}')">Edit</button>
-            <button class="btn btn-danger btn-sm" onclick="delSetItem('${s.id}')">Hapus</button>
-          </td>
-        </tr>`).join('') : `<tr><td colspan="7"><div class="empty">Belum ada data wardrobe. Klik + Tambah Wardrobe.</div></td></tr>`}
-        </tbody>
-      </table></div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <span class="card-title">Dominant Colors</span>
-        <button class="btn btn-primary btn-sm" onclick="openM('setitem','color')">+ Tambah Warna</button>
-      </div>
-      <div style="padding:14px 18px;display:flex;gap:10px;flex-wrap:wrap;">
-        ${dominantColors.length ? dominantColors.map(c=>`
-          <div style="display:flex;align-items:center;gap:8px;background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--radius);padding:8px 14px;">
-            <span style="width:18px;height:18px;border-radius:50%;background:${c.colorHex||'#ccc'};border:1px solid var(--border2);display:inline-block;flex-shrink:0"></span>
-            <span style="font-size:12px;font-weight:500">${c.color||'—'}</span>
-            <button class="btn btn-danger btn-sm" style="padding:2px 6px;font-size:10px" onclick="delSetItem('${c.id}')">✕</button>
-          </div>
-        `).join('') : '<span style="font-size:12px;color:var(--text3)">Belum ada warna dominan.</span>'}
-      </div>
-    </div>
-  `;
-}
-
-function statusChip(s) {
-  const map = {siap:'chip-green',proses:'chip-amber',cari:'chip-dark',done:'chip-green','':'chip-gray'};
-  const label = {siap:'Siap',proses:'Proses',cari:'Dicari',done:'Done'};
-  if(!s) return '—';
-  return `<span class="chip ${map[s]||'chip-gray'}">${label[s]||s}</span>`;
-}
-
-window.editSetItem = function(id) {
-  const d = setlist.find(x=>x.id===id);
-  mSection='setitem'; editId=id;
-  document.getElementById('m-title').textContent = 'Edit Item';
-  document.getElementById('m-body').innerHTML = setItemForm(d, d?.category);
-  document.getElementById('mwrap').classList.add('open');
-};
-window.delSetItem = function(id) {
-  if(confirm('Hapus item ini?')) { deleteItem('setlist',id); showToast('Dihapus'); }
-};
-
-function setItemForm(d, cat) {
-  const c = cat || d?.category || 'set';
-  if(c==='set') return `
-    <input type="hidden" id="f-cat" value="set">
-    <div class="fg"><label class="fl">Nama Set / Lokasi</label><input class="fi" id="f-loc" value="${esc(d?.location||'')}"></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option value="">—</option><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div>
-      <div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div>
-    </div>
-    <div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>
-  `;
-  if(c==='wardrobe') return `
-    <input type="hidden" id="f-cat" value="wardrobe">
-    <div class="fg"><label class="fl">Karakter</label><input class="fi" id="f-char" value="${esc(d?.character||'')}"></div>
-    <div class="fg"><label class="fl">Deskripsi Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobeDesc||'')}" placeholder="Seragam Sekolah, Pengantin, dll"></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Warna</label><input class="fi" id="f-color" value="${esc(d?.color||'')}"></div>
-      <div class="fg"><label class="fl">Hex Warna</label><input class="fi" id="f-hex" type="color" value="${d?.colorHex||'#888888'}" style="height:40px;padding:4px"></div>
-    </div>
-    <div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div>
-    <div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>
-  `;
-  if(c==='color') return `
-    <input type="hidden" id="f-cat" value="color">
-    <div class="fg"><label class="fl">Nama Warna</label><input class="fi" id="f-color" value="${esc(d?.color||'')}" placeholder="Green, Brown, Cream..."></div>
-    <div class="fg"><label class="fl">Pilih Warna</label><input class="fi" id="f-hex" type="color" value="${d?.colorHex||'#888888'}" style="height:44px;padding:4px"></div>
-  `;
-}
-
-// ── PROP LIST ─────────────────────────────────────────────────
-function rPropList() {
-  // Group by location
-  const locs = [...new Set(proplist.map(p=>p.location).filter(Boolean))];
-
-  return `
-    <div class="filter-bar" style="margin-bottom:14px">
-      <input class="inp" placeholder="Cari prop..." oninput="filterProps(this.value)" style="width:200px">
-      <select class="inp" onchange="filterPropLoc(this.value)" style="width:160px">
-        <option value="">Semua Lokasi</option>
-        ${locs.map(l=>`<option value="${l}">${l}</option>`).join('')}
-      </select>
-      <select class="inp" onchange="filterPropStatus(this.value)" style="width:130px">
-        <option value="">Semua Status</option>
-        <option value="siap">Siap</option>
-        <option value="proses">Proses</option>
-        <option value="cari">Dicari</option>
-      </select>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <span class="card-title">Prop List — ${proj.title}</span>
-        <span style="font-size:11px;color:var(--text3)">${proplist.length} item total</span>
-      </div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>NO</th><th>DESKRIPSI</th><th>LOKASI / SET</th><th>SCENE</th><th>TYPE</th><th>QTY</th><th>STATUS</th><th>UNIT RATE</th><th>RATE PROP</th><th>CATATAN</th><th></th></tr></thead>
-        <tbody id="prop-tbody">${propRows(proplist)}</tbody>
-      </table></div>
-    </div>
-  `;
-}
-
-function propRows(arr) {
-  if(!arr.length) return `<tr><td colspan="11"><div class="empty">Belum ada prop. Klik + Tambah Prop.</div></td></tr>`;
-  return arr.map((p,i)=>`<tr>
-    <td class="mono" style="color:var(--text3)">${i+1}</td>
-    <td style="font-weight:600">${p.desc||'—'}</td>
-    <td style="color:var(--text2)">${p.location||'—'}</td>
-    <td class="mono">${p.scene||'—'}</td>
-    <td><span class="chip ${p.type==='Main'?'chip-blue':'chip-teal'}">${p.type||'—'}</span></td>
-    <td class="mono" style="font-weight:600">${p.qty||'—'}</td>
-    <td>${statusChip(p.status)}</td>
-    <td style="color:var(--text2)">${p.unitRate||'—'}</td>
-    <td style="color:var(--text2)">${p.rateProp||'—'}</td>
-    <td style="color:var(--text2);max-width:120px">${p.note||'—'}</td>
-    <td style="white-space:nowrap">
-      <button class="btn btn-ghost btn-sm" onclick="editProp('${p.id}')">Edit</button>
-      <button class="btn btn-danger btn-sm" onclick="delProp('${p.id}')">Hapus</button>
-    </td>
-  </tr>`).join('');
-}
-
-let _pq='', _ploc='', _pstatus='';
-window.filterProps = function(q){_pq=q;applyPF();}
-window.filterPropLoc = function(v){_ploc=v;applyPF();}
-window.filterPropStatus = function(v){_pstatus=v;applyPF();}
-function applyPF() {
-  const f = proplist.filter(p=>
-    (!_pq||(p.desc||'').toLowerCase().includes(_pq.toLowerCase())) &&
-    (!_ploc||p.location===_ploc) &&
-    (!_pstatus||p.status===_pstatus)
-  );
-  const el = document.getElementById('prop-tbody');
-  if(el) el.innerHTML = propRows(f);
-}
-
-window.editProp = function(id) {
-  const d = proplist.find(x=>x.id===id);
-  mSection='prop'; editId=id;
-  document.getElementById('m-title').textContent='Edit Prop';
-  document.getElementById('m-body').innerHTML = propForm(d);
-  document.getElementById('mwrap').classList.add('open');
-};
-window.delProp = function(id) {
-  if(confirm('Hapus prop ini?')) { deleteItem('proplist',id); showToast('Prop dihapus'); }
-};
-
-function propForm(d) {
-  return `
-    <div class="fg"><label class="fl">Deskripsi Prop</label><input class="fi" id="f-desc" value="${esc(d?.desc||'')}"></div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Lokasi / Set</label><input class="fi" id="f-loc" value="${esc(d?.location||'')}" placeholder="Int.Rumah - Ruang Tamu..."></div>
-      <div class="fg"><label class="fl">Scene</label><input class="fi" id="f-scene" value="${esc(d?.scene||'')}"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Type</label>
-        <select class="fi" id="f-type">
-          <option value="Main"${d?.type==='Main'?' selected':''}>Main</option>
-          <option value="Set"${d?.type==='Set'?' selected':''}>Set</option>
-          <option value="Action"${d?.type==='Action'?' selected':''}>Action</option>
-        </select>
-      </div>
-      <div class="fg"><label class="fl">Qty</label><input class="fi" id="f-qty" type="number" min="1" value="${d?.qty||1}"></div>
-    </div>
-    <div class="fg"><label class="fl">Status</label>
-      <select class="fi" id="f-status">
-        <option value="">—</option>
-        <option value="siap"${d?.status==='siap'?' selected':''}>Siap</option>
-        <option value="proses"${d?.status==='proses'?' selected':''}>Proses</option>
-        <option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option>
-      </select>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label class="fl">Unit Rate</label><input class="fi" id="f-ur" value="${esc(d?.unitRate||'')}"></div>
-      <div class="fg"><label class="fl">Rate Prop</label><input class="fi" id="f-rp" value="${esc(d?.rateProp||'')}"></div>
-    </div>
-    <div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>
-  `;
+  return `<div class="card"><div class="card-head"><span class="card-title">Location Breakdown — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">Otomatis dari Master Breakdown</span></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>LOCATION / SET</th><th>I/E</th><th>D/N</th><th colspan="20">SCENE NUMBERS</th></tr></thead>
+    <tbody>${locs.length?locs.map((l,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td style="font-weight:600;white-space:nowrap">${l.set}</td><td>${ie(l.ie)}</td><td>${dn(l.dn)}</td>${l.scenes.map(n=>`<td class="mono" style="font-weight:600;text-align:center">${n}</td>`).join('')}</tr>`).join(''):`<td><td colspan="24"><div class="empty">Input scene di Master Breakdown untuk melihat data lokasi.</div></td></tr>`}</tbody></table></div></div>`;
 }
 
 // ── SHOT LIST ─────────────────────────────────────────────────
 function rShotList() {
-  // Group shots by scene
   const sceneGroups = {};
-  shotlist.forEach(sh => {
-    const key = sh.sceneNo || sh.sceneId || 'unknown';
-    if(!sceneGroups[key]) sceneGroups[key] = { shots: [], meta: sh };
-    sceneGroups[key].shots.push(sh);
-  });
+  shotlist.forEach(sh => { const key = sh.sceneNo || 'unknown'; if(!sceneGroups[key]) sceneGroups[key] = { shots: [], meta: sh }; sceneGroups[key].shots.push(sh); });
   const groupKeys = Object.keys(sceneGroups).sort((a,b) => Number(a)-Number(b));
-
-  return `
-    <div class="sl-proj-head">
-      SHOT LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; DOP : ${proj.dop||'—'}
-    </div>
-    <div style="height:14px"></div>
-    ${!groupKeys.length ? `
-      <div class="card"><div class="empty" style="padding:60px">
-        Belum ada shot. Klik <strong>+ Tambah Shot</strong> untuk mulai.
-      </div></div>
-    ` : groupKeys.map(key => {
-      const group = sceneGroups[key];
-      const meta = group.meta;
-      const shots = group.shots.sort((a,b) => Number(a.shotNo)-Number(b.shotNo));
-      const sceneNotes = shots.find(s=>s.sceneNotes)?.sceneNotes || '';
-      return `
-      <div class="sl-scene-block">
-        <div class="sl-scene-head">
-          <span class="sl-scene-title">SCENE ${meta.sceneNo||key}</span>
-          <div class="sl-scene-meta">
-            <span>I/E: ${meta.ie||'—'}</span>
-            <span>SET: ${meta.set||'—'}</span>
-            <span>D/N: ${meta.dn||'—'}</span>
-          </div>
-          <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openM('shot','${key}')">+ Shot</button>
-        </div>
-        <div style="overflow-x:auto">
-          <div class="sl-shot-head">
-            <div>SHOT</div><div>SHOT SIZE</div><div>ANGLE</div>
-            <div>MOVEMENT</div><div>EQUIPMENT</div><div>AUDIO</div>
-            <div>SUBJECT</div><div>PICT. SHOT</div>
-            <div>DESKRIPSI</div><div>CATATAN</div><div></div>
-          </div>
-          ${shots.map(sh=>`
-          <div class="sl-shot-row">
-            <div class="sl-shot-body">
-              <div class="mono" style="font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">${sh.shotNo||'—'}</div>
-              <div style="display:flex;align-items:center">${sh.shotSize||'—'}</div>
-              <div style="display:flex;align-items:center">${sh.angle||'—'}</div>
-              <div style="display:flex;align-items:center">${sh.movement||'—'}</div>
-              <div style="display:flex;align-items:center">${sh.equipment||'—'}</div>
-              <div style="display:flex;align-items:center">${sh.audio||'—'}</div>
-              <div style="display:flex;align-items:center">${sh.subject||'—'}</div>
-              <div class="sl-photo-cell">
-                ${sh.photoURL
-                  ? `<div class="sl-photo-wrap">
-                      <img src="${sh.photoURL}" class="sl-photo" onclick="openLightbox('${sh.photoURL}','${sh.id}')" title="Klik untuk perbesar">
-                      <div class="sl-photo-replace" onclick="triggerPhotoUpload('${sh.id}')">
-                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 14 14"><path d="M1 10l3-3 2.5 2.5L10 5l3 3"/><rect x="1" y="1" width="12" height="12" rx="1"/></svg>
-                        Ganti foto
-                      </div>
-                    </div>`
-                  : `<div class="sl-photo-placeholder" onclick="triggerPhotoUpload('${sh.id}')">
-                      <span>📷</span><span>Upload foto</span>
-                    </div>`
-                }
-                <input type="file" id="photo-input-${sh.id}" accept="image/*" style="display:none" onchange="uploadPhoto('${sh.id}',this)">
-              </div>
-              <div style="color:var(--text2);display:flex;align-items:center">${sh.desc||'—'}</div>
-              <div style="color:var(--text2);display:flex;align-items:center">${sh.notes||'—'}</div>
-              <div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:8px">
-                <button class="btn btn-ghost btn-sm" onclick="editShot('${sh.id}')">✎</button>
-                <button class="btn btn-danger btn-sm" onclick="delShot('${sh.id}')">✕</button>
-              </div>
-            </div>
-          </div>`).join('')}
-        </div>
-        ${sceneNotes ? `<div class="sl-scene-notes"><span class="sl-notes-label">SCENE NOTES</span><span>${sceneNotes}</span></div>` : ''}
-      </div>`;
-    }).join('')}
-  `;
+  return `<div class="sl-proj-head">SHOT LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; DOP : ${proj.dop||'—'}</div><div style="height:14px"></div>
+    ${!groupKeys.length ? `<div class="card"><div class="empty" style="padding:60px">Belum ada shot. Klik <strong>+ Tambah Shot</strong> untuk mulai.</div></div>` : groupKeys.map(key => { const group = sceneGroups[key]; const meta = group.meta; const shots = group.shots.sort((a,b) => Number(a.shotNo)-Number(b.shotNo)); const sceneNotes = shots.find(s=>s.sceneNotes)?.sceneNotes || ''; return `<div class="sl-scene-block"><div class="sl-scene-head"><span class="sl-scene-title">SCENE ${meta.sceneNo||key}</span><div class="sl-scene-meta"><span>I/E: ${meta.ie||'—'}</span><span>SET: ${meta.set||'—'}</span><span>D/N: ${meta.dn||'—'}</span></div><button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openM('shot','${key}')">+ Shot</button></div><div style="overflow-x:auto"><div class="sl-shot-head"><div>SHOT</div><div>SHOT SIZE</div><div>ANGLE</div><div>MOVEMENT</div><div>EQUIPMENT</div><div>AUDIO</div><div>SUBJECT</div><div>PICT. SHOT</div><div>DESKRIPSI</div><div>CATATAN</div><div></div></div>${shots.map(sh=>`<div class="sl-shot-row"><div class="sl-shot-body"><div class="mono" style="font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">${sh.shotNo||'—'}</div><div>${sh.shotSize||'—'}</div><div>${sh.angle||'—'}</div><div>${sh.movement||'—'}</div><div>${sh.equipment||'—'}</div><div>${sh.audio||'—'}</div><div>${sh.subject||'—'}</div><div class="sl-photo-cell">${sh.photoURL?`<div class="sl-photo-wrap"><img src="${sh.photoURL}" class="sl-photo" onclick="openLightbox('${sh.photoURL}','${sh.id}')" title="Klik untuk perbesar"><div class="sl-photo-replace" onclick="triggerPhotoUpload('${sh.id}')"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 14 14"><path d="M1 10l3-3 2.5 2.5L10 5l3 3"/><rect x="1" y="1" width="12" height="12" rx="1"/></svg>Ganti foto</div></div>`:`<div class="sl-photo-placeholder" onclick="triggerPhotoUpload('${sh.id}')"><span>📷</span><span>Upload foto</span></div>`}<input type="file" id="photo-input-${sh.id}" accept="image/*" style="display:none" onchange="uploadPhoto('${sh.id}',this)"></div><div>${sh.desc||'—'}</div><div>${sh.notes||'—'}</div><div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:8px"><button class="btn btn-ghost btn-sm" onclick="editShot('${sh.id}')">✎</button><button class="btn btn-danger btn-sm" onclick="delShot('${sh.id}')">✕</button></div></div></div>`).join('')}</div>${sceneNotes ? `<div class="sl-scene-notes"><span class="sl-notes-label">SCENE NOTES</span><span>${sceneNotes}</span></div>` : ''}</div>`; }).join('')}`;
 }
+
+// ── AUDIO LIST ────────────────────────────────────────────────
+function rAudioList() {
+  const sceneGroups = {};
+  audiolist.forEach(a => { const key = a.sceneNo || 'unknown'; if(!sceneGroups[key]) sceneGroups[key] = { shots: [], meta: a }; sceneGroups[key].shots.push(a); });
+  const groupKeys = Object.keys(sceneGroups).sort((a,b)=>Number(a)-Number(b));
+  return `<div style="background:#1A1917;color:#D3D1C7;padding:10px 20px;font-size:12px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;border-radius:var(--radius);margin-bottom:16px;">AUDIO LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; SOUND DIRECTOR : ${proj.soundRec||'—'}</div>
+    ${!groupKeys.length ? `<div class="card"><div class="empty">Belum ada entry audio. Klik <strong>+ Tambah Entry</strong>.</div></div>` : groupKeys.map(key => { const group = sceneGroups[key]; const meta = group.meta; const shots = group.shots.sort((a,b)=>Number(a.shotNo)-Number(b.shotNo)); const masterScene = scenes.find(s=>String(s.sceneNo)===String(key)); const setName = masterScene?.set || meta.set || '—'; const ieVal = meta.ie || masterScene?.ie || '—'; const dnVal = meta.dn || masterScene?.dn || '—'; return `<div class="sl-scene-block"><div class="audio-scene-header"><div class="audio-scene-number">${meta.sceneNo||key}</div><div class="audio-scene-info"><div class="audio-scene-label">Scene</div><div class="audio-scene-set">${setName}</div><div style="display:flex;gap:10px;margin-top:2px"><span class="audio-scene-badge" style="background:${ieVal==='I'?'#185FA5':'#0F6E56'}">${ieVal==='I'?'INT':ieVal==='E'?'EXT':ieVal}</span><span class="audio-scene-badge" style="background:${dnVal==='D'?'#92580A':'#2C2C2A'}">${dnVal==='D'?'DAY':dnVal==='N'?'NIGHT':dnVal}</span></div></div><div style="padding:12px 16px"><button class="btn btn-sm" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.25)" onclick="openM('audio','${key}')">+ Shot</button></div></div><div style="overflow-x:auto"><table class="tbl"><thead><tr><th style="min-width:50px">SHOT</th><th style="min-width:70px">I/E</th><th style="min-width:70px">D/N</th><th style="min-width:120px">CHARACTER</th><th style="min-width:130px">DEVICE</th><th style="min-width:200px">FRAME / PHOTOBOARD</th><th style="min-width:180px">DIALOG</th><th style="min-width:150px;background:#F5D060;color:#1A1917">FOLEY</th><th style="min-width:140px">AMB / ROOM</th><th style="min-width:130px;background:#C0392B;color:#fff">CODE</th><th style="min-width:70px"></th></tr></thead><tbody>${shots.map(a=>`<tr><td class="mono" style="font-weight:700;text-align:center;font-size:16px">${a.shotNo||'—'}</td><td>${a.ie?`<span class="chip ${a.ie==='I'?'chip-blue':'chip-teal'}">${a.ie==='I'?'INT':'EXT'}</span>`:'—'}</td><td>${a.dn?`<span class="chip ${a.dn==='D'?'chip-amber':'chip-dark'}">${a.dn==='D'?'DAY':'NIGHT'}</span>`:'—'}</td><td style="font-weight:500">${a.char||'—'}</td><td style="color:var(--text2);font-size:11px;line-height:1.5">${a.dev||'—'}<td><td style="padding:8px;vertical-align:middle">${a.photoURL?`<div><img src="${a.photoURL}" class="photo-frame" onclick="openLightbox('${a.photoURL}','${a.id}')"><div style="font-size:10px;color:var(--blue);cursor:pointer;margin-top:4px;text-align:center;font-weight:500" onclick="triggerAudioPhoto('${a.id}')">🔄 Ganti Foto</div></div>`:`<div class="photo-placeholder" onclick="triggerAudioPhoto('${a.id}')"><span style="font-size:24px">📷</span><span style="font-size:10px;font-weight:500">Upload Photoboard</span></div>`}<input type="file" id="aphoto-${a.id}" accept="image/*" style="display:none" onchange="uploadAudioPhoto('${a.id}',this)"></td><td style="color:var(--text2);font-size:12px;line-height:1.6">${a.dia||'—'}</td><td class="foley-cell">${a.foley||'—'}</td><td style="color:var(--text2);font-size:12px">${a.ambRoom||'—'}</td><td class="code-cell">${a.code||'—'}</td><td style="white-space:nowrap;padding:8px;vertical-align:top"><button class="btn btn-ghost btn-sm" onclick="editAudio('${a.id}')">✎</button><button class="btn btn-danger btn-sm" onclick="delAudio('${a.id}')">✕</button></td></tr>`).join('')}</tbody></table></div></div>`; }).join('')}`;
+}
+
+// ── SET & WARDROBE LIST ───────────────────────────────────────
+function rSetList() {
+  const setItems = setlist.filter(s=>s.category==='set');
+  const wardrobeItems = setlist.filter(s=>s.category==='wardrobe');
+  const dominantColors = setlist.filter(s=>s.category==='color');
+  return `<div class="card"><div class="card-head"><span class="card-title">Set Shooting — ${proj.title}</span><button class="btn btn-primary btn-sm" onclick="openM('setitem','set')">+ Tambah Set</button></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>SET / LOKASI</th><th>I/E</th><th>STATUS</th><th>CATATAN</th><th></th><tr></thead><tbody>${setItems.length ? setItems.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}</td><td style="font-weight:600">${s.location||'—'}</td><td>${s.ie?`<span class="chip ${s.ie==='I'?'chip-blue':'chip-teal'}">${s.ie==='I'?'INT':'EXT'}</span>`:'—'}<td>${statusChip(s.status)}</td><td style="color:var(--text2)">${s.note||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editSetItem('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSetItem('${s.id}')">Hapus</button></td></tr>`).join('') : `<tr><td colspan="6"><div class="empty">Belum ada data set. Klik + Tambah Set.</div></td></tr>`}</tbody></table></div></div>
+    <div class="card"><div class="card-head"><span class="card-title">Main Wardrobe per Karakter</span><button class="btn btn-primary btn-sm" onclick="openM('setitem','wardrobe')">+ Tambah Wardrobe</button></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>KARAKTER</th><th>WARDROBE</th><th>WARNA</th><th>STATUS</th><th>CATATAN</th><th></th></tr></thead><tbody>${wardrobeItems.length ? wardrobeItems.map((s,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}<td><td style="font-weight:600">${s.character||'—'}</td><td>${s.wardrobeDesc||'—'}</td><td>${s.color ? `<span style="display:inline-flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:${s.colorHex||'#ccc'};border:1px solid #ccc;display:inline-block"></span>${s.color}</span>` : '—'}</td><td>${statusChip(s.status)}</td><td style="color:var(--text2)">${s.note||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="editSetItem('${s.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delSetItem('${s.id}')">Hapus</button></td></tr>`).join('') : `<tr><td colspan="7"><div class="empty">Belum ada data wardrobe. Klik + Tambah Wardrobe.</div></td></tr>`}</tbody></table></div></div>
+    <div class="card"><div class="card-head"><span class="card-title">Dominant Colors</span><button class="btn btn-primary btn-sm" onclick="openM('setitem','color')">+ Tambah Warna</button></div><div style="padding:14px 18px;display:flex;gap:10px;flex-wrap:wrap;">${dominantColors.length ? dominantColors.map(c=>`<div style="display:flex;align-items:center;gap:8px;background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--radius);padding:8px 14px;"><span style="width:18px;height:18px;border-radius:50%;background:${c.colorHex||'#ccc'};border:1px solid var(--border2);display:inline-block;flex-shrink:0"></span><span style="font-size:12px;font-weight:500">${c.color||'—'}</span><button class="btn btn-danger btn-sm" style="padding:2px 6px;font-size:10px" onclick="delSetItem('${c.id}')">✕</button></div>`).join('') : '<span style="font-size:12px;color:var(--text3)">Belum ada warna dominan.</span>'}</div></div>`;
+}
+
+// ── PROP LIST ─────────────────────────────────────────────────
+function rPropList() {
+  const locs = [...new Set(proplist.map(p=>p.location).filter(Boolean))];
+  return `<div class="filter-bar" style="margin-bottom:14px"><input class="inp" placeholder="Cari prop..." oninput="filterProps(this.value)" style="width:200px"><select class="inp" onchange="filterPropLoc(this.value)" style="width:160px"><option value="">Semua Lokasi</option>${locs.map(l=>`<option value="${l}">${l}</option>`).join('')}</select><select class="inp" onchange="filterPropStatus(this.value)" style="width:130px"><option value="">Semua Status</option><option value="siap">Siap</option><option value="proses">Proses</option><option value="cari">Dicari</option></select></div>
+    <div class="card"><div class="card-head"><span class="card-title">Prop List — ${proj.title}</span><span style="font-size:11px;color:var(--text3)">${proplist.length} item total</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NO</th><th>DESKRIPSI</th><th>LOKASI / SET</th><th>SCENE</th><th>TYPE</th><th>QTY</th><th>STATUS</th><th>UNIT RATE</th><th>RATE PROP</th><th>CATATAN</th><th></th></tr></thead><tbody id="prop-tbody">${propRows(proplist)}</tbody></table></div></div>`;
+}
+
+function propRows(arr) { if(!arr.length) return `</table><td colspan="11"><div class="empty">Belum ada prop. Klik + Tambah Prop.</div></tr></tr>`; return arr.map((p,i)=>`<tr><td class="mono" style="color:var(--text3)">${i+1}<td><td style="font-weight:600">${p.desc||'—'}</td><td style="color:var(--text2)">${p.location||'—'}</td><td class="mono">${p.scene||'—'}<td><span class="chip ${p.type==='Main'?'chip-blue':'chip-teal'}">${p.type||'—'}</span><td><td class="mono" style="font-weight:600">${p.qty||'—'}</td><td>${statusChip(p.status)}</td><td style="color:var(--text2)">${p.unitRate||'—'}</td><td style="color:var(--text2)">${p.rateProp||'—'}</td><td style="color:var(--text2);max-width:120px">${p.note||'—'}<td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="editProp('${p.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="delProp('${p.id}')">Hapus</button></td></tr>`).join(''); }
+window.filterProps = function(q){_pq=q;applyPF();}
+window.filterPropLoc = function(v){_ploc=v;applyPF();}
+window.filterPropStatus = function(v){_pstatus=v;applyPF();}
+function applyPF() { const f = proplist.filter(p=>(!_pq||(p.desc||'').toLowerCase().includes(_pq.toLowerCase()))&&(!_ploc||p.location===_ploc)&&(!_pstatus||p.status===_pstatus)); const el = document.getElementById('prop-tbody'); if(el) el.innerHTML = propRows(f); }
 
 // ── CLOUDINARY PHOTO UPLOAD ───────────────────────────────────
 const CLOUDINARY_CLOUD_NAME = 'dmlxxoplr';
 const CLOUDINARY_UPLOAD_PRESET = 'film_prod_unsigned';
 
-window.triggerPhotoUpload = function(shotId) {
-  document.getElementById(`photo-input-${shotId}`)?.click();
-};
+window.triggerPhotoUpload = function(shotId) { document.getElementById(`photo-input-${shotId}`)?.click(); };
+window.uploadPhoto = async function(shotId, input) { const file = input.files[0]; if(!file) return; if(file.size > 10*1024*1024) { showToast('Foto max 10MB ya!','error'); return; } showToast('Mengupload foto...'); try { const compressed = await compressImage(file, 1200, 0.8); const formData = new FormData(); formData.append('file', compressed); formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET); formData.append('folder', 'film_prod_shotlist'); const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, { method: 'POST', body: formData }); if(!res.ok) throw new Error('Upload gagal'); const data = await res.json(); await db.ref(`shotlist/${shotId}/photoURL`).set(data.secure_url); showToast('Foto berhasil diupload!', 'success'); } catch(e) { showToast('Gagal upload: '+e.message, 'error'); } };
+function compressImage(file, maxWidth, quality) { return new Promise(resolve => { const reader = new FileReader(); reader.onload = e => { const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); let w = img.width, h = img.height; if(w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; } canvas.width = w; canvas.height = h; canvas.getContext('2d').drawImage(img, 0, 0, w, h); canvas.toBlob(blob => resolve(blob), 'image/jpeg', quality); }; img.src = e.target.result; }; reader.readAsDataURL(file); }); }
+window.openLightbox = function(url, shotId) { document.getElementById('lightbox-img').src = url; document.getElementById('lightbox').classList.add('open'); window._lbShotId = shotId || null; };
+window.closeLightbox = function() { document.getElementById('lightbox').classList.remove('open'); window._lbShotId = null; };
+window.triggerAudioPhoto = function(id) { document.getElementById(`aphoto-${id}`)?.click(); };
+window.uploadAudioPhoto = async function(id, input) { const file = input.files[0]; if(!file) return; if(file.size > 10*1024*1024) { showToast('Foto max 10MB!','error'); return; } showToast('Mengupload frame...'); try { const compressed = await compressImage(file, 1200, 0.8); const formData = new FormData(); formData.append('file', compressed); formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET); formData.append('folder', 'film_prod_audio'); const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, { method:'POST', body:formData }); if(!res.ok) throw new Error('Upload gagal'); const data = await res.json(); await db.ref(`audiolist/${id}/photoURL`).set(data.secure_url); showToast('Frame berhasil diupload!', 'success'); } catch(e) { showToast('Gagal upload: '+e.message, 'error'); } };
 
-window.uploadPhoto = async function(shotId, input) {
-  const file = input.files[0];
-  if(!file) return;
-  if(file.size > 10*1024*1024) { showToast('Foto max 10MB ya!','error'); return; }
-  showToast('Mengupload foto...');
-  try {
-    // Compress image first
-    const compressed = await compressImage(file, 1200, 0.8);
-    const formData = new FormData();
-    formData.append('file', compressed);
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-    formData.append('folder', 'film_prod_shotlist');
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
-      method: 'POST', body: formData
-    });
-    if(!res.ok) throw new Error('Upload gagal');
-    const data = await res.json();
-    await db.ref(`shotlist/${shotId}/photoURL`).set(data.secure_url);
-    showToast('Foto berhasil diupload!', 'success');
-  } catch(e) {
-    showToast('Gagal upload: '+e.message, 'error');
-  }
+// ── MODAL FORMS ───────────────────────────────────────────────
+function esc(s){return (s||'').replace(/"/g,'&quot;');}
+window.openProjModal = function() { mSection='proj'; editId=null; document.getElementById('m-title').textContent = 'Edit Project Info'; document.getElementById('m-body').innerHTML = `<div class="fg"><label class="fl">Judul Film</label><input class="fi" id="f0" value="${esc(proj.title)}"></div><div class="fg-row"><div class="fg"><label class="fl">Producer</label><input class="fi" id="f1" value="${esc(proj.producer)}"></div><div class="fg"><label class="fl">Director</label><input class="fi" id="f2" value="${esc(proj.director)}"></div></div><div class="fg-row"><div class="fg"><label class="fl">DOP</label><input class="fi" id="f3" value="${esc(proj.dop)}"></div><div class="fg"><label class="fl">Sound Record</label><input class="fi" id="f4" value="${esc(proj.soundRec)}"></div></div><div class="fg"><label class="fl">1st Asst. Director</label><input class="fi" id="f5" value="${esc(proj.firstAD)}"></div><div class="fg"><label class="fl">Location & Basecamp</label><input class="fi" id="f6" value="${esc(proj.location)}"></div><div class="fg"><label class="fl">Alamat Basecamp</label><input class="fi" id="f7" value="${esc(proj.basecamp)}"></div><div class="fg"><label class="fl">Nearest Hospital</label><input class="fi" id="f8" value="${esc(proj.hospital)}"></div>`; document.getElementById('mwrap').classList.add('open'); };
+window.openM = function(s, preParam) { mSection=s; editId=null; const t={scene:'Tambah Scene',sched:'Tambah Schedule',cs:'Tambah Call Sheet',shot:'Tambah Shot',audio:'Tambah Audio Entry',setitem:'Tambah Item',prop:'Tambah Prop'}; document.getElementById('m-title').textContent = t[s]||'Tambah'; if(s==='shot') document.getElementById('m-body').innerHTML = shotForm(null, preParam); else if(s==='audio') document.getElementById('m-body').innerHTML = audioForm(null, preParam); else if(s==='setitem') document.getElementById('m-body').innerHTML = setItemForm(null, preParam||'set'); else if(s==='prop') document.getElementById('m-body').innerHTML = propForm(null); else document.getElementById('m-body').innerHTML = formFor(s, null); document.getElementById('mwrap').classList.add('open'); };
+function shotForm(d, preSceneNo) { const sceneOpts = scenes.map(sc=>`<option value="${sc.sceneNo}" ${(d?.sceneNo==sc.sceneNo||preSceneNo==sc.sceneNo)?'selected':''}>${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-scn">${sceneOpts||'<option>— Belum ada scene —</option>'}</select></div><div class="fg"><label class="fl">Shot #</label><input class="fi" id="f-shn" type="number" min="1" value="${d?.shotNo||''}"></div></div><div class="fg-row"><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div><div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">Shot Size</label><select class="fi" id="f-ss">${['','ELS','LS','FS','MS','MCU','CU','BCU','ECU'].map(v=>`<option${d?.shotSize===v?' selected':''}>${v}</option>`).join('')}</select></div><div class="fg"><label class="fl">Camera Angle</label><select class="fi" id="f-ang">${['','Eye Level','High','Low','Bird Eye','Worm Eye','Dutch'].map(v=>`<option${d?.angle===v?' selected':''}>${v}</option>`).join('')}</select></div></div><div class="fg-row"><div class="fg"><label class="fl">Camera Movement</label><select class="fi" id="f-mov">${['','Still','Pan','Tilt','Dolly','Zoom','Tracking','Handheld','Steadicam','Point Of Interest','Crane'].map(v=>`<option${d?.movement===v?' selected':''}>${v}</option>`).join('')}</select></div><div class="fg"><label class="fl">Equipment</label><input class="fi" id="f-eq" placeholder="Tripod / Drone / Gimbal..." value="${esc(d?.equipment||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Audio</label><select class="fi" id="f-au">${['','Sync','MOS','Wildtrack','Ambience','VO'].map(v=>`<option${d?.audio===v?' selected':''}>${v}</option>`).join('')}</select></div><div class="fg"><label class="fl">Subject / Object</label><input class="fi" id="f-sub" value="${esc(d?.subject||'')}"></div></div><div class="fg"><label class="fl">Deskripsi</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div><div class="fg"><label class="fl">Catatan</label><input class="fi" id="f-notes" value="${esc(d?.notes||'')}"></div><div class="fg"><label class="fl">Scene Notes</label><input class="fi" id="f-sn" placeholder="Catatan keseluruhan untuk scene ini..." value="${esc(d?.sceneNotes||'')}"></div>`; }
+function audioForm(d, preScene) { const sceneOpts = scenes.map(sc=>`<option value="${sc.sceneNo}" ${(d?.sceneNo==sc.sceneNo||preScene==sc.sceneNo)?'selected':''}>${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-scn">${sceneOpts||'<option>— Belum ada scene —</option>'}</select></div><div class="fg"><label class="fl">Shot #</label><input class="fi" id="f-shn" type="number" min="1" value="${d?.shotNo||''}"></div></div><div class="fg-row"><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option value="">—</option><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option value="">—</option><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div><div class="fg"><label class="fl">Character (CHAR)</label><input class="fi" id="f-char" placeholder="ARIF, KARSO, ..." value="${esc(d?.char||'')}"></div><div class="fg"><label class="fl">DEV (Peralatan Mic)</label><input class="fi" id="f-dev" placeholder="BOOM 2* SENHEISSER" value="${esc(d?.dev||'')}"></div><div class="fg"><label class="fl">DIA (Dialog)</label><textarea class="fi" id="f-dia" placeholder="Tulis dialog atau deskripsi aksi...">${d?.dia||''}</textarea></div><div class="fg"><label class="fl">FOLEY</label><input class="fi" id="f-foley" placeholder="Benturan badan, Step, Suara pintu..." value="${esc(d?.foley||'')}"></div><div class="fg"><label class="fl">AMB / ROOM TONE</label><input class="fi" id="f-amb" placeholder="Room ruang kerja, AMB sawah..." value="${esc(d?.ambRoom||'')}"></div><div class="fg"><label class="fl">CODE (Sub-judul Scene)</label><input class="fi" id="f-code" placeholder="OPENING, ENDING, RUMAH MAKAN..." value="${esc(d?.code||'')}"></div>`; }
+function setItemForm(d, cat) { const c = cat || d?.category || 'set'; if(c==='set') return `<input type="hidden" id="f-cat" value="set"><div class="fg"><label class="fl">Nama Set / Lokasi</label><input class="fi" id="f-loc" value="${esc(d?.location||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option value="">—</option><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div></div><div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>`; if(c==='wardrobe') return `<input type="hidden" id="f-cat" value="wardrobe"><div class="fg"><label class="fl">Karakter</label><input class="fi" id="f-char" value="${esc(d?.character||'')}"></div><div class="fg"><label class="fl">Deskripsi Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobeDesc||'')}" placeholder="Seragam Sekolah, Pengantin, dll"></div><div class="fg-row"><div class="fg"><label class="fl">Warna</label><input class="fi" id="f-color" value="${esc(d?.color||'')}"></div><div class="fg"><label class="fl">Hex Warna</label><input class="fi" id="f-hex" type="color" value="${d?.colorHex||'#888888'}" style="height:40px;padding:4px"></div></div><div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div><div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>`; if(c==='color') return `<input type="hidden" id="f-cat" value="color"><div class="fg"><label class="fl">Nama Warna</label><input class="fi" id="f-color" value="${esc(d?.color||'')}" placeholder="Green, Brown, Cream..."></div><div class="fg"><label class="fl">Pilih Warna</label><input class="fi" id="f-hex" type="color" value="${d?.colorHex||'#888888'}" style="height:44px;padding:4px"></div>`; }
+function propForm(d) { return `<div class="fg"><label class="fl">Deskripsi Prop</label><input class="fi" id="f-desc" value="${esc(d?.desc||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">Lokasi / Set</label><input class="fi" id="f-loc" value="${esc(d?.location||'')}" placeholder="Int.Rumah - Ruang Tamu..."></div><div class="fg"><label class="fl">Scene</label><input class="fi" id="f-scene" value="${esc(d?.scene||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Type</label><select class="fi" id="f-type"><option value="Main"${d?.type==='Main'?' selected':''}>Main</option><option value="Set"${d?.type==='Set'?' selected':''}>Set</option><option value="Action"${d?.type==='Action'?' selected':''}>Action</option></select></div><div class="fg"><label class="fl">Qty</label><input class="fi" id="f-qty" type="number" min="1" value="${d?.qty||1}"></div></div><div class="fg"><label class="fl">Status</label><select class="fi" id="f-status"><option value="">—</option><option value="siap"${d?.status==='siap'?' selected':''}>Siap</option><option value="proses"${d?.status==='proses'?' selected':''}>Proses</option><option value="cari"${d?.status==='cari'?' selected':''}>Dicari</option></select></div><div class="fg-row"><div class="fg"><label class="fl">Unit Rate</label><input class="fi" id="f-ur" value="${esc(d?.unitRate||'')}"></div><div class="fg"><label class="fl">Rate Prop</label><input class="fi" id="f-rp" value="${esc(d?.rateProp||'')}"></div></div><div class="fg"><label class="fl">Catatan</label><textarea class="fi" id="f-note">${d?.note||''}</textarea></div>`; }
+function formFor(s, d) { if(s==='scene') return `<div class="fg-row3"><div class="fg"><label class="fl">Scene No.</label><input class="fi" id="f-sc" value="${d?.sceneNo||''}"></div><div class="fg"><label class="fl">I/E</label><select class="fi" id="f-ie"><option${d?.ie==='I'?' selected':''}>I</option><option${d?.ie==='E'?' selected':''}>E</option></select></div><div class="fg"><label class="fl">D/N</label><select class="fi" id="f-dn"><option${d?.dn==='D'?' selected':''}>D</option><option${d?.dn==='N'?' selected':''}>N</option></select></div></div><div class="fg-row"><div class="fg"><label class="fl">Pages</label><input class="fi" id="f-pg" value="${esc(d?.pages||'')}"></div><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div></div><div class="fg"><label class="fl">Set / Lokasi</label><input class="fi" id="f-set" value="${esc(d?.set||'')}"></div><div class="fg"><label class="fl">Description</label><textarea class="fi" id="f-desc">${d?.desc||''}</textarea></div><div class="fg-row"><div class="fg"><label class="fl">Character (pisah koma)</label><input class="fi" id="f-ch" value="${esc(d?.char||'')}"></div><div class="fg"><label class="fl">Makeup</label><input class="fi" id="f-mk" value="${esc(d?.makeup||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Wardrobe</label><input class="fi" id="f-wd" value="${esc(d?.wardrobe||'')}"></div><div class="fg"><label class="fl">Main Prop</label><input class="fi" id="f-pr" value="${esc(d?.prop||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Special Effect</label><input class="fi" id="f-sfx" value="${esc(d?.sfx||'')}"></div><div class="fg"><label class="fl">Audio</label><input class="fi" id="f-au" value="${esc(d?.audio||'')}"></div></div><div class="fg"><label class="fl">Special Notes</label><textarea class="fi" id="f-nt">${d?.notes||''}</textarea></div>`; if(s==='sched') { const opts = scenes.map(sc=>`<option value="${sc.id}"${d?.sceneId===sc.id?' selected':''}>Sc.${sc.sceneNo} — ${sc.set}</option>`).join(''); return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div><div class="fg"><label class="fl">Tanggal</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div></div><div class="fg"><label class="fl">Estimate Time</label><input class="fi" id="f-tm" placeholder="08.00–09.00" value="${esc(d?.time||'')}"></div><div class="fg"><label class="fl">Scene</label><select class="fi" id="f-sid">${opts}</select></div><div class="fg-row"><div class="fg"><label class="fl">Shot</label><input class="fi" id="f-sh" value="${esc(d?.shot||'')}"></div><div class="fg"><label class="fl">Page</label><input class="fi" id="f-pg" value="${esc(d?.page||'')}"></div></div><div class="fg"><label class="fl">Location (call sheet)</label><input class="fi" id="f-lc" value="${esc(d?.loc||'')}"></div><div class="fg"><label class="fl">Action / Description</label><textarea class="fi" id="f-ac">${d?.action||''}</textarea></div><div class="fg-row"><div class="fg"><label class="fl">Talent</label><input class="fi" id="f-tl" value="${esc(d?.talent||'')}"></div><div class="fg"><label class="fl">Extras</label><input class="fi" id="f-ex" value="${esc(d?.extras||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Cont</label><input class="fi" id="f-ct" value="${esc(d?.cont||'FREE')}"></div><div class="fg"><label class="fl">Notes</label><input class="fi" id="f-nt" value="${esc(d?.notes||'')}"></div></div>`; } if(s==='cs') return `<div class="fg-row"><div class="fg"><label class="fl">Shooting Day No.</label><input class="fi" id="f-dy" type="number" min="1" value="${d?.day||1}"></div><div class="fg"><label class="fl">Label (mis. DAY 1 OFF 10)</label><input class="fi" id="f-lb" value="${esc(d?.label||'')}"></div></div><div class="fg"><label class="fl">Tanggal (mis. TUESDAY, 01 JULY 2025)</label><input class="fi" id="f-dt" value="${esc(d?.date||'')}"></div><div class="fg-row"><div class="fg"><label class="fl">Crew Call Time</label><input class="fi" id="f-cc" value="${esc(d?.crewCall||'07.00 WIB')}"></div><div class="fg"><label class="fl">Pre Call Production</label><input class="fi" id="f-pc" value="${esc(d?.preCall||'06.30 WIB')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Breakfast</label><input class="fi" id="f-bf" value="${esc(d?.breakfast||'07.00 WIB')}"></div><div class="fg"><label class="fl">1st Cam Roll</label><input class="fi" id="f-cr" value="${esc(d?.camRoll||'08.30 WIB')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Lunch</label><input class="fi" id="f-ln" value="${esc(d?.lunch||'12.00 WIB')}"></div><div class="fg"><label class="fl">Wrap</label><input class="fi" id="f-wr" value="${esc(d?.wrap||'')}"></div></div><div class="fg-row"><div class="fg"><label class="fl">Weather</label><input class="fi" id="f-wt" value="${esc(d?.weather||'')}"></div><div class="fg"><label class="fl">Weather Note</label><input class="fi" id="f-wn" value="${esc(d?.weatherNote||'')}"></div></div><div class="fg"><label class="fl">Set Notes</label><textarea class="fi" id="f-sn" style="min-height:90px">${d?.setNotes||''}</textarea></div>`; }
+function v(id){const el=document.getElementById(id); return el?el.value.trim():''; }
+window.closeM = function() { document.getElementById('mwrap').classList.remove('open'); };
+window.saveM = function() {
+  if(mSection==='proj') { const data={title:v('f0'),producer:v('f1'),director:v('f2'),dop:v('f3'),soundRec:v('f4'),firstAD:v('f5'),location:v('f6'),basecamp:v('f7'),hospital:v('f8')}; proj = data; saveProj(data); showToast('Project info disimpan', 'success'); }
+  else if(mSection==='scene') { const data={sceneNo:parseInt(v('f-sc'))||scenes.length+1,ie:v('f-ie'),dn:v('f-dn'),pages:v('f-pg'),day:parseInt(v('f-dy'))||1,set:v('f-set'),desc:v('f-desc'),char:v('f-ch'),makeup:v('f-mk'),wardrobe:v('f-wd'),prop:v('f-pr'),sfx:v('f-sfx'),audio:v('f-au'),notes:v('f-nt')}; if(editId) data.id = editId; saveItem('scenes', data); showToast(editId?'Scene diperbarui':'Scene ditambahkan', 'success'); }
+  else if(mSection==='sched') { const selEl = document.getElementById('f-sid'); const data={day:parseInt(v('f-dy'))||1,date:v('f-dt'),time:v('f-tm'),sceneId:selEl?selEl.value:'',shot:v('f-sh'),page:v('f-pg'),loc:v('f-lc'),action:v('f-ac'),talent:v('f-tl'),extras:v('f-ex'),cont:v('f-ct'),notes:v('f-nt')}; if(editId) data.id = editId; else schDay = parseInt(v('f-dy'))||1; saveItem('schedules', data); showToast('Schedule disimpan', 'success'); }
+  else if(mSection==='cs') { const data={day:parseInt(v('f-dy'))||1,label:v('f-lb'),date:v('f-dt'),crewCall:v('f-cc'),preCall:v('f-pc'),breakfast:v('f-bf'),camRoll:v('f-cr'),lunch:v('f-ln'),wrap:v('f-wr'),weather:v('f-wt'),weatherNote:v('f-wn'),setNotes:v('f-sn')}; if(editId) data.id = editId; else csDay = parseInt(v('f-dy'))||1; saveItem('callsheets', data); showToast('Call sheet disimpan', 'success'); }
+  else if(mSection==='shot') { const scnEl = document.getElementById('f-scn'); const sceneNo = scnEl ? parseInt(scnEl.value) : null; const sc = scenes.find(s=>s.sceneNo==sceneNo); const data={sceneNo, sceneId: sc?.id||null, ie:v('f-ie'), dn:v('f-dn'), set:v('f-set'), shotNo:parseInt(v('f-shn'))||1, shotSize:v('f-ss'), angle:v('f-ang'), movement:v('f-mov'), equipment:v('f-eq'), audio:v('f-au'), subject:v('f-sub'), desc:v('f-desc'), notes:v('f-notes'), sceneNotes:v('f-sn'), photoURL: editId ? (shotlist.find(x=>x.id===editId)?.photoURL||null) : null }; if(editId) data.id = editId; saveItem('shotlist', data); showToast(editId?'Shot diperbarui':'Shot ditambahkan','success'); }
+  else if(mSection==='audio') { const scnEl = document.getElementById('f-scn'); const sceneNo = scnEl ? parseInt(scnEl.value) : null; const data={sceneNo, ie:v('f-ie'), dn:v('f-dn'), char:v('f-char'), dev:v('f-dev'), dia:v('f-dia'), foley:v('f-foley'), ambRoom:v('f-amb'), code:v('f-code'), shotNo: parseInt(v('f-shn'))||1, photoURL: editId ? (audiolist.find(x=>x.id===editId)?.photoURL||null) : null }; if(editId) data.id = editId; saveItem('audiolist', data); showToast(editId?'Entry diperbarui':'Entry ditambahkan','success'); }
+  else if(mSection==='setitem') { const cat = v('f-cat'); let data = {category: cat}; if(cat==='set') { data={...data, location:v('f-loc'), ie:v('f-ie'), status:v('f-status'), note:v('f-note')}; } else if(cat==='wardrobe') { data={...data, character:v('f-char'), wardrobeDesc:v('f-wd'), color:v('f-color'), colorHex:document.getElementById('f-hex')?.value||'', status:v('f-status'), note:v('f-note')}; } else if(cat==='color') { data={...data, color:v('f-color'), colorHex:document.getElementById('f-hex')?.value||''}; } if(editId) data.id = editId; saveItem('setlist', data); showToast(editId?'Item diperbarui':'Item ditambahkan','success'); }
+  else if(mSection==='prop') { const data={desc:v('f-desc'), location:v('f-loc'), scene:v('f-scene'), type:v('f-type'), qty:parseInt(v('f-qty'))||1, status:v('f-status'), unitRate:v('f-ur'), rateProp:v('f-rp'), note:v('f-note')}; if(editId) data.id = editId; saveItem('proplist', data); showToast(editId?'Prop diperbarui':'Prop ditambahkan','success'); }
+  closeM(); if(!useFirebase) render();
 };
-
-function compressImage(file, maxWidth, quality) {
-  return new Promise(resolve => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        let w = img.width, h = img.height;
-        if(w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; }
-        canvas.width = w; canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        canvas.toBlob(blob => resolve(blob), 'image/jpeg', quality);
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-window.openLightbox = function(url, shotId) {
-  document.getElementById('lightbox-img').src = url;
-  document.getElementById('lightbox').classList.add('open');
-  window._lbShotId = shotId || null;
-};
-window.closeLightbox = function() {
-  document.getElementById('lightbox').classList.remove('open');
-  window._lbShotId = null;
-};
-
-window.editShot = function(id) {
-  const d = shotlist.find(x=>x.id===id);
-  mSection='shot'; editId=id;
-  document.getElementById('m-title').textContent='Edit Shot';
-  document.getElementById('m-body').innerHTML = shotForm(d);
-  document.getElementById('mwrap').classList.add('open');
-};
-window.delShot = function(id) {
-  if(confirm('Hapus shot ini?')) { deleteItem('shotlist',id); showToast('Shot dihapus'); }
-};
+window.editScene = function(id) { const d=scenes.find(x=>x.id===id); mSection='scene'; editId=id; document.getElementById('m-title').textContent='Edit Scene'; document.getElementById('m-body').innerHTML=formFor('scene',d); document.getElementById('mwrap').classList.add('open'); };
+window.editSched = function(id) { const d=schedules.find(x=>x.id===id); mSection='sched'; editId=id; document.getElementById('m-title').textContent='Edit Schedule Entry'; document.getElementById('m-body').innerHTML=formFor('sched',d); document.getElementById('mwrap').classList.add('open'); };
+window.editCS = function(id) { const d=callsheets.find(x=>x.id===id); mSection='cs'; editId=id; document.getElementById('m-title').textContent='Edit Call Sheet'; document.getElementById('m-body').innerHTML=formFor('cs',d); document.getElementById('mwrap').classList.add('open'); };
+window.editShot = function(id) { const d = shotlist.find(x=>x.id===id); mSection='shot'; editId=id; document.getElementById('m-title').textContent='Edit Shot'; document.getElementById('m-body').innerHTML = shotForm(d); document.getElementById('mwrap').classList.add('open'); };
+window.editAudio = function(id) { const d = audiolist.find(x=>x.id===id); mSection='audio'; editId=id; document.getElementById('m-title').textContent='Edit Audio Entry'; document.getElementById('m-body').innerHTML = audioForm(d); document.getElementById('mwrap').classList.add('open'); };
+window.editSetItem = function(id) { const d = setlist.find(x=>x.id===id); mSection='setitem'; editId=id; document.getElementById('m-title').textContent='Edit Item'; document.getElementById('m-body').innerHTML = setItemForm(d, d?.category); document.getElementById('mwrap').classList.add('open'); };
+window.editProp = function(id) { const d = proplist.find(x=>x.id===id); mSection='prop'; editId=id; document.getElementById('m-title').textContent='Edit Prop'; document.getElementById('m-body').innerHTML = propForm(d); document.getElementById('mwrap').classList.add('open'); };
+window.delScene = function(id){if(confirm('Hapus scene ini?')){deleteItem('scenes',id);showToast('Scene dihapus');}};
+window.delSched = function(id){if(confirm('Hapus entry ini?')){deleteItem('schedules',id);showToast('Entry dihapus');}};
+window.delShot = function(id) { if(confirm('Hapus shot ini?')) { deleteItem('shotlist',id); showToast('Shot dihapus'); } };
+window.delAudio = function(id) { if(confirm('Hapus entry ini?')) { deleteItem('audiolist',id); showToast('Entry dihapus'); } };
+window.delSetItem = function(id) { if(confirm('Hapus item ini?')) { deleteItem('setlist',id); showToast('Dihapus'); } };
+window.delProp = function(id) { if(confirm('Hapus prop ini?')) { deleteItem('proplist',id); showToast('Prop dihapus'); } };
 
 // ── ADMIN PANEL ───────────────────────────────────────────────
-function rAdmin() {
-  if(!isAdmin) return `<div class="empty">Kamu tidak punya akses ke panel admin.</div>`;
-  return `
-    <div class="card">
-      <div class="card-head"><span class="card-title">Kelola Anggota Tim</span></div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>NAMA</th><th>EMAIL</th><th>DEPARTEMEN</th><th>STATUS</th><th>AKSI</th></tr></thead>
-        <tbody id="admin-tbody"><tr><td colspan="5"><div class="empty">Memuat data anggota...</div></td></tr></tbody>
-      </table></div>
-    </div>
-  `;
-}
-
-function loadAdminData() {
-  db.ref('users').on('value', snap => {
-    const users = snap.val() || {};
-    const tbody = document.getElementById('admin-tbody');
-    if(!tbody) return;
-    const entries = Object.entries(users).sort((a,b) => {
-      const order = {pending:0,approved:1,admin:2,rejected:3};
-      return (order[a[1].status]||9) - (order[b[1].status]||9);
-    });
-    if(!entries.length) { tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Belum ada anggota.</div></td></tr>`; return; }
-    tbody.innerHTML = entries.map(([uid, u]) => {
-      const isMe = uid === currentUser?.uid;
-      const statusChip = {
-        pending: `<span class="chip chip-amber">Menunggu</span>`,
-        approved: `<span class="chip chip-green">Approved</span>`,
-        admin: `<span class="chip chip-blue">Admin</span>`,
-        rejected: `<span class="chip" style="background:#FCEBEB;color:#A32D2D">Ditolak</span>`,
-      }[u.status] || u.status;
-      const actions = isMe ? '<span style="font-size:11px;color:var(--text3)">Kamu</span>' : `
-        ${u.status==='pending'?`<button class="btn btn-sm" style="background:var(--green);color:#fff;border-color:var(--green)" onclick="approveUser('${uid}','${u.name||u.email}')">Approve</button>`:''}
-        ${u.status==='approved'?`<button class="btn btn-sm" onclick="makeAdmin('${uid}','${u.name||u.email}')">Jadikan Admin</button>`:''}
-        ${u.status!=='rejected'&&!isMe?`<button class="btn btn-sm btn-danger" onclick="rejectUser('${uid}','${u.name||u.email}')">Tolak</button>`:''}
-        ${u.status==='rejected'?`<button class="btn btn-sm" onclick="approveUser('${uid}','${u.name||u.email}')">Restore</button>`:''}
-      `;
-      return `<tr>
-        <td style="font-weight:500">${u.name||'—'}</td>
-        <td style="color:var(--text2)">${u.email}</td>
-        <td style="color:var(--text2)">${u.dept||'—'}</td>
-        <td>${statusChip}</td>
-        <td style="white-space:nowrap;display:flex;gap:6px;flex-wrap:wrap">${actions}</td>
-      </tr>`;
-    }).join('');
-  });
-}
-
-window.approveUser = function(uid, name) {
-  if(!confirm(`Approve akses untuk ${name}?`)) return;
-  db.ref(`users/${uid}/status`).set('approved');
-  showToast(`${name} diapprove!`, 'success');
-};
-window.makeAdmin = function(uid, name) {
-  if(!confirm(`Jadikan ${name} sebagai Admin? Admin bisa approve/tolak anggota lain.`)) return;
-  db.ref(`users/${uid}/status`).set('admin');
-  showToast(`${name} dijadikan admin!`, 'success');
-};
-window.rejectUser = function(uid, name) {
-  if(!confirm(`Tolak akses ${name}? Mereka tidak bisa login.`)) return;
-  db.ref(`users/${uid}/status`).set('rejected');
-  showToast(`Akses ${name} ditolak.`);
-};
-
-// ── EXPORT PDF ────────────────────────────────────────────────
-window.exportPDF = async function() {
-  const titles = {
-    master:'Master Breakdown', schedule:`Shooting Schedule — Hari ${schDay}`,
-    callsheet:`Call Sheet — Hari ${csDay}`, shotlist:'Shot List',
-    talent:'Talent Breakdown', location:'Location Breakdown',
-    setlist:'Set & Wardrobe', proplist:'Prop List', audiolist:'Audio List',
-  };
-  const labelTitles = {
-    master:'Master Breakdown', schedule:`Shooting Schedule — Hari ${schDay}`,
-    callsheet:`Call Sheet — Hari ${csDay}`, shotlist:'Shot List',
-    talent:'Talent Breakdown', location:'Location Breakdown',
-    setlist:'Set & Wardrobe', proplist:'Prop List', audiolist:'Audio List',
-  };
-  const filename = `${proj.title.replace(/\s+/g,'_')}_${titles[page]||page}.pdf`;
-  const printTitle = `${proj.title} — ${labelTitles[page]||page}`;
-  const printMeta = `Director: ${proj.director||'—'} | Producer: ${proj.producer||'—'} | DOP: ${proj.dop||'—'}`;
-  const printDate = new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
-
-  let bodyHTML = '';
-  if(page==='master') bodyHTML = printMaster();
-  else if(page==='schedule') bodyHTML = printSchedule();
-  else if(page==='callsheet') bodyHTML = printCallSheet();
-  else if(page==='shotlist') bodyHTML = printShotList();
-  else if(page==='talent') bodyHTML = printTalent();
-  else if(page==='location') bodyHTML = printLocation();
-  else if(page==='setlist') bodyHTML = printSetList();
-  else if(page==='proplist') bodyHTML = printPropList();
-  else if(page==='audiolist') bodyHTML = printAudioList();
-
-  showToast('Membuat PDF...');
-
-  // Build full HTML doc in hidden iframe
-  const iframe = document.createElement('iframe');
-  iframe.style.cssText = 'position:fixed;left:-9999px;top:0;width:1123px;height:794px;border:none;';
-  document.body.appendChild(iframe);
-
-  const fullHTML = `<!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',Arial,sans-serif;font-size:11px;color:#1A1917;background:#fff;padding:28px 32px;width:1123px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-.mono{font-family:'DM Mono',monospace;}
-.doc-header{border-bottom:2px solid #1A1917;padding-bottom:10px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:flex-end;}
-.doc-header-left h1{font-size:16px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
-.doc-header-left p{font-size:10px;color:#666;margin-top:3px;}
-.doc-header-right{text-align:right;font-size:10px;color:#666;line-height:1.6;}
-table{width:100%;border-collapse:collapse;font-size:10px;}
-th{background:#2C2C2A;color:#fff;padding:6px 8px;text-align:left;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
-td{padding:7px 8px;border-bottom:0.5px solid #ddd;vertical-align:top;line-height:1.5;}
-tr:nth-child(even) td{background:#fafaf8;}
-tr.group-row td{background:#E4E1DA;font-weight:700;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:5px 8px;}
-.chip{display:inline-block;padding:1px 7px;font-size:9px;font-weight:600;border-radius:20px;font-family:'DM Mono',monospace;}
-.chip-blue{background:#E8F0FA;color:#185FA5;}
-.chip-teal{background:#E1F4EE;color:#0F6E56;}
-.chip-amber{background:#FDF1DC;color:#92580A;}
-.chip-dark{background:#EEEDEB;color:#2C2C2A;}
-.chip-green{background:#E6F4EC;color:#1D7A4E;}
-.cs-wrap{border:1px solid #ccc;border-radius:4px;overflow:hidden;}
-.cs-top{display:grid;grid-template-columns:1fr 1.1fr 1fr;border-bottom:1px solid #ccc;}
-.cs-col{padding:12px 14px;}
-.cs-col+.cs-col{border-left:1px solid #ccc;}
-.cs-kv{display:flex;gap:6px;margin-bottom:4px;font-size:10px;}
-.cs-k{color:#888;min-width:90px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.04em;text-transform:uppercase;padding-top:1px;}
-.cs-v{font-weight:600;}
-.cs-center{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.cs-call-big{font-size:26px;font-weight:700;font-family:'DM Mono',monospace;padding:8px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:8px -14px;text-align:center;background:#f7f6f3;}
-.cs-title-big{font-size:14px;font-weight:700;letter-spacing:0.08em;font-family:'DM Mono',monospace;}
-.cs-title-sub{font-size:9px;color:#888;margin-top:2px;letter-spacing:0.04em;}
-.cs-footer{background:#185FA5;color:#fff;text-align:center;padding:7px;font-size:10px;font-weight:600;letter-spacing:0.14em;font-family:'DM Mono',monospace;}
-.cs-notes{padding:8px 14px;background:#f7f6f3;border-top:1px solid #ccc;font-size:10px;color:#444;line-height:1.7;}
-.weather-box{border:1px solid #ccc;border-radius:3px;padding:7px 10px;text-align:center;margin-top:8px;background:#f7f6f3;}
-.sl-proj-head{background:#2C2C2A;color:#D3D1C7;padding:6px 14px;font-size:10px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;margin-bottom:12px;border-radius:3px;}
-.sl-scene{margin-bottom:16px;border:1px solid #ccc;border-radius:4px;overflow:hidden;}
-.sl-scene-head{background:#C0392B;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;}
-.sl-scene-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;}
-.sl-scene-meta{font-size:9px;opacity:0.9;font-family:'DM Mono',monospace;display:flex;gap:10px;}
-.sl-shot-photo{width:140px;height:78.75px;object-fit:cover;border-radius:2px;}
-.sl-no-photo{width:140px;height:78.75px;background:#f0f0ee;border:1px dashed #ccc;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#999;}
-.sl-notes{padding:7px 12px;background:#f7f6f3;border-top:1px solid #ccc;font-size:10px;color:#555;}
-.sl-notes-label{font-weight:600;letter-spacing:0.04em;margin-right:8px;font-family:'DM Mono',monospace;font-size:9px;}
-.scene-tag{display:inline-block;padding:1px 5px;font-size:9px;font-weight:600;border:0.5px solid #ccc;border-radius:3px;font-family:'DM Mono',monospace;margin:1px;}
-</style></head><body>
-<div class="doc-header">
-  <div class="doc-header-left"><h1>${printTitle}</h1><p>${printMeta}</p></div>
-  <div class="doc-header-right"><div><strong>FILM PRODUCTION</strong></div><div>${printDate}</div></div>
-</div>
-${bodyHTML}
-</body></html>`;
-
-  iframe.srcdoc = fullHTML;
-
-  await new Promise(resolve => { iframe.onload = resolve; setTimeout(resolve, 3000); });
-  await new Promise(r => setTimeout(r, 800));
-
-  try {
-    const { jsPDF } = window.jspdf;
-    const canvas = await html2canvas(iframe.contentDocument.body, {
-      scale: 2, useCORS: true, allowTaint: true,
-      width: 1123, windowWidth: 1123,
-      backgroundColor: '#ffffff'
-    });
-
-    const imgData = canvas.toDataURL('image/jpeg', 0.95);
-    const pdf = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
-    const pdfW = pdf.internal.pageSize.getWidth();
-    const pdfH = pdf.internal.pageSize.getHeight();
-    const imgH = (canvas.height * pdfW) / canvas.width;
-
-    let y = 0;
-    while(y < imgH) {
-      if(y > 0) pdf.addPage();
-      pdf.addImage(imgData, 'JPEG', 0, -y, pdfW, imgH);
-      y += pdfH;
-    }
-
-    pdf.save(filename);
-    showToast('PDF berhasil didownload!', 'success');
-  } catch(e) {
-    showToast('Gagal buat PDF: ' + e.message, 'error');
-  } finally {
-    document.body.removeChild(iframe);
-  }
-};
-
-// ── PRINT ─────────────────────────────────────────────────────
-window.printPage = function() {
-  const titles = {
-    master:'Master Breakdown', schedule:`Shooting Schedule — Hari ${schDay}`,
-    callsheet:`Call Sheet — Hari ${csDay}`, shotlist:'Shot List',
-    talent:'Talent Breakdown', location:'Location Breakdown',
-  };
-
-  const printTitle = `${proj.title} — ${titles[page]||page}`;
-  const printMeta = `Director: ${proj.director||'—'} &nbsp;|&nbsp; Producer: ${proj.producer||'—'} &nbsp;|&nbsp; DOP: ${proj.dop||'—'}`;
-  const printDate = new Date().toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
-
-  let bodyHTML = '';
-  if(page==='master') bodyHTML = printMaster();
-  else if(page==='schedule') bodyHTML = printSchedule();
-  else if(page==='callsheet') bodyHTML = printCallSheet();
-  else if(page==='shotlist') bodyHTML = printShotList();
-  else if(page==='talent') bodyHTML = printTalent();
-  else if(page==='location') bodyHTML = printLocation();
-  else if(page==='setlist') bodyHTML = printSetList();
-  else if(page==='proplist') bodyHTML = printPropList();
-  else if(page==='audiolist') bodyHTML = printAudioList();
-
-  const win = window.open('','_blank');
-  win.document.write(`<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<title>${printTitle}</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-  @page { size:A4 landscape; margin:12mm 14mm; }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',Arial,sans-serif;font-size:11px;color:#1A1917;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .mono{font-family:'DM Mono',monospace;}
-
-  /* DOC HEADER */
-  .doc-header{border-bottom:2px solid #1A1917;padding-bottom:8px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;}
-  .doc-header-left h1{font-size:15px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
-  .doc-header-left p{font-size:10px;color:#666;margin-top:3px;}
-  .doc-header-right{text-align:right;font-size:10px;color:#666;line-height:1.6;}
-
-  /* TABLE */
-  table{width:100%;border-collapse:collapse;font-size:10px;}
-  th{background:#2C2C2A;color:#fff;padding:6px 8px;text-align:left;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
-  td{padding:7px 8px;border-bottom:0.5px solid #ddd;vertical-align:top;line-height:1.4;}
-  tr:nth-child(even) td{background:#fafaf8;}
-  tr.group-row td{background:#E4E1DA;font-weight:700;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:5px 8px;}
-
-  /* CHIPS */
-  .chip{display:inline-block;padding:1px 7px;font-size:9px;font-weight:600;border-radius:20px;font-family:'DM Mono',monospace;}
-  .chip-blue{background:#E8F0FA;color:#185FA5;}
-  .chip-teal{background:#E1F4EE;color:#0F6E56;}
-  .chip-amber{background:#FDF1DC;color:#92580A;}
-  .chip-dark{background:#EEEDEB;color:#2C2C2A;}
-  .chip-green{background:#E6F4EC;color:#1D7A4E;}
-
-  /* CALL SHEET */
-  .cs-wrap{border:1px solid #ccc;border-radius:4px;overflow:hidden;}
-  .cs-top{display:grid;grid-template-columns:1fr 1.1fr 1fr;border-bottom:1px solid #ccc;}
-  .cs-col{padding:12px 14px;}
-  .cs-col+.cs-col{border-left:1px solid #ccc;}
-  .cs-kv{display:flex;gap:6px;margin-bottom:4px;font-size:10px;}
-  .cs-k{color:#888;min-width:90px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.04em;text-transform:uppercase;padding-top:1px;}
-  .cs-v{font-weight:600;}
-  .cs-center{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  .cs-call-big{font-size:28px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:0.04em;padding:8px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:8px -14px;text-align:center;background:#f7f6f3;}
-  .cs-title-big{font-size:15px;font-weight:700;letter-spacing:0.08em;font-family:'DM Mono',monospace;}
-  .cs-title-sub{font-size:9px;color:#888;margin-top:2px;letter-spacing:0.04em;}
-  .cs-footer{background:#185FA5;color:#fff;text-align:center;padding:7px;font-size:10px;font-weight:600;letter-spacing:0.14em;font-family:'DM Mono',monospace;}
-  .cs-notes{padding:8px 14px;background:#f7f6f3;border-top:1px solid #ccc;font-size:10px;color:#444;line-height:1.7;}
-  .weather-box{border:1px solid #ccc;border-radius:3px;padding:7px 10px;text-align:center;margin-top:8px;background:#f7f6f3;}
-
-  /* SHOT LIST */
-  .sl-proj-head{background:#2C2C2A;color:#D3D1C7;padding:6px 14px;font-size:10px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-align:center;margin-bottom:12px;border-radius:3px;}
-  .sl-scene{break-inside:avoid;margin-bottom:16px;border:1px solid #ccc;border-radius:4px;overflow:hidden;}
-  .sl-scene-head{background:#C0392B;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;}
-  .sl-scene-title{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;}
-  .sl-scene-meta{font-size:9px;opacity:0.9;font-family:'DM Mono',monospace;display:flex;gap:10px;}
-  .sl-shot-photo{width:140px;height:78.75px;object-fit:cover;border-radius:2px;}
-  .sl-no-photo{width:140px;height:78.75px;background:#f0f0ee;border:1px dashed #ccc;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#999;}
-  .sl-notes{padding:7px 12px;background:#f7f6f3;border-top:1px solid #ccc;font-size:10px;color:#555;}
-  .sl-notes-label{font-weight:600;letter-spacing:0.04em;margin-right:8px;font-family:'DM Mono',monospace;font-size:9px;}
-
-  /* SCENE TAG */
-  .scene-tag{display:inline-block;padding:1px 5px;font-size:9px;font-weight:600;border:0.5px solid #ccc;border-radius:3px;font-family:'DM Mono',monospace;margin:1px;}
-</style>
-</head>
-<body>
-  <div class="doc-header">
-    <div class="doc-header-left">
-      <h1>${printTitle}</h1>
-      <p>${printMeta}</p>
-    </div>
-    <div class="doc-header-right">
-      <div><strong>FILM PRODUCTION</strong></div>
-      <div>${printDate}</div>
-    </div>
-  </div>
-  ${bodyHTML}
-  <script>window.onload=function(){window.print();}<\/script>
-</body>
-</html>`);
-  win.document.close();
-};
-
-function printMaster() {
-  const rows = scenes.map((s,i) => `<tr>
-    <td class="mono" style="color:#999">${i+1}</td>
-    <td class="mono" style="font-weight:700">${s.sceneNo}</td>
-    <td><span class="chip ${s.ie==='I'?'chip-blue':'chip-teal'}">${s.ie==='I'?'INT':'EXT'}</span></td>
-    <td><span class="chip ${s.dn==='D'?'chip-amber':'chip-dark'}">${s.dn==='D'?'DAY':'NIGHT'}</span></td>
-    <td class="mono">${s.pages||'—'}</td>
-    <td><span class="chip chip-blue">Day ${s.day||'—'}</span></td>
-    <td style="font-weight:600">${s.set}</td>
-    <td style="max-width:160px">${s.desc||'—'}</td>
-    <td>${s.char||'—'}</td>
-    <td>${s.makeup||'—'}</td>
-    <td>${s.wardrobe||'—'}</td>
-    <td>${s.prop||'—'}</td>
-    <td>${s.sfx||'—'}</td>
-    <td>${s.audio||'—'}</td>
-    <td>${s.notes||'—'}</td>
-  </tr>`).join('');
-  return `<table>
-    <thead><tr><th>#</th><th>SC</th><th>I/E</th><th>D/N</th><th>PAGES</th><th>SHOOT DAY</th><th>SET</th><th>DESCRIPTION</th><th>CHARACTER</th><th>MAKEUP</th><th>WARDROBE</th><th>MAIN PROP</th><th>SFX</th><th>AUDIO</th><th>SPECIAL NOTES</th></tr></thead>
-    <tbody>${rows||'<tr><td colspan="15" style="text-align:center;padding:20px;color:#999">Belum ada data</td></tr>'}</tbody>
-  </table>`;
-}
-
-function printSchedule() {
-  const rows = schedules.filter(s=>s.day===schDay).map(e=>{
-    const sc = scenes.find(s=>s.id===e.sceneId);
-    return `<tr>
-      <td class="mono" style="font-weight:700;white-space:nowrap">${e.time||'—'}</td>
-      <td class="mono" style="font-weight:700">${sc?.sceneNo||'?'}</td>
-      <td class="mono">${e.shot||'—'}</td>
-      <td class="mono">${e.page||'—'}</td>
-      <td>${e.loc||'—'}</td>
-      <td>${e.action||'—'}</td>
-      <td style="font-weight:600">${e.talent||'—'}</td>
-      <td>${e.extras||'—'}</td>
-      <td><span class="chip chip-green">${e.cont||'FREE'}</span></td>
-      <td>${e.notes||'—'}</td>
-    </tr>`;
-  }).join('');
-  const cs = callsheets.find(c=>c.day===schDay);
-  return `${cs?`<p style="font-size:10px;color:#666;margin-bottom:12px">Tanggal: <strong>${cs.date||'—'}</strong></p>`:''}
-  <table>
-    <thead><tr><th>ESTIMATE TIME</th><th>SCENE</th><th>SHOT</th><th>PAGE</th><th>LOCATION</th><th>ACTION</th><th>TALENT</th><th>EXTRAS</th><th>CONT</th><th>NOTES</th></tr></thead>
-    <tbody>${rows||'<tr><td colspan="10" style="text-align:center;padding:20px;color:#999">Belum ada data</td></tr>'}</tbody>
-  </table>`;
-}
-
-function printCallSheet() {
-  const cs = callsheets.find(c=>c.day===csDay);
-  if(!cs) return '<p style="text-align:center;padding:40px;color:#999">Belum ada call sheet</p>';
-  const rows = schedules.filter(s=>s.day===csDay).map((e,i)=>{
-    const sc = scenes.find(s=>s.id===e.sceneId);
-    return `<tr>
-      <td class="mono" style="color:#999">${i+1}</td>
-      <td class="mono" style="font-weight:700;white-space:nowrap">${e.time||'—'}</td>
-      <td class="mono" style="font-weight:700">${sc?.sceneNo||'?'}</td>
-      <td><span class="chip ${sc?.ie==='I'?'chip-blue':'chip-teal'}">${sc?.ie==='I'?'INT':'EXT'}</span></td>
-      <td><span class="chip ${sc?.dn==='D'?'chip-amber':'chip-dark'}">${sc?.dn==='D'?'DAY':'NIGHT'}</span></td>
-      <td>${e.loc||'—'}</td>
-      <td class="mono">${e.shot||'—'}</td>
-      <td>${e.action||'—'}</td>
-      <td style="font-weight:600">${e.talent||'—'}</td>
-      <td>${sc?.desc||'—'}</td>
-    </tr>`;
-  }).join('');
-  return `<div class="cs-wrap">
-    <div class="cs-top">
-      <div class="cs-col">
-        <div style="font-family:'DM Mono',monospace;font-size:8px;font-weight:600;letter-spacing:0.14em;color:#888;margin-bottom:10px">DOCUMENTARY FILM PRODUCTION</div>
-        ${[['PRODUCER',proj.producer||'—'],['DIRECTOR',proj.director||'—'],['DOP',proj.dop||'—'],['SOUND RECORD',proj.soundRec||'—'],['1ST ASST. DIR',proj.firstAD||'—']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v">${v}</span></div>`).join('')}
-      </div>
-      <div class="cs-col cs-center">
-        <span class="cs-title-big">CALL SHEET</span>
-        <span class="cs-title-sub">Crew Call On Location</span>
-        <div class="cs-call-big">${cs.crewCall||'—'}</div>
-        <div style="font-size:9px;color:#888;letter-spacing:0.06em;font-family:'DM Mono',monospace">LOCATION & BASECAMP</div>
-        <div style="font-size:11px;font-weight:600;margin-top:2px">${proj.location||'—'}</div>
-        <div style="font-size:10px;color:#666;margin-top:2px">${proj.basecamp||'—'}</div>
-        <div style="font-size:9px;color:#888;margin-top:8px;font-family:'DM Mono',monospace">NEAREST HOSPITAL</div>
-        <div style="font-size:10px;margin-top:2px">${proj.hospital||'—'}</div>
-      </div>
-      <div class="cs-col">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:#888;letter-spacing:0.08em">${cs.label||''}</div>
-        <div style="font-size:12px;font-weight:700;margin-top:2px;margin-bottom:10px">${cs.date||'—'}</div>
-        ${[['PRE CALL PRODUCTION',cs.preCall||'—'],['BREAKFAST',cs.breakfast||'—'],['1ST CAM ROLL',cs.camRoll||'—'],['LUNCH',cs.lunch||'—'],['WRAP',cs.wrap||'TBD']].map(([k,v])=>`<div class="cs-kv"><span class="cs-k">${k}</span><span class="cs-v mono">${v}</span></div>`).join('')}
-        <div class="weather-box"><div style="font-size:16px;font-weight:700;font-family:'DM Mono',monospace">${cs.weather||'—'}</div><div style="font-size:9px;color:#666;margin-top:2px">${cs.weatherNote||''}</div></div>
-      </div>
-    </div>
-    ${cs.setNotes?`<div class="cs-notes">${cs.setNotes.replace(/\n/g,'<br>')}</div>`:''}
-    <table>
-      <thead><tr><th>#</th><th>TIME</th><th>SC</th><th>I/E</th><th>D/N</th><th>LOCATION</th><th>SHOT</th><th>DESCRIPTION</th><th>TALENT</th><th>SCRIPT</th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="10" style="text-align:center;padding:20px;color:#999">Belum ada data</td></tr>'}</tbody>
-    </table>
-    <div class="cs-footer">THANK YOU FOR TODAY, SEE U NEXT DAY</div>
-  </div>`;
-}
-
-function printShotList() {
-  const sceneGroups = {};
-  shotlist.forEach(sh => {
-    const key = sh.sceneNo||'?';
-    if(!sceneGroups[key]) sceneGroups[key]={shots:[],meta:sh};
-    sceneGroups[key].shots.push(sh);
-  });
-  const keys = Object.keys(sceneGroups).sort((a,b)=>Number(a)-Number(b));
-  if(!keys.length) return '<p style="text-align:center;padding:40px;color:#999">Belum ada data shot list</p>';
-  return `<div class="sl-proj-head">SHOT LIST — ${proj.title.toUpperCase()} &nbsp;|&nbsp; DIRECTOR : ${proj.director||'—'} &nbsp;&nbsp; DOP : ${proj.dop||'—'}</div>
-  ${keys.map(key=>{
-    const g = sceneGroups[key];
-    const m = g.meta;
-    const shots = g.shots.sort((a,b)=>Number(a.shotNo)-Number(b.shotNo));
-    const notes = shots.find(s=>s.sceneNotes)?.sceneNotes||'';
-    return `<div class="sl-scene">
-      <div class="sl-scene-head">
-        <span class="sl-scene-title">SCENE ${m.sceneNo||key}</span>
-        <div class="sl-scene-meta">
-          <span>I/E: ${m.ie||'—'}</span><span>SET: ${m.set||'—'}</span><span>D/N: ${m.dn||'—'}</span>
-        </div>
-      </div>
-      <table>
-        <thead><tr><th>SHOT</th><th>SHOT SIZE</th><th>ANGLE</th><th>MOVEMENT</th><th>EQUIPMENT</th><th>AUDIO</th><th>SUBJECT</th><th>PICT. SHOT</th><th>DESKRIPSI</th><th>CATATAN</th></tr></thead>
-        <tbody>${shots.map(sh=>`<tr>
-          <td class="mono" style="font-weight:700;text-align:center">${sh.shotNo||'—'}</td>
-          <td>${sh.shotSize||'—'}</td>
-          <td>${sh.angle||'—'}</td>
-          <td>${sh.movement||'—'}</td>
-          <td>${sh.equipment||'—'}</td>
-          <td>${sh.audio||'—'}</td>
-          <td>${sh.subject||'—'}</td>
-          <td style="padding:6px">${sh.photoURL?`<img src="${sh.photoURL}" class="sl-shot-photo">`:`<div class="sl-no-photo">No photo</div>`}</td>
-          <td>${sh.desc||'—'}</td>
-          <td>${sh.notes||'—'}</td>
-        </tr>`).join('')}</tbody>
-      </table>
-      ${notes?`<div class="sl-notes"><span class="sl-notes-label">SCENE NOTES</span>${notes}</div>`:''}
-    </div>`;
-  }).join('')}`;
-}
-
-function printSetList() {
-  const sets = setlist.filter(s=>s.category==='set');
-  const wds = setlist.filter(s=>s.category==='wardrobe');
-  const colors = setlist.filter(s=>s.category==='color');
-  return `
-    <h3 style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #ccc;padding-bottom:4px">Set Shooting</h3>
-    <table style="margin-bottom:16px">
-      <thead><tr><th>#</th><th>SET / LOKASI</th><th>I/E</th><th>STATUS</th><th>CATATAN</th></tr></thead>
-      <tbody>${sets.map((s,i)=>`<tr><td class="mono">${i+1}</td><td style="font-weight:600">${s.location||'—'}</td><td>${s.ie?`<span class="chip ${s.ie==='I'?'chip-blue':'chip-teal'}">${s.ie==='I'?'INT':'EXT'}</span>`:'—'}</td><td>${s.status||'—'}</td><td>${s.note||'—'}</td></tr>`).join('')||'<tr><td colspan="5" style="text-align:center;color:#999">Belum ada data</td></tr>'}</tbody>
-    </table>
-    <h3 style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #ccc;padding-bottom:4px">Main Wardrobe</h3>
-    <table style="margin-bottom:16px">
-      <thead><tr><th>#</th><th>KARAKTER</th><th>WARDROBE</th><th>WARNA</th><th>STATUS</th><th>CATATAN</th></tr></thead>
-      <tbody>${wds.map((s,i)=>`<tr><td class="mono">${i+1}</td><td style="font-weight:600">${s.character||'—'}</td><td>${s.wardrobeDesc||'—'}</td><td>${s.color||'—'}</td><td>${s.status||'—'}</td><td>${s.note||'—'}</td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center;color:#999">Belum ada data</td></tr>'}</tbody>
-    </table>
-    <h3 style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #ccc;padding-bottom:4px">Dominant Colors</h3>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      ${colors.map(c=>`<div style="display:flex;align-items:center;gap:6px;border:1px solid #ccc;border-radius:4px;padding:5px 12px"><span style="width:14px;height:14px;border-radius:50%;background:${c.colorHex||'#ccc'};border:1px solid #ccc;display:inline-block"></span><span style="font-size:10px;font-weight:600">${c.color||'—'}</span></div>`).join('')||'<span style="color:#999;font-size:10px">Belum ada data</span>'}
-    </div>
-  `;
-}
-
-function printPropList() {
-  const locs = [...new Set(proplist.map(p=>p.location).filter(Boolean))];
-  if(!locs.length && !proplist.length) return '<p style="text-align:center;padding:40px;color:#999">Belum ada data prop</p>';
-  
-  // Group by location
-  const groups = {};
-  proplist.forEach(p => {
-    const k = p.location || 'Umum';
-    if(!groups[k]) groups[k] = [];
-    groups[k].push(p);
-  });
-
-  return Object.entries(groups).map(([loc, props]) => `
-    <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:#2C2C2A;color:#fff;padding:6px 10px;border-radius:3px;margin-bottom:0">${loc}</h3>
-    <table style="margin-bottom:14px">
-      <thead><tr><th>#</th><th>DESKRIPSI</th><th>SCENE</th><th>TYPE</th><th>QTY</th><th>STATUS</th><th>UNIT RATE</th><th>RATE PROP</th><th>CATATAN</th></tr></thead>
-      <tbody>${props.map((p,i)=>`<tr><td class="mono">${i+1}</td><td style="font-weight:600">${p.desc||'—'}</td><td class="mono">${p.scene||'—'}</td><td><span class="chip ${p.type==='Main'?'chip-blue':'chip-teal'}">${p.type||'—'}</span></td><td class="mono" style="font-weight:700">${p.qty||'—'}</td><td>${p.status||'—'}</td><td>${p.unitRate||'—'}</td><td>${p.rateProp||'—'}</td><td>${p.note||'—'}</td></tr>`).join('')}</tbody>
-    </table>
-  `).join('');
-}
-
-function printTalent() {
-  const talent = getAllTalent();
-  const rows = talent.map((t,i)=>`<tr>
-    <td class="mono" style="color:#999">${i+1}</td>
-    <td style="font-weight:600">${t.name}</td>
-    <td>—</td>
-    <td>${t.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td>
-    <td class="mono" style="font-weight:700;text-align:center">${t.scenes.length}</td>
-    <td class="mono" style="font-weight:700;text-align:center">${t.days.size}</td>
-    <td>—</td>
-  </tr>`).join('');
-  return `<table>
-    <thead>
-      <tr class="group-row"><td colspan="7">MAIN CAST</td></tr>
-      <tr><th>#</th><th>CAST (CHARACTER)</th><th>D/DN</th><th>SCENE NUMBERS</th><th>T. SCENE</th><th>T. DAY</th><th>NOTES</th></tr>
-    </thead>
-    <tbody>${rows||'<tr><td colspan="7" style="text-align:center;padding:20px;color:#999">Belum ada data</td></tr>'}</tbody>
-  </table>`;
-}
-
-function printLocation() {
-  const m={};
-  scenes.forEach(s=>{if(!m[s.set])m[s.set]={set:s.set,ie:s.ie,dn:s.dn,scenes:[]};m[s.set].scenes.push(s.sceneNo);});
-  const locs = Object.values(m);
-  const rows = locs.map((l,i)=>`<tr>
-    <td class="mono" style="color:#999">${i+1}</td>
-    <td style="font-weight:600">${l.set}</td>
-    <td><span class="chip ${l.ie==='I'?'chip-blue':'chip-teal'}">${l.ie==='I'?'INT':'EXT'}</span></td>
-    <td><span class="chip ${l.dn==='D'?'chip-amber':'chip-dark'}">${l.dn==='D'?'DAY':'NIGHT'}</span></td>
-    <td>${l.scenes.map(n=>`<span class="scene-tag">${n}</span>`).join('')}</td>
-  </tr>`).join('');
-  return `<table>
-    <thead><tr><th>#</th><th>LOCATION / SET</th><th>I/E</th><th>D/N</th><th>SCENE NUMBERS</th></tr></thead>
-    <tbody>${rows||'<tr><td colspan="5" style="text-align:center;padding:20px;color:#999">Belum ada data</td></tr>'}</tbody>
-  </table>`;
-}
+function rAdmin() { if(!isAdmin) return `<div class="empty">Kamu tidak punya akses ke panel admin.</div>`; return `<div class="card"><div class="card-head"><span class="card-title">Kelola Anggota Tim</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>NAMA</th><th>EMAIL</th><th>DEPARTEMEN</th><th>STATUS</th><th>AKSI</th></tr></thead><tbody id="admin-tbody"><tr><td colspan="5"><div class="empty">Memuat data anggota...</div></td></tr></tbody></table></div></div>`; }
+function loadAdminData() { db.ref('users').on('value', snap => { const users = snap.val() || {}; const tbody = document.getElementById('admin-tbody'); if(!tbody) return; const entries = Object.entries(users).sort((a,b) => { const order = {pending:0,approved:1,admin:2,rejected:3}; return (order[a[1].status]||9) - (order[b[1].status]||9); }); if(!entries.length) { tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Belum ada anggota.</div></td></table>`; return; } tbody.innerHTML = entries.map(([uid, u]) => { const isMe = uid === currentUser?.uid; const statusChip = { pending: `<span class="chip chip-amber">Menunggu</span>`, approved: `<span class="chip chip-green">Approved</span>`, admin: `<span class="chip chip-blue">Admin</span>`, rejected: `<span class="chip" style="background:#FCEBEB;color:#A32D2D">Ditolak</span>` }[u.status] || u.status; const actions = isMe ? '<span style="font-size:11px;color:var(--text3)">Kamu</span>' : `${u.status==='pending'?`<button class="btn btn-sm" style="background:var(--green);color:#fff;border-color:var(--green)" onclick="approveUser('${uid}','${u.name||u.email}')">Approve</button>`:''}${u.status==='approved'?`<button class="btn btn-sm" onclick="makeAdmin('${uid}','${u.name||u.email}')">Jadikan Admin</button>`:''}${u.status!=='rejected'&&!isMe?`<button class="btn btn-sm btn-danger" onclick="rejectUser('${uid}','${u.name||u.email}')">Tolak</button>`:''}${u.status==='rejected'?`<button class="btn btn-sm" onclick="approveUser('${uid}','${u.name||u.email}')">Restore</button>`:''}`; return `<tr><td style="font-weight:500">${u.name||'—'}</td><td style="color:var(--text2)">${u.email}</td><td style="color:var(--text2)">${u.dept||'—'}</td><td>${statusChip}</td><td style="white-space:nowrap;display:flex;gap:6px;flex-wrap:wrap">${actions}</td></tr>`; }).join(''); }); }
+window.approveUser = function(uid, name) { if(!confirm(`Approve akses untuk ${name}?`)) return; db.ref(`users/${uid}/status`).set('approved'); showToast(`${name} diapprove!`, 'success'); };
+window.makeAdmin = function(uid, name) { if(!confirm(`Jadikan ${name} sebagai Admin?`)) return; db.ref(`users/${uid}/status`).set('admin'); showToast(`${name} dijadikan admin!`, 'success'); };
+window.rejectUser = function(uid, name) { if(!confirm(`Tolak akses ${name}?`)) return; db.ref(`users/${uid}/status`).set('rejected'); showToast(`Akses ${name} ditolak.`); };
 
 // ── BOTTOM NAV ────────────────────────────────────────────────
 function isMobile(){ return window.innerWidth <= 768; }
-
-function showHideBottomNav(){
-  const nav = document.getElementById('bottom-nav');
-  if(!nav) return;
-  nav.style.display = isMobile() ? 'flex' : 'none';
-  // Also hide/show sidebar
-  const sb = document.querySelector('.sidebar');
-  if(sb) sb.style.display = isMobile() ? 'none' : 'flex';
-  // Adjust main padding
-  const main = document.querySelector('.main');
-  if(main) main.style.paddingBottom = isMobile() ? '64px' : '0';
-}
-
+function showHideBottomNav(){ const nav = document.getElementById('bottom-nav'); if(!nav) return; nav.style.display = isMobile() ? 'flex' : 'none'; const sb = document.querySelector('.sidebar'); if(sb) sb.style.display = isMobile() ? 'none' : 'flex'; const main = document.querySelector('.main'); if(main) main.style.paddingBottom = isMobile() ? '64px' : '0'; }
 window.addEventListener('resize', showHideBottomNav);
-
-function updateBottomNav(p) {
-  const map = {dashboard:'bn-dashboard', master:'bn-master', callsheet:'bn-callsheet'};
-  document.querySelectorAll('.bn-item').forEach(el=>el.classList.remove('on'));
-  const msIds = ['ms-schedule','ms-talent','ms-location','ms-shotlist','ms-setlist','ms-proplist','ms-audiolist'];
-  msIds.forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('on');});
-  if(map[p]) {
-    document.getElementById(map[p])?.classList.add('on');
-  } else {
-    document.getElementById('bn-more')?.classList.add('on');
-    const msMap = {
-      schedule:'ms-schedule', talent:'ms-talent', location:'ms-location',
-      shotlist:'ms-shotlist', setlist:'ms-setlist', proplist:'ms-proplist',
-      audiolist:'ms-audiolist'
-    };
-    if(msMap[p]) document.getElementById(msMap[p])?.classList.add('on');
-  }
-}
-
-window.toggleMore = function() {
-  const sheet = document.getElementById('more-sheet');
-  sheet.classList.toggle('open');
-};
-window.closeMore = function() {
-  document.getElementById('more-sheet').classList.remove('open');
-};
-window.handleFAB = function() {
-  closeMore();
-  const fabMap = {master:'scene',schedule:'sched',callsheet:'cs'};
-  if(fabMap[page]) { openM(fabMap[page]); }
-  else { openM('scene'); }
-};
+function updateBottomNav(p) { const map = {dashboard:'bn-dashboard', master:'bn-master', callsheet:'bn-callsheet'}; document.querySelectorAll('.bn-item').forEach(el=>el.classList.remove('on')); const msIds = ['ms-schedule','ms-talent','ms-location','ms-shotlist','ms-setlist','ms-proplist','ms-audiolist']; msIds.forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('on');}); if(map[p]) { document.getElementById(map[p])?.classList.add('on'); } else { document.getElementById('bn-more')?.classList.add('on'); const msMap = {schedule:'ms-schedule', talent:'ms-talent', location:'ms-location', shotlist:'ms-shotlist', setlist:'ms-setlist', proplist:'ms-proplist', audiolist:'ms-audiolist'}; if(msMap[p]) document.getElementById(msMap[p])?.classList.add('on'); } }
+window.toggleMore = function() { const sheet = document.getElementById('more-sheet'); sheet.classList.toggle('open'); };
+window.closeMore = function() { document.getElementById('more-sheet').classList.remove('open'); };
+window.handleFAB = function() { closeMore(); const fabMap = {master:'scene',schedule:'sched',callsheet:'cs'}; if(fabMap[page]) { openM(fabMap[page]); } else { openM('scene'); } };
 
 // ── INIT ─────────────────────────────────────────────────────
 showHideBottomNav();
